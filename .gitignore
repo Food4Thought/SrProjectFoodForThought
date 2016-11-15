@@ -1,0 +1,10 @@
+node_modules
+.tmp
+.sass-cache
+lib
+platforms
+plugins
+*.swp
+*.swo
+*.log
+*.DS_Store
