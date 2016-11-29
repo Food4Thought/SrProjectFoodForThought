@@ -15,15 +15,15 @@ angular.module('starter.controllers', [])
   $ionicModal.fromTemplateUrl('templates/start.html', {
     scope: $scope
   }).then(function(modal) {
-    $scope.modal = modal;
+    $scope.startModal = modal;
   });
 
   $scope.closeStart = function() {
-    $scope.modal.hide();
+    $scope.startModal.hide();
   };
 
   $scope.start = function() {
-    $scope.modal.show();
+    $scope.startModal.show();
   };
 
   $scope.doStart = function() {
@@ -33,6 +33,60 @@ angular.module('starter.controllers', [])
     $timeout(function() {
       $scope.closeStart();
     }, 1000);
+  };
+
+
+
+  $ionicModal.fromTemplateUrl('templates/newShift.html', {
+    scope: $scope
+  }).then(function(modal) {
+    $scope.newShiftModal = modal;
+  });
+
+  $scope.closeNewShift = function() {
+    $scope.newShiftModal.hide();
+  };
+
+  $scope.newShift = function() {
+    $scope.newShiftModal.show();
+  };
+
+  $scope.doNewShift = function() {
+    console.log('Finding New Shift', $scope.newShiftData);
+
+    //get time and send to server
+    $timeout(function() {
+      $scope.closeNewShift();
+    }, 1000);
+  };
+
+
+
+  $ionicModal.fromTemplateUrl('templates/confirmNew.html', {
+    scope: $scope
+  }).then(function(modal) {
+    $scope.confirmNewModal = modal;
+  });
+
+  $scope.closeConfirmNew = function() {
+    $scope.confirmNewModal.hide();
+  };
+
+  $scope.confirmNew = function() {
+    $scope.confirmNewModal.show();
+  };
+
+  $scope.doConfirmNew = function() {
+    console.log('Confirming New Shift', $scope.confirmNewData);
+
+    //get time and send to server
+    $timeout(function() {
+      $scope.closeNewShift();
+    }, 1000);
+  };
+
+  $scope.goTourl = function(path) {
+    $location.path(path);
   };
 })
 
