@@ -1,1 +1,15 @@
 /* Empty. Add your own CSS if you like */
+
+.nav-view-home {
+	background-color:#bf101a;
+	color:white;
+}
+.nav-view-not {
+	background-color:#e7a101;
+	color:white;
+}
+.nav-view-set {
+	background-color:#47628f;
+	color:white;
+}
+
