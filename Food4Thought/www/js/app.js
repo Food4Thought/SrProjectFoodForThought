@@ -7,77 +7,62 @@
 angular.module('starter', ['ionic', 'starter.controllers'])
 
 .run(function($ionicPlatform) {
-  $ionicPlatform.ready(function() {
-    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-    // for form inputs)
-    if (window.cordova && window.cordova.plugins.Keyboard) {
-      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-      cordova.plugins.Keyboard.disableScroll(true);
+	$ionicPlatform.ready(function() {
+		// Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+		// for form inputs)
+		if (window.cordova && window.cordova.plugins.Keyboard) {
+			cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+			cordova.plugins.Keyboard.disableScroll(true);
 
-    }
-    if (window.StatusBar) {
-      // org.apache.cordova.statusbar required
-      StatusBar.styleDefault();
-    }
-  });
+		}
+		if (window.StatusBar) {
+			// org.apache.cordova.statusbar required
+			StatusBar.styleDefault();
+		}
+	});
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
-  $stateProvider
+	$stateProvider
 
-    .state('app', {
-    url: '/app',
-    abstract: true,
-    templateUrl: 'templates/menu.html',
-    controller: 'AppCtrl'
-  })
+	// setup an abstract state for the tabs directive
+	.state('tab', {
+		url: '/tab',
+		abstract: true,
+		templateUrl: 'templates/tabs.html'
+	})  
 
-  .state('app.search', {
-    url: '/search',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/search.html'
-      }
-    }
-  })
+	// Each tab has its own nav history stack:
 
-  .state('app.start', {
-    url: '/start',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/start.html'
-      }
-    }
-  })
+	.state('tab.home', {
+		url: '/home',
+		views: {
+			'tab-home': {
+				templateUrl: 'templates/tab-home.html',
+				controller: 'DashCtrl'
+			}   
+		}   
+	})  
 
-  .state('app.volunteering', {
-    url: '/volunteering',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/volunteering.html',
-        controller: 'ButtonCtrl'
-      }
-    }
-  })
+	.state('tab.notifications', {
+		url: '/notifications',
+		views: {
+			'tab-notifications': {
+				templateUrl: 'templates/tab-notifications.html',
+				controller: 'NotCtrl'
+			}
+		}
+	})
+	.state('tab.settings', {
+		url: '/settings',
+		views: {
+			'tab-settings': {
+				templateUrl: 'templates/tab-settings.html',
+				controller: 'SettingsCtrl'
+			}
+		}
+	});
 
-  .state('app.settings', {
-      url: '/settings',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/settings.html'
-        }
-      }
-    })
-
-  .state('app.single', {
-    url: '/playlists/:playlistId',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/playlist.html',
-        controller: 'PlaylistCtrl'
-      }
-    }
-  });
-  // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/volunteering');
+	// if none of the above states are matched, use this as the fallback
+	$urlRouterProvider.otherwise('/tab/home');
 });
