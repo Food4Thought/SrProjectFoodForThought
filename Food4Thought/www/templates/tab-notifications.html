@@ -2,12 +2,12 @@
 	<ion-nav-bar class="nav-view-not"></ion-nav-bar>
 	<ion-content>
 		<div class="list card">
-			<ion-list>
-				<ion-item class="item item-difider nav-view-home" style="tex-align:center">
+			<ion-list ng-controller="NotificationsCtrl">
+				<ion-item class="item item-divider nav-view-home" style="text-align:center">
 					urgent!
 				</ion-item>
-				<ion-item class="item">
-					snowman apocolypse
+				<ion-item ng-repeat="notification in notifications">
+					{{notification.title}}
 				</ion-item>
 			</ion-list>
 		</div>

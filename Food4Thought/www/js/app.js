@@ -39,7 +39,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 		views: {
 			'tab-home': {
 				templateUrl: 'templates/tab-home.html',
-				controller: 'DashCtrl'
+				controller: 'HomeCtrl'
 			}   
 		}   
 	})  
@@ -49,10 +49,11 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 		views: {
 			'tab-notifications': {
 				templateUrl: 'templates/tab-notifications.html',
-				controller: 'NotCtrl'
+				controller: 'NotificationsCtrl'
 			}
 		}
 	})
+
 	.state('tab.settings', {
 		url: '/settings',
 		views: {
