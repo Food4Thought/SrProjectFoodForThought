@@ -16,7 +16,7 @@
 6. Stash and drop all the changes to non-ignored files made by ionic git stash
     git stash drop
 7. Pull from github, just to make sure you're up to date
-    git pull origin masteer
+    git pull origin master
 8. Make a branch and get to work!
 
 #Repository for CU-Boulder Senior Project. Darren White, Kyle Knight, Slaton Spangler, Alex Rinaldi, Rachel Lewis, James Huynh. 2016 - 2017 school year 
