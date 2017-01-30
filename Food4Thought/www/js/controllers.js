@@ -21,3 +21,28 @@ angular.module('starter.controllers', [])
 		enableFriends: true
 	};  
 });
+
+$scope.startData = {};
+
+$ionicModal.fromTemplateUrl('templates/start.html', {
+	scope: $scope
+}).then(function(modal) {
+	$scope.startModal = modal;
+});
+
+$scope.closeStart = function() {
+	$scope.startModal.hide();
+};
+
+$scope.start = function() {
+	$scope.startModal.show();
+};
+
+$scope.doStart = function() {
+	console.log('Starting Shift', $scope.startData);
+
+//get time and send to server
+	$timeout(function() {
+		$scope.closeStart();
+	}, 1000);
+};
