@@ -1,6 +1,43 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope) {}) 
+.controller('DashCtrl', function($scope, $ionicModal) {
+
+
+	// Sign Up Modal
+	$ionicModal.fromTemplateUrl('templates/newShift.html', {
+		id: '1',
+		scope: $scope,
+		animation: 'slide-in-up'
+	}).then(function(modal) {
+		$scope.signUpModal = modal;
+	});
+
+
+	// Check-in Modal
+	$ionicModal.fromTemplateUrl('templates/start.html', {
+		id: '2',
+		scope: $scope,
+		animation: 'slide-in-up'
+	}).then(function(modal) {
+		$scope.checkInModal = modal;
+	});
+
+	$scope.openModal = function(modalID) {
+		if(modalID == 1) $scope.signUpModal.show();
+		else $scope.checkInModal.show();
+		//$scope.checkInModal.show();
+	};
+	$scope.closeModal = function() {
+		if(modalID == 1) $scope.signUpModal.hide();
+		else $scope.checkInModal.hide();
+	};
+
+  // Cleanup the modal when we're done with it!
+  	$scope.$on('$destroy', function() {
+		$scope.signUpModal.remove();
+		$scope.checkInModal.remove();
+	});
+}) 
 
 .controller('NotCtrl', function($scope) {
 	// With the new view caching in Ionic, Controllers are only called
@@ -22,27 +59,4 @@ angular.module('starter.controllers', [])
 	};  
 });
 
-$scope.startData = {};
 
-$ionicModal.fromTemplateUrl('templates/start.html', {
-	scope: $scope
-}).then(function(modal) {
-	$scope.startModal = modal;
-});
-
-$scope.closeStart = function() {
-	$scope.startModal.hide();
-};
-
-$scope.start = function() {
-	$scope.startModal.show();
-};
-
-$scope.doStart = function() {
-	console.log('Starting Shift', $scope.startData);
-
-//get time and send to server
-	$timeout(function() {
-		$scope.closeStart();
-	}, 1000);
-};
