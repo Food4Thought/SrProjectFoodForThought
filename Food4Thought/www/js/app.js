@@ -25,6 +25,12 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 .config(function($stateProvider, $urlRouterProvider) {
 	$stateProvider
 
+	.state('login',{
+		url: '/login',
+		templateUrl: 'templates/login.html',
+		controller: 'LoginCtrl'
+	})
+
 	// setup an abstract state for the tabs directive
 	.state('tab', {
 		url: '/tab',
@@ -65,5 +71,5 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 	});
 
 	// if none of the above states are matched, use this as the fallback
-	$urlRouterProvider.otherwise('/tab/home');
+	$urlRouterProvider.otherwise('/login');
 });

@@ -1,7 +1,21 @@
 angular.module('starter.controllers', [])
 
+.controller('LoginCtrl', function($scope, $state) {
+  
+  $scope.login = function(user) {
+    console.log('Login', user);
+    $state.go('tab.home');
+  };
+  
+})
+
 .controller('HomeCtrl', function($scope, $ionicModal) {
 
+	$scope.shifts = [
+	{date: '2/24/17', loc: 'Metro Campus', organization: 'Food4Thought'},
+	{date: "3/19/17", loc: "Metro Campus", organization: "Food4Thought"},
+	{date: "4/21/17", loc: "Golden Church", organization: "Golden Backpack"}
+	];
 
 	// Sign Up Modal
 	$ionicModal.fromTemplateUrl('templates/newShift.html', {
