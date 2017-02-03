@@ -1,10 +1,10 @@
 <ion-view view-title="Home">
-	<ion-nav-bar class="nav-view-home"></ion-nav-bar>
+	<ion-nav-bar class="f4t-red"></ion-nav-bar>
 	<ion-content>
 		<br>
 		<div class="list list-inset">
 			<ion-list>
-				<ion-item class="item item-divider nav-view-set" style="text-align:center;">
+				<ion-item class="item item-divider f4t-blue" style="text-align:center;">
 					Your Shifts
 				</ion-item>
 				<ion-item class="item-divider row">
@@ -21,11 +21,19 @@
 		</div>
 		<br>
 		<center>
+
 			<ion-item class="button button-dark" ng-click="newShift()">
 				Sign up to volunteer!
 			</ion-item>
 			<br><br><br>
 			<ion-item class="button button-assertive" ng-click="start()">
+
+			<ion-item class="button button-dark" ng-click="openModal(1)">
+				Sign up to volunteer!
+			</ion-item>
+			<br><br><br>
+			<ion-item class="button button-assertive" ng-click="openModal(2)">
+
 				Check In
 			</ion-item>
 		</center>
