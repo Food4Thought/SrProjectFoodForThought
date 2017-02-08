@@ -25,6 +25,11 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 .config(function($stateProvider, $urlRouterProvider) {
 	$stateProvider
 
+	.state('qr', {
+		url: '/qr',
+		templateUrl: 'templates/qr.html',
+		controller: 'QRController'
+	})
 	// setup an abstract state for the tabs directive
 	.state('tab', {
 		url: '/tab',

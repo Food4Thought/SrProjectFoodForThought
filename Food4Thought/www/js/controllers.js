@@ -39,18 +39,6 @@ angular.module('starter.controllers', [])
 	});
 }) 
 
-.controller('NotCtrl', function($scope) {
-	// With the new view caching in Ionic, Controllers are only called
-	// when they are recreated or on app start, instead of every page change.
-	// To listen for when this page is active (for example, to refresh data),
-	// listen for the $ionicView.enter event:
-	//  
-	//$scope.$on('$ionicView.enter', function(e) {
-	//});
-
-})
- 
-
 .controller('NotificationsCtrl', function($scope) {
 	$scope.notifications = [
 	{ title: "snowman apocalypse" },
@@ -62,6 +50,19 @@ angular.module('starter.controllers', [])
 	$scope.settings = { 
 		enableFriends: true
 	};  
+})
+
+.controller('QRController', function($scope) {
+	$scope.scanBarcode = function() {
+        $cordovaBarcodeScanner.scan().then(function(imageData) {
+            alert(imageData.text);
+            console.log("Barcode Format -> " + imageData.format);
+            console.log("Cancelled -> " + imageData.cancelled);
+        }, function(error) {
+            console.log("An error happened -> " + error);
+        });
+    };
+
 });
 
 
