@@ -25,12 +25,12 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 .config(function($stateProvider, $urlRouterProvider) {
 	$stateProvider
 
-	// setup an abstract state for the tabs directive
-	.state('tab', {
-		url: '/tab',
-		abstract: true,
-		templateUrl: 'templates/tabs.html'
-	})  
+		// setup an abstract state for the tabs directive
+		.state('tab', {
+			url: '/tab',
+			abstract: true,
+			templateUrl: 'templates/tabs.html'
+		})  
 
 	// Each tab has its own nav history stack:
 
@@ -62,7 +62,18 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 				controller: 'SettingsCtrl'
 			}
 		}
-	});
+	})
+
+	.state('tab.admin', {
+		url: '/admin',
+		views: {
+			'tab-admin': {
+				templateUrl: 'templates/tab-admin.html',
+				controller: 'HomeCtrl'
+			}   
+		}   
+
+	}); 
 
 	// if none of the above states are matched, use this as the fallback
 	$urlRouterProvider.otherwise('/tab/home');

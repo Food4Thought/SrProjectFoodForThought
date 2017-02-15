@@ -1,7 +1,20 @@
 angular.module('starter.controllers', [])
 
 .controller('HomeCtrl', function($scope, $ionicModal) {
+	$scope.tasks = [ 
+	{taskLocation: 'blah', taskDate: '12/5/12', taskOrg: 'fft'}
+	];
 
+	$scope.createTask = function(task) {
+		$scope.tasks.push({
+			taskLocation: task.taskLocation,
+			taskDate: task.taskDate,
+			taskOrg: task.taskOrg
+		}); 
+		task.taskLocation = ""; 
+		task.taskDate = ""; 
+		task.taskOrg = ""; 
+	};
 
 	// Sign Up Modal
 	$ionicModal.fromTemplateUrl('templates/newShift.html', {
@@ -32,8 +45,8 @@ angular.module('starter.controllers', [])
 		else $scope.checkInModal.hide();
 	};
 
-  // Cleanup the modal when we're done with it!
-  	$scope.$on('$destroy', function() {
+	// Cleanup the modal when we're done with it!
+	$scope.$on('$destroy', function() {
 		$scope.signUpModal.remove();
 		$scope.checkInModal.remove();
 	});
@@ -49,13 +62,31 @@ angular.module('starter.controllers', [])
 	//});
 
 })
- 
+
 
 .controller('NotificationsCtrl', function($scope) {
-	$scope.notifications = [
+	$scope.notificationsUrgent = [
 	{ title: "snowman apocalypse" },
 	{ title: "blah" }
 	];
+
+	$scope.notificationsInfo = [
+	{title: "something cool and informative, yay kids!"}
+	];
+
+	$scope.createUrgent = function(notification) {
+		$scope.notificationsUrgent.push({
+			title: notification.title
+		});
+		notification.title = "";
+	};
+	$scope.createInfo = function(notification) {
+		$scope.notificationsInfo.push({
+			title: notification.title
+		});
+		notification.title = "";
+	};
+
 })
 
 .controller('SettingsCtrl', function($scope) {
