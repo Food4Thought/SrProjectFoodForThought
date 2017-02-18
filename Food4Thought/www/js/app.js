@@ -69,11 +69,47 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 		views: {
 			'tab-admin': {
 				templateUrl: 'templates/tab-admin.html',
-				controller: 'HomeCtrl'
+				controller: 'AdminCtrl'
 			}   
 		}   
 
-	}); 
+	}) 
+
+	.state("tab.admin-checkin", {
+		url:"/admin/checkin",
+		views:{
+			'tab-admin':{
+				templateUrl: 'templates/admin-checkin.html'
+			}
+		}
+	})
+
+	.state("tab.admin-notifications", {
+		url:"/admin/notifications",
+		views:{
+			'tab-admin':{
+				templateUrl: 'templates/admin-notifications.html'
+			}
+		}
+	})
+
+	.state("tab.admin-locations", {
+		url:"/admin/locations",
+		views:{
+			'tab-admin':{
+				templateUrl: 'templates/admin-locations.html'
+			}
+		}
+	})
+
+	.state("tab.admin-times", {
+		url:"/admin/times",
+		views:{
+			'tab-admin':{
+				templateUrl: 'templates/admin-times.html'
+			}
+		}
+	});
 
 	// if none of the above states are matched, use this as the fallback
 	$urlRouterProvider.otherwise('/tab/home');

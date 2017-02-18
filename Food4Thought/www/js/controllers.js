@@ -89,6 +89,10 @@ angular.module('starter.controllers', [])
 
 })
 
+.controller('AdminCtrl', function($scope, $state) {
+	 
+})
+
 .controller('SettingsCtrl', function($scope) {
 	$scope.settings = { 
 		enableFriends: true
