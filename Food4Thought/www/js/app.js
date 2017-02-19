@@ -88,7 +88,8 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 		url:"/admin/notifications",
 		views:{
 			'tab-admin':{
-				templateUrl: 'templates/admin-notifications.html'
+				templateUrl: 'templates/admin-notifications.html',
+				controller: 'Admin-NotCtrl'
 			}
 		}
 	})
