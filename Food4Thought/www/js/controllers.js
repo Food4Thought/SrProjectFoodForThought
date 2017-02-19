@@ -90,9 +90,13 @@ angular.module('starter.controllers', [])
 })
 
 .controller('Admin-NotCtrl', function($scope, $ionicModal) {
-	
+
+	$scope.$on('$ionicView.beforeEnter', function (event, viewData) {
+		viewData.enableBack = true;
+	});	
+
 	// Sign Up Modal
-	$ionicModal.fromTemplateUrl('templates/newShift.html', {
+	$ionicModal.fromTemplateUrl('templates/editNotification.html', {
 		id: '1',
 		scope: $scope,
 		animation: 'slide-in-up'
@@ -102,7 +106,7 @@ angular.module('starter.controllers', [])
 
 
 	// Check-in Modal
-	$ionicModal.fromTemplateUrl('templates/start.html', {
+	$ionicModal.fromTemplateUrl('templates/newNotification.html', {
 		id: '2',
 		scope: $scope,
 		animation: 'slide-in-up'

@@ -1,6 +1,8 @@
-<ion-view view-title="New Shifts">
-	<ion-nav-bar class="nav-view-home"></ion-nav-bar>
-	<ion-content>
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">New Notification</h1>
+  </ion-header-bar>
+  	<ion-content>
 		<form ng-submit="createTask(task)">
 			<div class="list">
 				<label class="item item-input">
@@ -37,7 +39,7 @@
 				</ion-item>
 			</ion-list>
 		</div>
-		<div ng-controller="notificationsctrl">
+		<div ng-controller="NotificationsCtrl">
 			<form ng-submit="createinfo(notification)">
 				<label class="item item-input">
 					<input type="text" placeholder="i notification information" ng-model="notification.title">
@@ -52,5 +54,4 @@
 				</ion-item>
 			</ion-list>
 		</div>
-	</ion-content>
-</ion-view>
+	</ion-content></ion-modal-view>
