@@ -3,28 +3,7 @@
     <h1 class="title">New Notification</h1>
   </ion-header-bar>
   	<ion-content>
-		<form ng-submit="createTask(task)">
-			<div class="list">
-				<label class="item item-input">
-					<input type="text" placeholder="Location" ng-model="task.taskLocation">
-				</label>
-				<label class="item item-input">
-					<input type="date", ng-model="task.taskDate">
-				</label>
-				<label class="item item-input">
-					<input type="text", placeholder="Organization" ng-model="task.taskOrg">
-				</label>
-			</div>
-			<div class="padding">
-				<button type="submit" class="button button-block button-positive">Create Task</button>
-			</div>
-		</form>
-		<ion-list>
-			<ion-item ng-repeat="task in tasks">
-				{{task.taskLocation}} {{task.taskDate}} {{task.taskOrg}}
-			</ion-item>
-		</ion-list>
-		<div ng-controller="NotificationsCtrl">
+			<div ng-controller="NotificationsCtrl">
 			<form ng-submit="createUrgent(notification)">
 				<label class="item item-input">
 					<input type="text" placeholder="Notification Information" ng-model="notification.title">

@@ -79,7 +79,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 		url:"/admin/checkin",
 		views:{
 			'tab-admin':{
-				templateUrl: 'templates/admin-checkin.html'
+				templateUrl: 'templates/admin/admin-checkin.html'
 			}
 		}
 	})
@@ -88,7 +88,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 		url:"/admin/notifications",
 		views:{
 			'tab-admin':{
-				templateUrl: 'templates/admin-notifications.html',
+				templateUrl: 'templates/admin/admin-notifications.html',
 				controller: 'Admin-NotCtrl'
 			}
 		}
@@ -98,7 +98,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 		url:"/admin/locations",
 		views:{
 			'tab-admin':{
-				templateUrl: 'templates/admin-locations.html',
+				templateUrl: 'templates/admin/admin-locations.html',
 				controller: 'Admin-LocCtrl'
 			}
 		}
@@ -108,7 +108,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 		url:"/admin/times",
 		views:{
 			'tab-admin':{
-				templateUrl: 'templates/admin-times.html'
+				templateUrl: 'templates/admin/admin-times.html'
 			}
 		}
 	});

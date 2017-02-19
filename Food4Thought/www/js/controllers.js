@@ -92,7 +92,7 @@ angular.module('starter.controllers', [])
 .controller('Admin-NotCtrl', function($scope, $ionicModal) {
 
 	// Edit Notification Modal
-	$ionicModal.fromTemplateUrl('templates/editNotification.html', {
+	$ionicModal.fromTemplateUrl('templates/admin/modals/editNotification.html', {
 		id: '1',
 		scope: $scope,
 		animation: 'slide-in-up'
@@ -102,7 +102,7 @@ angular.module('starter.controllers', [])
 
 
 	// New Notification Modal
-	$ionicModal.fromTemplateUrl('templates/newNotification.html', {
+	$ionicModal.fromTemplateUrl('templates/admin/modals/newNotification.html', {
 		id: '2',
 		scope: $scope,
 		animation: 'slide-in-up'
@@ -130,7 +130,7 @@ angular.module('starter.controllers', [])
 .controller('Admin-LocCtrl', function($scope, $ionicModal) {
 
 	// Edit Location Modal
-	$ionicModal.fromTemplateUrl('templates/editLocation.html', {
+	$ionicModal.fromTemplateUrl('templates/admin/modals/editLocation.html', {
 		id: '1',
 		scope: $scope,
 		animation: 'slide-in-up'
@@ -140,7 +140,7 @@ angular.module('starter.controllers', [])
 
 
 	// New Location Modal
-	$ionicModal.fromTemplateUrl('templates/newLocation.html', {
+	$ionicModal.fromTemplateUrl('templates/admin/modals/newLocation.html', {
 		id: '2',
 		scope: $scope,
 		animation: 'slide-in-up'
