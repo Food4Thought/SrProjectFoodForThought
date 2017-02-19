@@ -1,0 +1,34 @@
+<ion-view view-title="Home">
+	<ion-nav-bar class="f4t-red"></ion-nav-bar>
+	<ion-content>
+		<br>
+		<div class="list list-inset">
+			<ion-list>
+				<ion-item class="item item-divider f4t-blue" style="text-align:center;">
+					Your Shifts
+				</ion-item>
+				<ion-item class="item-divider row">
+					<div class="col col-25">Date</div>
+					<div class="col col-40">Location</div>
+					<div class="col col-35">Organization</div>
+				</ion-item>
+				<ion-item class="row" ng-repeat="shift in shifts">
+					<div class="col col-25">{{shift.date}}</div>
+					<div class="col col-40">{{shift.loc}}</div>
+					<div class="col col-35">{{shift.organization}}</div>
+				</ion-item>
+			</ion-list>
+		</div>
+		<br>
+		<center>
+
+			<ion-item class="button button-dark" ng-click="openModal(1)">
+				Sign up to volunteer!
+			</ion-item>
+			<br><br><br>
+			<ion-item class="button button-assertive" ng-click="openModal(2)">
+				Check In
+			</ion-item>
+		</center>
+	</ion-content>
+</ion-view>
