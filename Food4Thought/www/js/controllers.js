@@ -91,11 +91,7 @@ angular.module('starter.controllers', [])
 
 .controller('Admin-NotCtrl', function($scope, $ionicModal) {
 
-	$scope.$on('$ionicView.beforeEnter', function (event, viewData) {
-		viewData.enableBack = true;
-	});	
-
-	// Sign Up Modal
+	// Edit Notification Modal
 	$ionicModal.fromTemplateUrl('templates/editNotification.html', {
 		id: '1',
 		scope: $scope,
@@ -105,7 +101,7 @@ angular.module('starter.controllers', [])
 	});
 
 
-	// Check-in Modal
+	// New Notification Modal
 	$ionicModal.fromTemplateUrl('templates/newNotification.html', {
 		id: '2',
 		scope: $scope,
@@ -130,6 +126,46 @@ angular.module('starter.controllers', [])
 		$scope.checkInModal.remove();
 	});
 })
+
+.controller('Admin-LocCtrl', function($scope, $ionicModal) {
+
+	// Edit Location Modal
+	$ionicModal.fromTemplateUrl('templates/editLocation.html', {
+		id: '1',
+		scope: $scope,
+		animation: 'slide-in-up'
+	}).then(function(modal) {
+		$scope.signUpModal = modal;
+	});
+
+
+	// New Location Modal
+	$ionicModal.fromTemplateUrl('templates/newLocation.html', {
+		id: '2',
+		scope: $scope,
+		animation: 'slide-in-up'
+	}).then(function(modal) {
+		$scope.checkInModal = modal;
+	});
+
+	$scope.openModal = function(modalID) {
+		if(modalID == 1) $scope.signUpModal.show();
+		else $scope.checkInModal.show();
+		//$scope.checkInModal.show();
+	};
+	$scope.closeModal = function() {
+		if(modalID == 1) $scope.signUpModal.hide();
+		else $scope.checkInModal.hide();
+	};
+
+	// Cleanup the modal when we're done with it!
+	$scope.$on('$destroy', function() {
+		$scope.signUpModal.remove();
+		$scope.checkInModal.remove();
+	});
+})
+
+
 
 .controller('AdminCtrl', function($scope, $state) {
 	 

@@ -98,7 +98,8 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 		url:"/admin/locations",
 		views:{
 			'tab-admin':{
-				templateUrl: 'templates/admin-locations.html'
+				templateUrl: 'templates/admin-locations.html',
+				controller: 'Admin-LocCtrl'
 			}
 		}
 	})

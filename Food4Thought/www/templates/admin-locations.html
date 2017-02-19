@@ -1,56 +1,37 @@
-<ion-view view-title="New Shifts">
-	<ion-nav-bar class="nav-view-home"></ion-nav-bar>
+<ion-view view-title="Manage Locations">
+	<ion-nav-view animation="slide-right-left"></ion-nav-view>
+	<ion-nav-bar class="f4t-blue">
+
+    <ion-nav-buttons>
+        <button class="button button-light icon ion-ios-arrow-back" ui-sref="tab.admin">
+        </button>
+    </ion-nav-buttons>
+
+
+
+	</ion-nav-bar>
 	<ion-content>
-		<form ng-submit="createTask(task)">
-			<div class="list">
-				<label class="item item-input">
-					<input type="text" placeholder="Location" ng-model="task.taskLocation">
-				</label>
-				<label class="item item-input">
-					<input type="date", ng-model="task.taskDate">
-				</label>
-				<label class="item item-input">
-					<input type="text", placeholder="Organization" ng-model="task.taskOrg">
-				</label>
-			</div>
-			<div class="padding">
-				<button type="submit" class="button button-block button-positive">Create Task</button>
-			</div>
-		</form>
-		<ion-list>
-			<ion-item ng-repeat="task in tasks">
-				{{task.taskLocation}} {{task.taskDate}} {{task.taskOrg}}
-			</ion-item>
-		</ion-list>
-		<div ng-controller="NotificationsCtrl">
-			<form ng-submit="createUrgent(notification)">
-				<label class="item item-input">
-					<input type="text" placeholder="Notification Information" ng-model="notification.title">
-				</label>
-				<div class="padding">
-					<button type="submit" class="button button-block button-positive">Create Urgent Notification</button>
-				</div>
-			</form>
-			<ion-list>
-				<ion-item ng-repeat="notification in notificationsUrgent">
-					{{notification.title}}
-				</ion-item>
-			</ion-list>
+
+		<div class="list card">
+		  <div class="item item-icon-right">
+		  	<i class="button button-light icon ion-edit" ng-click="openModal(1)"></i>
+			
+			<h2 class="ion-location"> CU Boulder</h2>
+			<p>1060 18th St, Boulder, CO 80309<p>
+		  </div>
+
+		  <div class="item item-icon-right">
+			<i class="button button-light icon ion-edit" ng-click="openModal(1)"></i>
+			<h2>MSU Denver</h2>
+			<p>1600 W Colfax Ave, Denver, CO 80204<p>
+		  </div>
 		</div>
-		<div ng-controller="NotificationsCtrl">
-			<form ng-submit="createInfo(notification)">
-				<label class="item item-input">
-					<input type="text" placeholder="I Notification Information" ng-model="notification.title">
-				</label>
-				<div class="padding">
-					<button type="submit" class="button button-block button-positive">Create Informational Notification</button>
-				</div>
-			</form>
-			<ion-list>
-				<ion-item ng-repeat="notification in notificationsInfo">
-					{{notification.title}}
-				</ion-item>
-			</ion-list>
+
+		<div class="card">
+			<div class="item item-text-wrap center-text" ng-click="openModal(2)">
+				<p>Add a Location</p>
+			</div>
 		</div>
+
 	</ion-content>
-<
+</ion-view>
