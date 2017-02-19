@@ -9,26 +9,26 @@
 					<input type="text" placeholder="Notification Information" ng-model="notification.title">
 				</label>
 				<div class="padding">
-					<button type="submit" class="button button-block button-positive">create urgent notification</button>
+					<button type="submit" class="button button-block button-positive">Create Urgent Notification</button>
 				</div>
 			</form>
 			<ion-list>
-				<ion-item ng-repeat="notification in notificationsurgent">
+				<ion-item ng-repeat="notification in notificationsUrgent">
 					{{notification.title}}
 				</ion-item>
 			</ion-list>
 		</div>
 		<div ng-controller="NotificationsCtrl">
-			<form ng-submit="createinfo(notification)">
+			<form ng-submit="createInfo(notification)">
 				<label class="item item-input">
-					<input type="text" placeholder="i notification information" ng-model="notification.title">
+					<input type="text" placeholder="Notification Information" ng-model="notification.title">
 				</label>
 				<div class="padding">
-					<button type="submit" class="button button-block button-positive">create informational notification</button>
+					<button type="submit" class="button button-block button-positive">Create Informational Notification</button>
 				</div>
 			</form>
 			<ion-list>
-				<ion-item ng-repeat="notification in notificationsinfo">
+				<ion-item ng-repeat="notification in notificationsInfo">
 					{{notification.title}}
 				</ion-item>
 			</ion-list>
