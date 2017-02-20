@@ -1,0 +1,51 @@
+<ion-view view-title="Manage Notifications">
+	<ion-nav-view animation="slide-left-right"></ion-nav-view>
+	<ion-nav-bar class="f4t-blue">
+
+		<ion-nav-buttons>
+			<button class="button button-light icon ion-ios-arrow-back" ui-sref="tab.admin">
+			</button>
+		</ion-nav-buttons>
+
+
+
+	</ion-nav-bar>
+	<ion-content>
+
+		<div class="list card">
+			<ion-list ng-controller="NotificationsCtrl">
+				<ion-item class="item item-divider f4t-red center-text">
+					urgent!
+				</ion-item>
+				<ion-item ng-repeat="notification in notificationsUrgent">
+					<div class = "item item-icon-right">
+						<i class="button button-light icon ion-edit" ng-click="openModal(1)"></i>
+						{{notification.title}}
+					</div>
+				</ion-item>
+			</ion-list>
+
+		</div>
+
+		<div class="list card">
+			<ion-list ng-controller="NotificationsCtrl">
+				<ion-list>
+					<ion-item class="item item-divider f4t-blue center-text"">
+						other...
+					</ion-item>
+					<ion-item ng-repeat="notification in notificationsInfo">
+						<div class = "item item-icon-right">
+							<i class="button button-light icon ion-edit" ng-click="openModal(1)"></i>
+							{{notification.title}}
+						</div>
+					</ion-item>
+				</ion-list>
+		</div>
+		<div class="card">
+			<div class="item item-text-wrap center-text" ng-click="openModal(2)">
+				<p>New Notification</p>
+			</div>
+		</div>
+
+			</ion-content>
+	</ion-view>
