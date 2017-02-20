@@ -1,0 +1,37 @@
+<ion-view view-title="Manage Locations">
+	<ion-nav-view animation="slide-right-left"></ion-nav-view>
+	<ion-nav-bar class="f4t-blue">
+
+    <ion-nav-buttons>
+        <button class="button button-light icon ion-ios-arrow-back" ui-sref="tab.admin">
+        </button>
+    </ion-nav-buttons>
+
+
+
+	</ion-nav-bar>
+	<ion-content>
+
+		<div class="list card">
+		  <div class="item item-icon-right">
+		  	<i class="button button-light icon ion-edit" ng-click="openModal(1)"></i>
+			
+			<h2 class="ion-location"> CU Boulder</h2>
+			<p>1060 18th St, Boulder, CO 80309<p>
+		  </div>
+
+		  <div class="item item-icon-right">
+			<i class="button button-light icon ion-edit" ng-click="openModal(1)"></i>
+			<h2>MSU Denver</h2>
+			<p>1600 W Colfax Ave, Denver, CO 80204<p>
+		  </div>
+		</div>
+
+		<div class="card">
+			<div class="item item-text-wrap center-text" ng-click="openModal(2)">
+				<p>Add a Location</p>
+			</div>
+		</div>
+
+	</ion-content>
+</ion-view>

@@ -1,0 +1,33 @@
+<ion-view view-title="New Shifts">
+	<ion-nav-view animation="slide-right-left"></ion-nav-view>
+	<ion-nav-bar class="f4t-blue">
+		<ion-nav-buttons>
+			<button class="button button-light icon ion-ios-arrow-back" ui-sref="tab.admin">
+			</button>
+		</ion-nav-buttons>
+	</ion-nav-bar>
+
+	<ion-content>
+		<form ng-submit="createTask(task)">
+			<div class="list">
+				<label class="item item-input">
+					<input type="text" placeholder="Location" ng-model="task.taskLocation">
+				</label>
+				<label class="item item-input">
+					<input type="date", ng-model="task.taskDate">
+				</label>
+				<label class="item item-input">
+					<input type="text", placeholder="Organization" ng-model="task.taskOrg">
+				</label>
+			</div>
+			<div class="padding">
+				<button type="submit" class="button button-block button-positive">Create Task</button>
+			</div>
+		</form>
+		<ion-list>
+			<ion-item ng-repeat="task in tasks">
+				{{task.taskLocation}} {{task.taskDate}} {{task.taskOrg}}
+			</ion-item>
+		</ion-list>
+	</ion-content>
+</ion-view>
