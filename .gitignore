@@ -1,10 +1,5 @@
-node_modules
-.tmp
-.sass-cache
-lib
-platforms
-plugins
-*.swp
-*.swo
-*.log
+node_modules/
+temp/
 *.DS_Store
+*.log
+*.swp
