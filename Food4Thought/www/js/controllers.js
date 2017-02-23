@@ -89,6 +89,88 @@ angular.module('starter.controllers', [])
 
 })
 
+.controller('Admin-NotCtrl', function($scope, $ionicModal) {
+
+	// Edit Notification Modal
+	$ionicModal.fromTemplateUrl('templates/admin/modals/editNotification.html', {
+		id: '1',
+		scope: $scope,
+		animation: 'slide-in-up'
+	}).then(function(modal) {
+		$scope.signUpModal = modal;
+	});
+
+
+	// New Notification Modal
+	$ionicModal.fromTemplateUrl('templates/admin/modals/newNotification.html', {
+		id: '2',
+		scope: $scope,
+		animation: 'slide-in-up'
+	}).then(function(modal) {
+		$scope.checkInModal = modal;
+	});
+
+	$scope.openModal = function(modalID) {
+		if(modalID == 1) $scope.signUpModal.show();
+		else $scope.checkInModal.show();
+		//$scope.checkInModal.show();
+	};
+	$scope.closeModal = function() {
+		if(modalID == 1) $scope.signUpModal.hide();
+		else $scope.checkInModal.hide();
+	};
+
+	// Cleanup the modal when we're done with it!
+	$scope.$on('$destroy', function() {
+		$scope.signUpModal.remove();
+		$scope.checkInModal.remove();
+	});
+})
+
+.controller('Admin-LocCtrl', function($scope, $ionicModal) {
+
+	// Edit Location Modal
+	$ionicModal.fromTemplateUrl('templates/admin/modals/editLocation.html', {
+		id: '1',
+		scope: $scope,
+		animation: 'slide-in-up'
+	}).then(function(modal) {
+		$scope.signUpModal = modal;
+	});
+
+
+	// New Location Modal
+	$ionicModal.fromTemplateUrl('templates/admin/modals/newLocation.html', {
+		id: '2',
+		scope: $scope,
+		animation: 'slide-in-up'
+	}).then(function(modal) {
+		$scope.checkInModal = modal;
+	});
+
+	$scope.openModal = function(modalID) {
+		if(modalID == 1) $scope.signUpModal.show();
+		else $scope.checkInModal.show();
+		//$scope.checkInModal.show();
+	};
+	$scope.closeModal = function() {
+		if(modalID == 1) $scope.signUpModal.hide();
+		else $scope.checkInModal.hide();
+	};
+
+	// Cleanup the modal when we're done with it!
+	$scope.$on('$destroy', function() {
+		$scope.signUpModal.remove();
+		$scope.checkInModal.remove();
+	});
+})
+
+
+
+.controller('AdminCtrl', function($scope, $state) {
+	 
+})
+
 .controller('SettingsCtrl', function($scope) {
 	$scope.settings = { 
 		enableFriends: true
