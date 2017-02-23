@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="com.ionicframework.food4thought280546" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-  <name/>
+<widget id="com.ionicframework.food4thought899951" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+  <name>Food4Thought</name>
   <description>
         An Ionic Framework and Cordova project.
     </description>
-  <author email="you@example.com" href="http://example.com.com/">
+  <author email="you@example.com" href="http://example.com/">
       Your Name Here
     </author>
   <content src="index.html"/>
@@ -18,14 +18,8 @@
   <preference name="BackupWebStorage" value="none"/>
   <preference name="SplashScreen" value="screen"/>
   <feature name="StatusBar">
-    <param name="ios-package" onload="true" value="CDVStatusBar"/>
+    <param name="ios-package" value="CDVStatusBar" onload="true"/>
   </feature>
-  <plugin name="cordova-plugin-device" spec="~1.1.3"/>
-  <plugin name="cordova-plugin-console" spec="~1.0.4"/>
-  <plugin name="cordova-plugin-whitelist" spec="~1.3.0"/>
-  <plugin name="cordova-plugin-splashscreen" spec="~4.0.0"/>
-  <plugin name="cordova-plugin-statusbar" spec="~2.2.0"/>
-  <plugin name="ionic-plugin-keyboard" spec="~2.2.1"/>
   <platform name="ios">
     <icon src="resources/ios/icon/icon.png" width="57" height="57"/>
     <icon src="resources/ios/icon/icon@2x.png" width="114" height="114"/>
