@@ -190,6 +190,7 @@ angular.module('starter.controllers', [])
     };
 
     $scope.refreshItems = function () {
+	//TODO restore correct "checked" status to items
       if (filterBarInstance) {
         filterBarInstance();
         filterBarInstance = null;
