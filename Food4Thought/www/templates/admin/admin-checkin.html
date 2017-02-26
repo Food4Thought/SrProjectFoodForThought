@@ -1,19 +1,23 @@
-<ion-view view-title="Ionic Filter Bar">
-
-  <ion-nav-buttons side="secondary">
-    <button class="button button-icon icon ion-ios-search-strong" ng-click="showFilterBar()">
-    </button>
-  </ion-nav-buttons>
-
+<ion-view view-title="Check In">
+	<ion-nav-bar class="f4t-blue">
+	<ion-nav-view animation="slide-right-left"></ion-nav-view>
+	<ion-nav-buttons side="secondary">
+		<button class="button button-light icon ion-ios-search-strong" ng-click="showFilterBar()">
+		</button>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="primary">
+		<button class="button button-light icon ion-ios-arrow-back" ui-sref="tab.admin">
+		</button>
+	</ion-nav-buttons>
   <ion-content direction="y" scrollbar-y="false">
 
     <ion-refresher pulling-icon="ion-arrow-down-b" on-refresh="refreshItems()">
     </ion-refresher>
 
     <ion-list>
-      <ion-item collection-repeat="item in items" >
-        <p>{{item.text}}</p>
-      </ion-item>
+		<ion-checkbox collection-repeat="item in items" class="item-checkbox-right">
+        {{item.text}}
+		</ion-checkbox>
     </ion-list>
 
     <div ng-if="items !== undefined && !items.length" class="no-results">
