@@ -165,7 +165,42 @@ angular.module('starter.controllers', [])
 	});
 })
 
+.controller('CheckinCtrl', function($scope, $state, $ionicFilterBar) {
+	 var filterBarInstance;
 
+    function getItems () {
+		var people = ["Slaton Spangler", "Kyle Knight", "Darren White", "Darren Black", "John Cena", "Barry White"];
+		var items = [];
+
+		for(var i = 0; i < people.length; i++){
+			items.push({text: people[i]});
+		}
+		$scope.items = items;
+	}
+
+    getItems();
+
+    $scope.showFilterBar = function () {
+      filterBarInstance = $ionicFilterBar.show({
+        items: $scope.items,
+        update: function (filteredItems, filterText) {
+          $scope.items = filteredItems;
+        }
+      });
+    };
+
+    $scope.refreshItems = function () {
+      if (filterBarInstance) {
+        filterBarInstance();
+        filterBarInstance = null;
+      }
+
+      $timeout(function () {
+        getItems();
+        $scope.$broadcast('scroll.refreshComplete');
+      }, 1000);
+    };
+})
 
 .controller('AdminCtrl', function($scope, $state) {
 	 
