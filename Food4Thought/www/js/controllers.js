@@ -17,7 +17,7 @@ angular.module('starter.controllers', [])
 	};
 
 	// Sign Up Modal
-	$ionicModal.fromTemplateUrl('templates/newShift.html', {
+	$ionicModal.fromTemplateUrl('templates/admin/modals/newShift.html', {
 		id: '1',
 		scope: $scope,
 		animation: 'slide-in-up'
