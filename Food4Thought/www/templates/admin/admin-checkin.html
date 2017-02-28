@@ -15,7 +15,8 @@
     </ion-refresher>
 
     <ion-list>
-		<ion-checkbox collection-repeat="item in items" class="item-checkbox-right">
+		<ion-checkbox collection-repeat="item in items" ng-model="item.checked" class="item-checkbox-right">
+      </ion-item>
         {{item.text}}
 		</ion-checkbox>
     </ion-list>

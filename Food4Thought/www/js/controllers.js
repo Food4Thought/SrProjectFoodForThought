@@ -168,12 +168,16 @@ angular.module('starter.controllers', [])
 .controller('CheckinCtrl', function($scope, $state, $ionicFilterBar) {
 	 var filterBarInstance;
 
+	function log(item){
+		console.log(item.text, item.checked);
+	}
+
     function getItems () {
 		var people = ["Slaton Spangler", "Kyle Knight", "Darren White", "Darren Black", "John Cena", "Barry White"];
 		var items = [];
 
 		for(var i = 0; i < people.length; i++){
-			items.push({text: people[i]});
+			items.push({text: people[i], checked: false});
 		}
 		$scope.items = items;
 	}
@@ -190,10 +194,10 @@ angular.module('starter.controllers', [])
     };
 
     $scope.refreshItems = function () {
-	//TODO restore correct "checked" status to items
       if (filterBarInstance) {
         filterBarInstance();
         filterBarInstance = null;
+		
       }
 
       $timeout(function () {
