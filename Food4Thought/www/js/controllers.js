@@ -181,6 +181,13 @@ angular.module('starter.controllers', [])
 		}
 		$scope.items = items;
 	}
+	//TODO: animation
+	$scope.removeItems = function () { 
+		for(var i = 0; i < $scope.items.length; i++){
+			if($scope.items[i].checked) $scope.items.splice(i, 1);
+		}
+		console.log($scope.items);	
+	}; 
 
     getItems();
 
