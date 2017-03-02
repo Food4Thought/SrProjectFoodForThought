@@ -168,10 +168,6 @@ angular.module('starter.controllers', [])
 .controller('CheckinCtrl', function($scope, $state, $ionicFilterBar) {
 	 var filterBarInstance;
 
-	function log(item){
-		console.log(item.text, item.checked);
-	}
-
     function getItems () {
 		var people = ["Slaton Spangler", "Kyle Knight", "Darren White", "Darren Black", "John Cena", "Barry White"];
 		var items = [];
@@ -182,9 +178,15 @@ angular.module('starter.controllers', [])
 		$scope.items = items;
 	}
 	//TODO: animation
+	//		add checked in volunteers to second list
+	//		don't display second list during search
+	//		fix bug with checking in from search (don't allow check in while in search mode?
 	$scope.removeItems = function () { 
-		for(var i = 0; i < $scope.items.length; i++){
-			if($scope.items[i].checked) $scope.items.splice(i, 1);
+		for(var i = $scope.items.length -1; i >= 0; i--){ //Traversing backwards to preserve indices of yet-to-be-reoved items
+			if($scope.items[i].checked){
+				$scope.items.splice(i, 1);
+				console.log(i)
+			}
 		}
 		console.log($scope.items);	
 	}; 

@@ -15,7 +15,7 @@
     </ion-refresher>
 
     <ion-list>
-		<div class="item item-divider">Volunteers</div>
+		<div class="item item-divider">Unchecked Volunteers</div>
 		<ion-checkbox collection-repeat="item in items" ng-model="item.checked" class="item-checkbox-right animated">
         {{item.text}}
 		</ion-checkbox>
@@ -25,10 +25,16 @@
       <p>No Results</p>
     </div>
 
+
+	<div class="item item-divider">Checked In</div>
+	<ion-list>
+		<ion-item>jdksfjkjfksd</ion-item>
+	</ion-list>
+
   </ion-content>
 
-<ion-footer-bar align-title="center" class="bar-assertive">
-<h1 class="title" ng-click="removeItems(items)">Check in Selected Volunteers</h1>
+<ion-footer-bar class="footer-bar-custom">
+	<a class="footer-bar-item item-center button button-light" ng-click="removeItems()" ng-disabled="(items | filter: item.checked != true).length < 1">Check in Selected</a>
 </ion-footer-bar>
 
 </ion-view>
