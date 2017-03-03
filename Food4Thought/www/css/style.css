@@ -27,6 +27,10 @@
 	padding: 15px;
 }
 
+.hidden {
+	visibility: hidden;
+}
+
 /**
  * ion-footer-bar custom styles
  */

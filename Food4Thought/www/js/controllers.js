@@ -165,7 +165,7 @@ angular.module('starter.controllers', [])
 	});
 })
 
-.controller('CheckinCtrl', function($scope, $state, $ionicFilterBar) {
+.controller('CheckinCtrl', function($scope, $state, $ionicFilterBar, $timeout) {
 	 var filterBarInstance;
 
     function getItems () {
@@ -173,17 +173,18 @@ angular.module('starter.controllers', [])
 		var items = [];
 
 		for(var i = 0; i < people.length; i++){
-			items.push({text: people[i], checked: false});
+			items.push({text: people[i], checked: false, deleted: false});
 		}
 		$scope.items = items;
 	}
 	//TODO: animation
 	//		add checked in volunteers to second list
-	//		don't display second list during search
-	//		fix bug with checking in from search (don't allow check in while in search mode?
+
+	$scope.hide = "";
 	$scope.removeItems = function () { 
 		for(var i = $scope.items.length -1; i >= 0; i--){ //Traversing backwards to preserve indices of yet-to-be-reoved items
 			if($scope.items[i].checked){
+				$scope.items[i].deleted = true;
 				$scope.items.splice(i, 1);
 				console.log(i)
 			}
@@ -198,7 +199,23 @@ angular.module('starter.controllers', [])
         items: $scope.items,
         update: function (filteredItems, filterText) {
           $scope.items = filteredItems;
-        }
+		},
+
+		done: function(){
+			console.log("HIDE!");
+			$scope.hide = "hidden";
+		},
+
+		cancel: function (){
+			$scope.hide = "";
+			for(var i = $scope.items.length -1; i >= 0; i--){ //Traversing backwards to preserve indices of yet-to-be-reoved items
+				if($scope.items[i].deleted){
+					$scope.items.splice(i, 1);
+					console.log(i)			
+				}
+			}
+			console.log($scope.items);
+		}
       });
     };
 
