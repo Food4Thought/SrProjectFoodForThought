@@ -177,8 +177,11 @@ angular.module('starter.controllers', [])
 		}
 		$scope.items = items;
 	}
+
 	//TODO: animation
-	//		add checked in volunteers to second list
+	//		add checked in volunteers to another list... somewhere? ('see checked in volunteers' button?)
+	//		switch between shifts that occur on the same day (slide animation?)
+	//		
 
 	$scope.hide = "";
 	$scope.removeItems = function () { 
@@ -208,7 +211,7 @@ angular.module('starter.controllers', [])
 
 		cancel: function (){
 			$scope.hide = "";
-			for(var i = $scope.items.length -1; i >= 0; i--){ //Traversing backwards to preserve indices of yet-to-be-reoved items
+			for(var i = $scope.items.length -1; i >= 0; i--){
 				if($scope.items[i].deleted){
 					$scope.items.splice(i, 1);
 					console.log(i)			
