@@ -27,7 +27,7 @@ angular.module('starter.controllers', [])
 
 
 	// Check-in Modal
-	$ionicModal.fromTemplateUrl('templates/start.html', {
+	$ionicModal.fromTemplateUrl('templates/admin/modals/checkIn.html', {
 		id: '2',
 		scope: $scope,
 		animation: 'slide-in-up'
