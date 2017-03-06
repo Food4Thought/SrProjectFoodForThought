@@ -165,7 +165,76 @@ angular.module('starter.controllers', [])
 	});
 })
 
+.controller('CheckinCtrl', function($scope, $state, $ionicFilterBar, $timeout) {
+	 var filterBarInstance;
 
+    function getItems () {
+		var people = ["Slaton Spangler", "Kyle Knight", "Darren White", "Darren Black", "John Cena", "Barry White"];
+		var items = [];
+
+		for(var i = 0; i < people.length; i++){
+			items.push({text: people[i], checked: false, deleted: false});
+		}
+		$scope.items = items;
+	}
+
+	//TODO: animation
+	//		add checked in volunteers to another list... somewhere? ('see checked in volunteers' button?)
+	//		switch between shifts that occur on the same day (slide animation?)
+	//		
+
+	$scope.hide = "";
+	$scope.removeItems = function () { 
+		for(var i = $scope.items.length -1; i >= 0; i--){ //Traversing backwards to preserve indices of yet-to-be-reoved items
+			if($scope.items[i].checked){
+				$scope.items[i].deleted = true;
+				$scope.items.splice(i, 1);
+				console.log(i)
+			}
+		}
+		console.log($scope.items);	
+	}; 
+
+    getItems();
+
+    $scope.showFilterBar = function () {
+      filterBarInstance = $ionicFilterBar.show({
+        items: $scope.items,
+        update: function (filteredItems, filterText) {
+          $scope.items = filteredItems;
+		},
+
+		done: function(){
+			console.log("HIDE!");
+			$scope.hide = "hidden";
+		},
+
+		cancel: function (){
+			$scope.hide = "";
+			for(var i = $scope.items.length -1; i >= 0; i--){
+				if($scope.items[i].deleted){
+					$scope.items.splice(i, 1);
+					console.log(i)			
+				}
+			}
+			console.log($scope.items);
+		}
+      });
+    };
+
+    $scope.refreshItems = function () {
+      if (filterBarInstance) {
+        filterBarInstance();
+        filterBarInstance = null;
+		
+      }
+
+      $timeout(function () {
+        getItems();
+        $scope.$broadcast('scroll.refreshComplete');
+      }, 1000);
+    };
+})
 
 .controller('AdminCtrl', function($scope, $state) {
 	 
