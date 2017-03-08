@@ -16,25 +16,25 @@
 
     <ion-list>
 		<div class="item item-divider">3/2/17 - CU Boulder</div>
-		<ion-checkbox collection-repeat="item in items" ng-model="item.checked" class="item-checkbox-right animated">
-        {{item.text}}
+		<ion-checkbox collection-repeat="volunteer in uncheckedVolunteers" ng-model="volunteer.selected" class="item-checkbox-right animated">
+        {{volunteer.text}}
 		</ion-checkbox>
     </ion-list>
 
-    <div ng-if="items !== undefined && !items.length" class="no-results">
+    <div ng-if="uncheckedVolunteers !== undefined && !uncheckedVolunteers.length" class="no-results">
       <p>No Results</p>
     </div>
 
 
 	<div class="item item-divider" ng-class="hide">Checked In</div>
 	<ion-list ng-class="hide">
-		<ion-item>jdksfjkjfksd</ion-item>
+		<ion-item ng-repeat="volunteer in checkedVolunteers">{{volunteer.text}}</ion-item>
 	</ion-list>
 
   </ion-content>
 
 <ion-footer-bar class="footer-bar-custom">
-	<a class="footer-bar-item item-center button button-light" ng-click="removeItems()" ng-disabled="(items | filter: item.checked != true).length < 1">Check in Selected</a>
+	<a class="footer-bar-item item-center button button-light" ng-click="removeItems()" ng-disabled="(uncheckedVolunteers | filter: volunteer.selected != true).length < 1">Check in Selected</a>
 </ion-footer-bar>
 
 </ion-view>

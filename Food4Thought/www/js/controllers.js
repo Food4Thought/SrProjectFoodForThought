@@ -170,12 +170,14 @@ angular.module('starter.controllers', [])
 
     function getItems () {
 		var people = ["Slaton Spangler", "Kyle Knight", "Darren White", "Darren Black", "John Cena", "Barry White"];
-		var items = [];
+		var uncheckedVolunteers = [];
+		var checkedVolunteers = [];
 
 		for(var i = 0; i < people.length; i++){
-			items.push({text: people[i], checked: false, deleted: false});
+			uncheckedVolunteers.push({text: people[i], selected: false, deleted: false});
 		}
-		$scope.items = items;
+		$scope.uncheckedVolunteers = uncheckedVolunteers;
+		$scope.checkedVolunteers = checkedVolunteers;
 	}
 
 	//TODO: animation
@@ -185,23 +187,25 @@ angular.module('starter.controllers', [])
 
 	$scope.hide = "";
 	$scope.removeItems = function () { 
-		for(var i = $scope.items.length -1; i >= 0; i--){ //Traversing backwards to preserve indices of yet-to-be-reoved items
-			if($scope.items[i].checked){
-				$scope.items[i].deleted = true;
-				$scope.items.splice(i, 1);
+		for(var i = $scope.uncheckedVolunteers.length -1; i >= 0; i--){ //Traversing backwards to preserve indices of yet-to-be-reoved items
+			if($scope.uncheckedVolunteers[i].selected){
+				$scope.uncheckedVolunteers[i].deleted = true;
+				var removed = $scope.uncheckedVolunteers.splice(i, 1);
+				console.log(removed[0]);
+				$scope.checkedVolunteers.push(removed[0]);
 				console.log(i)
 			}
 		}
-		console.log($scope.items);	
+		console.log($scope.uncheckedVolunteers);	
 	}; 
 
     getItems();
 
     $scope.showFilterBar = function () {
       filterBarInstance = $ionicFilterBar.show({
-        items: $scope.items,
+        items: $scope.uncheckedVolunteers,
         update: function (filteredItems, filterText) {
-          $scope.items = filteredItems;
+          $scope.uncheckedVolunteers = filteredItems;
 		},
 
 		done: function(){
@@ -211,13 +215,13 @@ angular.module('starter.controllers', [])
 
 		cancel: function (){
 			$scope.hide = "";
-			for(var i = $scope.items.length -1; i >= 0; i--){
-				if($scope.items[i].deleted){
-					$scope.items.splice(i, 1);
+			for(var i = $scope.uncheckedVolunteers.length-1; i >= 0; i--){
+				if($scope.uncheckedVolunteers[i].deleted){
+					$scope.uncheckedVolunteers.splice(i, 1);
 					console.log(i)			
 				}
 			}
-			console.log($scope.items);
+			console.log($scope.uncheckedVolunteers);
 		}
       });
     };
