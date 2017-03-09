@@ -12,11 +12,16 @@
 					<div class="col col-40">Location</div>
 					<div class="col col-35">Organization</div>
 				</ion-item>
-				<ion-item class="row" ng-repeat="shift in shifts">
-					<div class="col col-25">{{shift.date}}</div>
-					<div class="col col-40">{{shift.loc}}</div>
-					<div class="col col-35">{{shift.organization}}</div>
-				</ion-item>
+				<div ng-repeat="shift in shifts">
+					<ion-item class="row", ng-click="toggleShift(shift)", ng-class="{active: isShiftShown(shift)}">
+						<div class="col col-25">{{shift.date}}</div>
+						<div class="col col-40">{{shift.loc}}</div>
+						<div class="col col-35">{{shift.organization}}</div>
+					</ion-item>
+					<ion-item class="item-accordion", ng-show="isShiftShown(shift)">
+						<pre>{{shift.info}}</pre>
+					</ion-item>
+				</div>
 			</ion-list>
 		</div>
 		<br>
