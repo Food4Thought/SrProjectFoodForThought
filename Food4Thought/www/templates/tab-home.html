@@ -18,9 +18,26 @@
 						<div class="col col-40">{{shift.loc}}</div>
 						<div class="col col-35">{{shift.organization}}</div>
 					</ion-item>
-					<ion-item class="item-accordion", ng-show="isShiftShown(shift)">
-						<pre>{{shift.info}}</pre>
+					<ion-item class="item-accordian row", ng-show="isShiftShown(shift)">
+						<div class="col col-50">
+						<pre style="font-family:verdana; font-size:85%;">{{shift.info}}</pre>
+						</div>
+						<div class="col col-50">
+						<pre style="font-family:verdana; font-size:85%;">{{clothInfo}}</pre>
+						</div>
 					</ion-item>
+					<!--<ion-item class="row item-accordion", ng-show="isShiftShown(shift)">
+						<div class="col col-50">
+							<pre style="font-family:verdana; font-size:90%;">
+							{{shift.info}}
+							</pre>
+						</div>
+						<div class="col col-50">
+							<pre style="font-family:verdana; font-size:90%;">
+							{{shift.info2}}
+							</pre>
+						</div>
+					</ion-item>-->
 				</div>
 			</ion-list>
 		</div>

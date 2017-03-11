@@ -17,7 +17,8 @@ angular.module('starter.controllers', [])
 			loc: shift.loc,
 			date: shift.date,
 			organization: shift.organization,
-			info: shift.info
+			info: shift.info,
+			info2: $scope.clothInfo
 		}); 
 		shift.loc = ""; 
 		shift.date = ""; 
