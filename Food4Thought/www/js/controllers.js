@@ -174,28 +174,30 @@ angular.module('starter.controllers', [])
     function getItems () {
 		//dynamically create an option list based on available shifts (and maybe hide if there's only one)
 
-		var shifts = ["3/2/17 - CU Boulder", "ANOTHER PLACE"];
+		window.updateShifts = function updateShifts(selector){
+			console.log(selector.options[selector.selectedIndex].text);
+		}
+
+		var shift1 = ["Jim Sanchez", "Carl Wheezer", "Dwayne 'The Rock' Johnson", "Marge Simpson"];
+		var shift2 = ["Slaton Spangler", "Kyle Knight", "Darren White", "Darren Black", "John Cena", "Barry White"];
+		var shifts = [shift1, shift2]
+		var shiftNames = ["3/2/17 - CU Boulder", "ANOTHER PLACE"];
 		var shiftSelector = document.createElement('select');
-		for(var i = 0; i < shifts.length; i++){
+		shiftSelector.setAttribute("onChange", "updateShifts(this);");
+		for(var i = 0; i < shiftNames.length; i++){
+			//Dynamically creating shift selector
 			var opt = document.createElement("option");
 			opt.value = i;
-			opt.innerHTML = shifts[i]; // whatever property it has
-
-		   // then append it to the select element
+			opt.innerHTML = shiftNames[i]; 
 			shiftSelector.appendChild(opt);
 		}
 
 		document.getElementById("shiftSelector").appendChild(shiftSelector);
-// then append the select to an element in the dom	
-
-
 			
 		//This is where we'll put the call to get the volunteer lists for shifts occuring 'today'
-		var shift1 = ["Jim Sanchez", "Carl Wheezer", "Dwayne 'The Rock' Johnson", "Marge Simpson"];
-		var shift2 = ["Slaton Spangler", "Kyle Knight", "Darren White", "Darren Black", "John Cena", "Barry White"];
 		var uncheckedVolunteers = [];
 		var checkedVolunteers = [];
-
+		
 		for(var i = 0; i < shift2.length; i++){
 			uncheckedVolunteers.push({text: shift2[i], selected: false, deleted: false});
 		}
