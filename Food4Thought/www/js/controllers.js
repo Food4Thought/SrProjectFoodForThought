@@ -166,25 +166,44 @@ angular.module('starter.controllers', [])
 })
 
 .controller('CheckinCtrl', function($scope, $state, $ionicFilterBar, $timeout) {
-	 var filterBarInstance;
+	//TODO: animation
+	//		Populate lists based on selected shift
+	
+	var filterBarInstance;
 
     function getItems () {
-		var people = ["Slaton Spangler", "Kyle Knight", "Darren White", "Darren Black", "John Cena", "Barry White"];
+		//dynamically create an option list based on available shifts (and maybe hide if there's only one)
+
+		var shifts = ["3/2/17 - CU Boulder", "ANOTHER PLACE"];
+		var shiftSelector = document.createElement('select');
+		for(var i = 0; i < shifts.length; i++){
+			var opt = document.createElement("option");
+			opt.value = i;
+			opt.innerHTML = shifts[i]; // whatever property it has
+
+		   // then append it to the select element
+			shiftSelector.appendChild(opt);
+		}
+
+		document.getElementById("shiftSelector").appendChild(shiftSelector);
+// then append the select to an element in the dom	
+
+
+			
+		//This is where we'll put the call to get the volunteer lists for shifts occuring 'today'
+		var shift1 = ["Jim Sanchez", "Carl Wheezer", "Dwayne 'The Rock' Johnson", "Marge Simpson"];
+		var shift2 = ["Slaton Spangler", "Kyle Knight", "Darren White", "Darren Black", "John Cena", "Barry White"];
 		var uncheckedVolunteers = [];
 		var checkedVolunteers = [];
 
-		for(var i = 0; i < people.length; i++){
-			uncheckedVolunteers.push({text: people[i], selected: false, deleted: false});
+		for(var i = 0; i < shift2.length; i++){
+			uncheckedVolunteers.push({text: shift2[i], selected: false, deleted: false});
 		}
 		$scope.uncheckedVolunteers = uncheckedVolunteers;
 		$scope.checkedVolunteers = checkedVolunteers;
 	}
 
-	//TODO: animation
-	//		add checked in volunteers to another list... somewhere? ('see checked in volunteers' button?)
-	//		switch between shifts that occur on the same day (slide animation?)
-	//		
-
+	
 	$scope.hide = "";
 	$scope.removeItems = function () { 
 		for(var i = $scope.uncheckedVolunteers.length -1; i >= 0; i--){ //Traversing backwards to preserve indices of yet-to-be-reoved items
@@ -209,7 +228,6 @@ angular.module('starter.controllers', [])
 		},
 
 		done: function(){
-			console.log("HIDE!");
 			$scope.hide = "hidden";
 		},
 
