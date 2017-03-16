@@ -171,17 +171,21 @@ angular.module('starter.controllers', [])
 
 	var currentShiftIndex;
 	var currentUncheckedVols = [];
-	var currentCheckedVols = [[],[]];
+	var currentCheckedVols = [[]];
     function getItems () {
 		//  TODO
 		//	Hide shift selector when there's only one shift for the current day
 		//  Change volunteer list when a new shift is selected [DEBUG]
+
+		$scope.$watch('data.items');
 
 		window.updateShifts = function updateShifts(selector){
 			currentUncheckedVols[currentShiftIndex] = $scope.uncheckedVolunteers;
 			currentCheckedVols[currentShiftIndex] = $scope.checkedVolunteers;	
 			$scope.uncheckedVolunteers = currentUncheckedVols[selector.options[selector.selectedIndex].value];
 			$scope.checkedVolunteers = currentCheckedVols[selector.options[selector.selectedIndex].value];
+			currentShiftIndex = selector.options[selector.selectedIndex];
+			$scope.refreshItems();
 		}
 
 		var shift1Vols = ["Jim Sanchez", "Carl Wheezer", "Dwayne 'The Rock' Johnson", "Marge Simpson"];
