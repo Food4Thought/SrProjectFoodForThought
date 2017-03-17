@@ -1,23 +1,44 @@
 angular.module('starter.controllers', [])
 
 .controller('HomeCtrl', function($scope, $ionicModal) {
-	$scope.tasks = [ 
-	{taskLocation: 'blah', taskDate: '12/5/12', taskOrg: 'fft'}
+	$scope.shifts = [ 
+	{loc: 'MSU', date: '12/5/12', organization: 'Food4Thought', info: '7:30-9:30am\nThe Regency Athletic Complex at MSU Denver.\n1390 Shoshone St, Denver, CO 80204'},
+	{loc: 'Ellis', date: '3/3/17', organization: 'Food4Thought', info: '2-3:30pm\nEllis Elementary School.\n1651 S Dahlia St, Denver, CO 80222'}
 	];
 
-	$scope.createTask = function(task) {
-		$scope.tasks.push({
-			taskLocation: task.taskLocation,
-			taskDate: task.taskDate,
-			taskOrg: task.taskOrg
+	$scope.locDetails = [
+		{name: 'MSU', info: '7:30-9:30am\nThe Regency Athletic Complex at MSU Denver. 1390 Shoshone St, Denver, CO 80204'}
+	];
+
+	$scope.clothInfo = "Please wear comforable clothing and dress for working in an outdoor covered location.";
+
+	$scope.createShift = function(shift) {
+		$scope.shifts.push({
+			loc: shift.loc,
+			date: shift.date,
+			organization: shift.organization,
+			info: shift.info,
+			info2: $scope.clothInfo
 		}); 
-		task.taskLocation = ""; 
-		task.taskDate = ""; 
-		task.taskOrg = ""; 
+		shift.loc = ""; 
+		shift.date = ""; 
+		shift.organization = "";
+		shift.info = "";
+	};
+
+	$scope.toggleShift = function(shift) {
+		if($scope.isShiftShown(shift)) {
+			$scope.shownShift = null;
+		} else {
+			$scope.shownShift = shift;
+		}
+	};
+	$scope.isShiftShown = function(shift) {
+		return $scope.shownShift === shift;
 	};
 
 	// Sign Up Modal
-	$ionicModal.fromTemplateUrl('templates/admin/modals/newShift.html', {
+	$ionicModal.fromTemplateUrl('templates/newShift.html', {
 		id: '1',
 		scope: $scope,
 		animation: 'slide-in-up'
@@ -110,7 +131,7 @@ angular.module('starter.controllers', [])
 		$scope.checkInModal = modal;
 	});
 
-	$scope.openModal = function(modalID) {
+$scope.openModal = function(modalID) {
 		if(modalID == 1) $scope.signUpModal.show();
 		else $scope.checkInModal.show();
 		//$scope.checkInModal.show();
@@ -128,7 +149,6 @@ angular.module('starter.controllers', [])
 })
 
 .controller('Admin-LocCtrl', function($scope, $ionicModal) {
-
 	// Edit Location Modal
 	$ionicModal.fromTemplateUrl('templates/admin/modals/editLocation.html', {
 		id: '1',
@@ -165,103 +185,35 @@ angular.module('starter.controllers', [])
 	});
 })
 
-.controller('CheckinCtrl', function($scope, $state, $ionicFilterBar, $timeout) {
-	
-	var filterBarInstance;
+.controller('CheckinCtrl', function($scope, $state, $ionicFilterBar) {
+	 var filterBarInstance;
 
-	var currentShiftIndex;
-	var currentUncheckedVols = [];
-	var currentCheckedVols = [[],[]];
     function getItems () {
+		var people = ["Slaton Spangler", "Kyle Knight", "Darren White", "Darren Black", "John Cena", "Barry White"];
+		var items = [];
 
-		//	Hide shift selector when there's only one shift for the current day
-
-		$scope.doRefresh = function(selector) {
-			currentUncheckedVols[currentShiftIndex] = $scope.uncheckedVolunteers;
-			currentCheckedVols[currentShiftIndex] = $scope.checkedVolunteers;	
-			$scope.uncheckedVolunteers = currentUncheckedVols[selector.options[selector.selectedIndex].value];
-			$scope.checkedVolunteers = currentCheckedVols[selector.options[selector.selectedIndex].value];
-			currentShiftIndex = selector.options[selector.selectedIndex];
-			$scope.$broadcast('scroll.refreshComplete');
-		};
-
-
-		window.updateShifts = function updateShifts(selector){
-			$scope.doRefresh(selector);
+		for(var i = 0; i < people.length; i++){
+			items.push({text: people[i]});
 		}
-
-		var shift1Vols = ["Jim Sanchez", "Carl Wheezer", "Dwayne 'The Rock' Johnson", "Marge Simpson"];
-		var shift2Vols = ["Slaton Spangler", "Kyle Knight", "Darren White", "Darren Black", "John Cena", "Barry White"];
-		currentUncheckedVols.push(shift1Vols);
-		currentUncheckedVols.push(shift2Vols);
-
-		var shiftNames = ["3/2/17 - CU Boulder", "ANOTHER PLACE"];
-		var shiftSelector = document.createElement('select');
-
-		shiftSelector.setAttribute("onChange", "updateShifts(this);");
-		for(var i = 0; i < shiftNames.length; i++){
-			var opt = document.createElement("option");
-			opt.value = i;
-			opt.innerHTML = shiftNames[i]; 
-			shiftSelector.appendChild(opt);
-		}
-		
-		document.getElementById("shiftSelector").appendChild(shiftSelector);
-		var uncheckedVolunteers;
-		var checkedVolunteers;
-		//This is where we'll put the call to get the volunteer lists for shifts occuring 'today'
-	
-		for(var i = 0; i < currentUncheckedVols.length; i++){
-			for(var j = 0; j < currentUncheckedVols[i].length; j++){
-				currentUncheckedVols[i][j] = ({text: currentUncheckedVols[i][j], selected: false, deleted: false});
-			}
-			currentShiftIndex = 0;
-			$scope.uncheckedVolunteers = currentUncheckedVols[currentShiftIndex];
-			$scope.checkedVolunteers = currentCheckedVols[currentShiftIndex];
-			$scope.multiShift = true;
-		}
+		$scope.items = items;
 	}
-
-	$scope.hide = "";
-	$scope.removeItems = function () { 
-		for(var i = $scope.uncheckedVolunteers.length -1; i >= 0; i--){ //Traversing backwards to preserve indices of yet-to-be-reoved items
-			if($scope.uncheckedVolunteers[i].selected){
-				$scope.uncheckedVolunteers[i].deleted = true;
-				var removed = $scope.uncheckedVolunteers.splice(i, 1);
-				$scope.checkedVolunteers.push(removed[0]);
-			}
-		}
-	}; 
 
     getItems();
 
     $scope.showFilterBar = function () {
       filterBarInstance = $ionicFilterBar.show({
-        items: $scope.uncheckedVolunteers,
+        items: $scope.items,
         update: function (filteredItems, filterText) {
-          $scope.uncheckedVolunteers = filteredItems;
-		},
-
-		done: function(){
-			$scope.hide = "hidden";
-		},
-
-		cancel: function (){
-			$scope.hide = "";
-			for(var i = $scope.uncheckedVolunteers.length-1; i >= 0; i--){
-				if($scope.uncheckedVolunteers[i].deleted){
-					$scope.uncheckedVolunteers.splice(i, 1);
-				}
-			}
-		}
+          $scope.items = filteredItems;
+        }
       });
     };
 
     $scope.refreshItems = function () {
+	//TODO restore correct "checked" status to items
       if (filterBarInstance) {
         filterBarInstance();
         filterBarInstance = null;
-		
       }
 
       $timeout(function () {
