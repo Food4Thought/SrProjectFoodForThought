@@ -173,11 +173,8 @@ angular.module('starter.controllers', [])
 	var currentUncheckedVols = [];
 	var currentCheckedVols = [[],[]];
     function getItems () {
-		//  TODO
-		//	Hide shift selector when there's only one shift for the current day
-		//  Change volunteer list when a new shift is selected [DEBUG]
 
-		$scope.$watch('data.items');
+		//	Hide shift selector when there's only one shift for the current day
 
 		$scope.doRefresh = function(selector) {
 			currentUncheckedVols[currentShiftIndex] = $scope.uncheckedVolunteers;
@@ -200,9 +197,9 @@ angular.module('starter.controllers', [])
 
 		var shiftNames = ["3/2/17 - CU Boulder", "ANOTHER PLACE"];
 		var shiftSelector = document.createElement('select');
+
 		shiftSelector.setAttribute("onChange", "updateShifts(this);");
 		for(var i = 0; i < shiftNames.length; i++){
-			//Dynamically creating shift selector
 			var opt = document.createElement("option");
 			opt.value = i;
 			opt.innerHTML = shiftNames[i]; 
@@ -221,7 +218,7 @@ angular.module('starter.controllers', [])
 			currentShiftIndex = 0;
 			$scope.uncheckedVolunteers = currentUncheckedVols[currentShiftIndex];
 			$scope.checkedVolunteers = currentCheckedVols[currentShiftIndex];
-			//console.log($scope.uncheckedVolunteers);
+			$scope.multiShift = true;
 		}
 	}
 
@@ -231,13 +228,9 @@ angular.module('starter.controllers', [])
 			if($scope.uncheckedVolunteers[i].selected){
 				$scope.uncheckedVolunteers[i].deleted = true;
 				var removed = $scope.uncheckedVolunteers.splice(i, 1);
-				console.log(removed[0]);
 				$scope.checkedVolunteers.push(removed[0]);
-				console.log($scope.checkedVolunteers);
-				console.log(i)
 			}
 		}
-		console.log($scope.uncheckedVolunteers);	
 	}; 
 
     getItems();
@@ -258,10 +251,8 @@ angular.module('starter.controllers', [])
 			for(var i = $scope.uncheckedVolunteers.length-1; i >= 0; i--){
 				if($scope.uncheckedVolunteers[i].deleted){
 					$scope.uncheckedVolunteers.splice(i, 1);
-					console.log(i)			
 				}
 			}
-			console.log($scope.uncheckedVolunteers);
 		}
       });
     };
