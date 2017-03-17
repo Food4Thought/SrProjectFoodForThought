@@ -21,7 +21,7 @@
 
 	</label>
 
-
+	<ion-refresher on-refresh="doRefresh()"></ion-refresher>
     <ion-list>
 		<ion-checkbox collection-repeat="volunteer in uncheckedVolunteers" ng-model="volunteer.selected" class="item-checkbox-right animated">
         {{volunteer.text}}

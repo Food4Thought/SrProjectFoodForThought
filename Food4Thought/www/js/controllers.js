@@ -179,13 +179,18 @@ angular.module('starter.controllers', [])
 
 		$scope.$watch('data.items');
 
-		window.updateShifts = function updateShifts(selector){
+		$scope.doRefresh = function(selector) {
 			currentUncheckedVols[currentShiftIndex] = $scope.uncheckedVolunteers;
 			currentCheckedVols[currentShiftIndex] = $scope.checkedVolunteers;	
 			$scope.uncheckedVolunteers = currentUncheckedVols[selector.options[selector.selectedIndex].value];
 			$scope.checkedVolunteers = currentCheckedVols[selector.options[selector.selectedIndex].value];
 			currentShiftIndex = selector.options[selector.selectedIndex];
-			$scope.refreshItems();
+			$scope.$broadcast('scroll.refreshComplete');
+		};
+
+
+		window.updateShifts = function updateShifts(selector){
+			$scope.doRefresh(selector);
 		}
 
 		var shift1Vols = ["Jim Sanchez", "Carl Wheezer", "Dwayne 'The Rock' Johnson", "Marge Simpson"];

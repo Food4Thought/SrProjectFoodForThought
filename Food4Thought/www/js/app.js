@@ -76,6 +76,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'jett.ionic.filter.ba
 	}) 
 
 	.state("tab.admin-checkin", {
+		cache: false,
 		url:"/admin/checkin",
 		views:{
 			'tab-admin':{
