@@ -171,7 +171,7 @@ angular.module('starter.controllers', [])
 
 	var currentShiftIndex;
 	var currentUncheckedVols = [];
-	var currentCheckedVols = [[]];
+	var currentCheckedVols = [[],[]];
     function getItems () {
 		//  TODO
 		//	Hide shift selector when there's only one shift for the current day
@@ -232,9 +232,8 @@ angular.module('starter.controllers', [])
 				$scope.uncheckedVolunteers[i].deleted = true;
 				var removed = $scope.uncheckedVolunteers.splice(i, 1);
 				console.log(removed[0]);
-				console.log("KJADJFKADJ");
-				console.log($scope.checkedVolunteers);
 				$scope.checkedVolunteers.push(removed[0]);
+				console.log($scope.checkedVolunteers);
 				console.log(i)
 			}
 		}
