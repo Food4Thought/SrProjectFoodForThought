@@ -1,19 +1,40 @@
 angular.module('starter.controllers', [])
 
 .controller('HomeCtrl', function($scope, $ionicModal) {
-	$scope.tasks = [ 
-	{taskLocation: 'blah', taskDate: '12/5/12', taskOrg: 'fft'}
+	$scope.shifts = [ 
+	{loc: 'MSU', date: '12/5/12', organization: 'Food4Thought', info: '7:30-9:30am\nThe Regency Athletic Complex at MSU Denver.\n1390 Shoshone St, Denver, CO 80204'},
+	{loc: 'Ellis', date: '3/3/17', organization: 'Food4Thought', info: '2-3:30pm\nEllis Elementary School.\n1651 S Dahlia St, Denver, CO 80222'}
 	];
 
-	$scope.createTask = function(task) {
-		$scope.tasks.push({
-			taskLocation: task.taskLocation,
-			taskDate: task.taskDate,
-			taskOrg: task.taskOrg
+	$scope.locDetails = [
+		{name: 'MSU', info: '7:30-9:30am\nThe Regency Athletic Complex at MSU Denver. 1390 Shoshone St, Denver, CO 80204'}
+	];
+
+	$scope.clothInfo = "Please wear comforable clothing and dress for working in an outdoor covered location.";
+
+	$scope.createShift = function(shift) {
+		$scope.shifts.push({
+			loc: shift.loc,
+			date: shift.date,
+			organization: shift.organization,
+			info: shift.info,
+			info2: $scope.clothInfo
 		}); 
-		task.taskLocation = ""; 
-		task.taskDate = ""; 
-		task.taskOrg = ""; 
+		shift.loc = ""; 
+		shift.date = ""; 
+		shift.organization = "";
+		shift.info = "";
+	};
+
+	$scope.toggleShift = function(shift) {
+		if($scope.isShiftShown(shift)) {
+			$scope.shownShift = null;
+		} else {
+			$scope.shownShift = shift;
+		}
+	};
+	$scope.isShiftShown = function(shift) {
+		return $scope.shownShift === shift;
 	};
 
 	// Sign Up Modal
@@ -110,7 +131,7 @@ angular.module('starter.controllers', [])
 		$scope.checkInModal = modal;
 	});
 
-	$scope.openModal = function(modalID) {
+$scope.openModal = function(modalID) {
 		if(modalID == 1) $scope.signUpModal.show();
 		else $scope.checkInModal.show();
 		//$scope.checkInModal.show();
@@ -128,7 +149,6 @@ angular.module('starter.controllers', [])
 })
 
 .controller('Admin-LocCtrl', function($scope, $ionicModal) {
-
 	// Edit Location Modal
 	$ionicModal.fromTemplateUrl('templates/admin/modals/editLocation.html', {
 		id: '1',
