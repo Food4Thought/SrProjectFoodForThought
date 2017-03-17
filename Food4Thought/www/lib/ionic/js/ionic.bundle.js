@@ -63791,7 +63791,7 @@ function headerFooterBarDirective(isHeader) {
  * reach to trigger the on-infinite expression. Default: 1%.
  * @param {string=} spinner The {@link ionic.directive:ionSpinner} to show while loading. The SVG
  * {@link ionic.directive:ionSpinner} is now the default, replacing rotating font icons.
- * @param {string=} icon The icon to show while loading. Default: 'ion-load-d'.  This is depreciated
+ * @param {string=} icon The icon to show while loading. Default: 'ion-load-d'.  This is depreicated
  * in favor of the SVG {@link ionic.directive:ionSpinner}.
  * @param {boolean=} immediate-check Whether to check the infinite scroll bounds immediately on load.
  *
@@ -66479,6 +66479,7 @@ function($animate, $timeout, $compile, $ionicSlideBoxDelegate, $ionicHistory, $i
  * @ngdoc directive
  * @name ionSlides
  * @module ionic
+ * @delegate ionic.service:$ionicSlideBoxDelegate
  * @restrict E
  * @description
  * The Slides component is a powerful multi-page container where each page can be swiped or dragged between.

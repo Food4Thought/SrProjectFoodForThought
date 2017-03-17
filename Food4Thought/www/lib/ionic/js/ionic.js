@@ -2,7 +2,11 @@
  * Copyright 2015 Drifty Co.
  * http://drifty.com/
  *
+<<<<<<< HEAD
+ * Ionic, v1.3.2
+=======
  * Ionic, v1.3.3
+>>>>>>> b3fed34bfc8238feea1a3302c68d4753728e6e7e
  * A powerful HTML5 mobile app framework.
  * http://ionicframework.com/
  *
@@ -18,7 +22,11 @@
 // build processes may have already created an ionic obj
 window.ionic = window.ionic || {};
 window.ionic.views = {};
+<<<<<<< HEAD
+window.ionic.version = '1.3.2';
+=======
 window.ionic.version = '1.3.3';
+>>>>>>> b3fed34bfc8238feea1a3302c68d4753728e6e7e
 
 (function (ionic) {
 
@@ -2977,7 +2985,11 @@ function tapMouseDown(e) {
     e.stopPropagation();
 
     if (!ionic.Platform.isEdge() && (!ionic.tap.isTextInput(e.target) || tapLastTouchTarget !== e.target) &&
+<<<<<<< HEAD
+      !isSelectOrOption(e.target.tagName) && !ionic.tap.isVideo(e.target)) {
+=======
       !isSelectOrOption(e.target.tagName) && !e.target.isContentEditable && !ionic.tap.isVideo(e.target)) {
+>>>>>>> b3fed34bfc8238feea1a3302c68d4753728e6e7e
       // If you preventDefault on a text input then you cannot move its text caret/cursor.
       // Allow through only the text input default. However, without preventDefault on an
       // input the 300ms delay can change focus on inputs after the keyboard shows up.
