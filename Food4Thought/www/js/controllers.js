@@ -49,6 +49,19 @@ angular.module('starter.controllers', [])
        	}
 	}
 
+
+	function getSignInModal () {
+       	if (ionic.Platform.isIOS()) {
+       		return ('templates/newShiftModal/ios.html');
+        }
+        if (ionic.Platform.isAndroid()) {
+        	return ('templates/newShiftModal/android.html');
+        }
+        else{
+       	   return  ('templates/newShiftModal/web.html');
+       	}
+	}
+
 	// Sign Up Modal
 	$ionicModal.fromTemplateUrl(getSignInModal(), {
 		id: '1',
