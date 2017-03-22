@@ -74,8 +74,7 @@ angular.module('starter.controllers', [])
 		//$scope.checkInModal.show();
 	};
 	$scope.closeModal = function() {
-		if(modalID == 1) $scope.signUpModal.hide();
-		else $scope.checkInModal.hide();
+		$scope.signUpModal.hide();
 	};
 
 	// Cleanup the modal when we're done with it!
