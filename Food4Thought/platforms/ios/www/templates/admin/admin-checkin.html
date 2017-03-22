@@ -1,0 +1,40 @@
+<ion-view view-title="Check In">
+	<ion-nav-bar class="f4t-blue">
+	<ion-nav-view nav-direction="back"></ion-nav-view>
+	<ion-nav-buttons side="secondary">
+		<button class="button button-light icon ion-ios-search-strong" ng-click="showFilterBar()">
+		</button>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="primary">
+		<button class="button button-light icon ion-ios-arrow-back" ui-sref="tab.admin">
+		</button>
+	</ion-nav-buttons>
+  <ion-content direction="y" scrollbar-y="false">
+
+    <ion-refresher pulling-icon="ion-arrow-down-b" on-refresh="refreshItems()">
+    </ion-refresher>
+
+    <ion-list>
+		<div class="item item-divider">3/2/17 - CU Boulder</div>
+		<ion-checkbox collection-repeat="item in items" ng-model="item.checked" class="item-checkbox-right animated">
+        {{item.text}}
+		</ion-checkbox>
+    </ion-list>
+
+    <div ng-if="items !== undefined && !items.length" class="no-results">
+      <p>No Results</p>
+    </div>
+
+
+	<div class="item item-divider" ng-class="hide">Checked In</div>
+	<ion-list ng-class="hide">
+		<ion-item>jdksfjkjfksd</ion-item>
+	</ion-list>
+
+  </ion-content>
+
+<ion-footer-bar class="footer-bar-custom">
+	<a class="footer-bar-item item-center button button-light" ng-click="removeItems()" ng-disabled="(items | filter: item.checked != true).length < 1">Check in Selected</a>
+</ion-footer-bar>
+
+</ion-view>

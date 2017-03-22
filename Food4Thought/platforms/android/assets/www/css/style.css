@@ -1,0 +1,74 @@
+/* Empty. Add your own CSS if you like */
+
+.f4t-red {
+	background-color:#bf101a;
+	color:white;
+}
+.f4t-yellow {
+	background-color:#e7a101;
+	color:white;
+}
+.f4t-blue {
+	background-color:#47628f;
+	color:white;
+}
+
+.center-text {
+	text-align: center;
+}
+
+.item-checkbox-right .checkbox input,
+.item-checkbox-right .checkbox-icon {
+	float: right;
+}
+
+.item-checkbox.item-checkbox-right {
+  /*the default item padding*/
+	padding: 15px;
+}
+
+.hidden {
+	visibility: hidden;
+}
+
+/**
+ * ion-footer-bar custom styles
+ */
+.footer-bar-custom {
+    background: #455D87;
+    color: #F6F7F0;
+    height: 44px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    z-index: 5
+}
+
+.footer-bar-custom .item-left,
+.footer-bar-custom .item-center,
+.footer-bar-custom .item-right {
+	position: absolute;
+	width: 30px
+}
+
+.footer-bar-custom .item-left { 
+	left: 10px 
+}
+
+.footer-bar-custom .item-center {
+	width:30%;
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	transform: translateX(-50%)
+}
+
+.footer-bar-custom .item-right { 
+	right: 10px 
+}
+
+a.button .icon:before,
+a.button.icon:before,
+a.button.icon-left:before,
+a.button.icon-right:before { margin-top: 0 }
