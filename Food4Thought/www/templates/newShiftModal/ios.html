@@ -1,12 +1,14 @@
-<ion-modal-view>
+<ion-modal-view style="width: device-width;">
   <ion-header-bar>
     <div class="buttons">
       <button class="button" ng-click="closeModal()">Close</button>
     </div>
-    <h1 class="title">Slaton Sucks!</h1>
+    <h1 class="title">Sign Up for a Shift!</h1>
   </ion-header-bar>
   <ion-content>
-    <iframe src="http://cuf4tfeb-developer-edition.na35.force.com/GW_Volunteers__JobCalendar">
-    </iframe>
+    <div overflow: auto; -webkit-overflow-scrolling:touch;>
+      <iframe src="http://cuf4tfeb-developer-edition.na35.force.com/GW_Volunteers__JobCalendar" width=1px style="width: 100%">
+      </iframe>
+    </div>
   </ion-content>
 </ion-modal-view>
