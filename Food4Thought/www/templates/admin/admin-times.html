@@ -8,16 +8,16 @@
 	</ion-nav-bar>
 
 	<ion-content>
-		<form ng-submit="createTask(task)">
+		<form ng-submit="createShift(shift)">
 			<div class="list">
 				<label class="item item-input">
-					<input type="text" placeholder="Location" ng-model="task.taskLocation">
+					<input type="text" placeholder="Location" ng-model="shift.loc">
 				</label>
 				<label class="item item-input">
-					<input type="date", ng-model="task.taskDate">
+					<input type="date", ng-model="shift.date">
 				</label>
 				<label class="item item-input">
-					<input type="text", placeholder="Organization" ng-model="task.taskOrg">
+					<input type="text", placeholder="Organization" ng-model="shift.organization">
 				</label>
 			</div>
 			<div class="padding">
@@ -26,7 +26,7 @@
 		</form>
 		<ion-list>
 			<ion-item ng-repeat="task in tasks">
-				{{task.taskLocation}} {{task.taskDate}} {{task.taskOrg}}
+				{{shift.loc}} {{shift.date}} {{shift.organizatoin}}
 			</ion-item>
 		</ion-list>
 	</ion-content>
