@@ -37,8 +37,20 @@ angular.module('starter.controllers', [])
 		return $scope.shownShift === shift;
 	};
 
+	function getSignInModal () {
+       	if (ionic.Platform.isIOS()) {
+       		return ('templates/newShiftModal/ios.html');
+        }
+        if (ionic.Platform.isAndroid()) {
+        	return ('templates/newShiftModal/android.html');
+        }
+        else{
+       	   return  ('templates/newShiftModal/web.html');
+       	}
+	}
+
 	// Sign Up Modal
-	$ionicModal.fromTemplateUrl('templates/admin/modals/newShift.html', {
+	$ionicModal.fromTemplateUrl(getSignInModal(), {
 		id: '1',
 		scope: $scope,
 		animation: 'slide-in-up'
