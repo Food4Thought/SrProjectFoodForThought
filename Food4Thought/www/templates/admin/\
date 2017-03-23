@@ -1,40 +1,19 @@
 angular.module('starter.controllers', [])
 
 .controller('HomeCtrl', function($scope, $ionicModal) {
-	$scope.shifts = [ 
-	{loc: 'MSU', date: '12/5/12', organization: 'Food4Thought', info: '7:30-9:30am\nThe Regency Athletic Complex at MSU Denver.\n1390 Shoshone St, Denver, CO 80204'},
-	{loc: 'Ellis', date: '3/3/17', organization: 'Food4Thought', info: '2-3:30pm\nEllis Elementary School.\n1651 S Dahlia St, Denver, CO 80222'}
+	$scope.tasks = [ 
+	{taskLocation: 'blah', taskDate: '12/5/12', taskOrg: 'fft'}
 	];
 
-	$scope.locDetails = [
-		{name: 'MSU', info: '7:30-9:30am\nThe Regency Athletic Complex at MSU Denver. 1390 Shoshone St, Denver, CO 80204'}
-	];
-
-	$scope.clothInfo = "Please wear comforable clothing and dress for working in an outdoor covered location.";
-
-	$scope.createShift = function(shift) {
-		$scope.shifts.push({
-			loc: shift.loc,
-			date: shift.date,
-			organization: shift.organization,
-			info: shift.info,
-			info2: $scope.clothInfo
+	$scope.createTask = function(task) {
+		$scope.tasks.push({
+			taskLocation: task.taskLocation,
+			taskDate: task.taskDate,
+			taskOrg: task.taskOrg
 		}); 
-		shift.loc = ""; 
-		shift.date = ""; 
-		shift.organization = "";
-		shift.info = "";
-	};
-
-	$scope.toggleShift = function(shift) {
-		if($scope.isShiftShown(shift)) {
-			$scope.shownShift = null;
-		} else {
-			$scope.shownShift = shift;
-		}
-	};
-	$scope.isShiftShown = function(shift) {
-		return $scope.shownShift === shift;
+		task.taskLocation = ""; 
+		task.taskDate = ""; 
+		task.taskOrg = ""; 
 	};
 
 	// Sign Up Modal
@@ -131,7 +110,7 @@ angular.module('starter.controllers', [])
 		$scope.checkInModal = modal;
 	});
 
-$scope.openModal = function(modalID) {
+	$scope.openModal = function(modalID) {
 		if(modalID == 1) $scope.signUpModal.show();
 		else $scope.checkInModal.show();
 		//$scope.checkInModal.show();
@@ -149,6 +128,7 @@ $scope.openModal = function(modalID) {
 })
 
 .controller('Admin-LocCtrl', function($scope, $ionicModal) {
+
 	// Edit Location Modal
 	$ionicModal.fromTemplateUrl('templates/admin/modals/editLocation.html', {
 		id: '1',
@@ -190,24 +170,18 @@ $scope.openModal = function(modalID) {
 	var filterBarInstance;
 
 	var currentShiftIndex;
-	var currentUncheckedVols = [];
-	var currentCheckedVols = [[],[]];
+	var currentUncheckedVols = []
+	var currentCheckedVols = []
     function getItems () {
-
+		//  TODO
 		//	Hide shift selector when there's only one shift for the current day
+		//  Change volunteer list when a new shift is selected
 
-		$scope.doRefresh = function(selector) {
+		window.updateShifts = function updateShifts(selector){
 			currentUncheckedVols[currentShiftIndex] = $scope.uncheckedVolunteers;
 			currentCheckedVols[currentShiftIndex] = $scope.checkedVolunteers;	
 			$scope.uncheckedVolunteers = currentUncheckedVols[selector.options[selector.selectedIndex].value];
 			$scope.checkedVolunteers = currentCheckedVols[selector.options[selector.selectedIndex].value];
-			currentShiftIndex = selector.options[selector.selectedIndex];
-			$scope.$broadcast('scroll.refreshComplete');
-		};
-
-
-		window.updateShifts = function updateShifts(selector){
-			$scope.doRefresh(selector);
 		}
 
 		var shift1Vols = ["Jim Sanchez", "Carl Wheezer", "Dwayne 'The Rock' Johnson", "Marge Simpson"];
@@ -217,40 +191,43 @@ $scope.openModal = function(modalID) {
 
 		var shiftNames = ["3/2/17 - CU Boulder", "ANOTHER PLACE"];
 		var shiftSelector = document.createElement('select');
-
 		shiftSelector.setAttribute("onChange", "updateShifts(this);");
 		for(var i = 0; i < shiftNames.length; i++){
+			//Dynamically creating shift selector
 			var opt = document.createElement("option");
 			opt.value = i;
 			opt.innerHTML = shiftNames[i]; 
 			shiftSelector.appendChild(opt);
 		}
 		
+		currentShiftIndex = 0;
 		document.getElementById("shiftSelector").appendChild(shiftSelector);
-		var uncheckedVolunteers;
-		var checkedVolunteers;
+			
 		//This is where we'll put the call to get the volunteer lists for shifts occuring 'today'
+		var uncheckedVolunteers = [];
+		var checkedVolunteers = [];
 	
-		for(var i = 0; i < currentUncheckedVols.length; i++){
-			for(var j = 0; j < currentUncheckedVols[i].length; j++){
-				currentUncheckedVols[i][j] = ({text: currentUncheckedVols[i][j], selected: false, deleted: false});
-			}
-			currentShiftIndex = 0;
-			$scope.uncheckedVolunteers = currentUncheckedVols[currentShiftIndex];
-			$scope.checkedVolunteers = currentCheckedVols[currentShiftIndex];
-			$scope.multiShift = true;
+		for(var
+		for(var j = 0; j < currentUncheckedVols[0].length; j++){
+			uncheckedVolunteers.push({text: currentUncheckedVols[0][i], selected: false, deleted: false});
 		}
+		$scope.uncheckedVolunteers = uncheckedVolunteers;
+		$scope.checkedVolunteers = checkedVolunteers;
 	}
 
+	
 	$scope.hide = "";
 	$scope.removeItems = function () { 
 		for(var i = $scope.uncheckedVolunteers.length -1; i >= 0; i--){ //Traversing backwards to preserve indices of yet-to-be-reoved items
 			if($scope.uncheckedVolunteers[i].selected){
 				$scope.uncheckedVolunteers[i].deleted = true;
 				var removed = $scope.uncheckedVolunteers.splice(i, 1);
+				console.log(removed[0]);
 				$scope.checkedVolunteers.push(removed[0]);
+				console.log(i)
 			}
 		}
+		console.log($scope.uncheckedVolunteers);	
 	}; 
 
     getItems();
@@ -271,8 +248,10 @@ $scope.openModal = function(modalID) {
 			for(var i = $scope.uncheckedVolunteers.length-1; i >= 0; i--){
 				if($scope.uncheckedVolunteers[i].deleted){
 					$scope.uncheckedVolunteers.splice(i, 1);
+					console.log(i)			
 				}
 			}
+			console.log($scope.uncheckedVolunteers);
 		}
       });
     };
