@@ -38,7 +38,7 @@ angular.module('starter.controllers', [])
 	};
 
 	// Sign Up Modal
-	$ionicModal.fromTemplateUrl('templates/newShift.html', {
+	$ionicModal.fromTemplateUrl('templates/signUpModals/web.html', {
 		id: '1',
 		scope: $scope,
 		animation: 'slide-in-up'
@@ -62,8 +62,7 @@ angular.module('starter.controllers', [])
 		//$scope.checkInModal.show();
 	};
 	$scope.closeModal = function() {
-		if(modalID == 1) $scope.signUpModal.hide();
-		else $scope.checkInModal.hide();
+		$scope.signUpModal.hide();
 	};
 
 	// Cleanup the modal when we're done with it!
