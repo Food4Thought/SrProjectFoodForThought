@@ -2,11 +2,7 @@
  * Copyright 2015 Drifty Co.
  * http://drifty.com/
  *
-<<<<<<< HEAD
- * Ionic, v1.3.2
-=======
  * Ionic, v1.3.3
->>>>>>> b3fed34bfc8238feea1a3302c68d4753728e6e7e
  * A powerful HTML5 mobile app framework.
  * http://ionicframework.com/
  *
@@ -906,11 +902,7 @@ function($rootScope, $state, $location, $window, $timeout, $ionicViewSwitcher, $
           var viewIds = Object.keys(viewHistory.views);
           viewIds.forEach(function(viewId) {
             var view = viewHistory.views[viewId];
-<<<<<<< HEAD
-            if ( view.backViewId === switchToView.viewId ) {
-=======
             if ((view.backViewId === switchToView.viewId) && (view.historyId !== switchToView.historyId)) {
->>>>>>> b3fed34bfc8238feea1a3302c68d4753728e6e7e
               view.backViewId = null;
             }
           });
@@ -1546,11 +1538,7 @@ function($rootScope, $state, $location, $document, $ionicPlatform, $ionicHistory
  * $ionicConfigProvider.views.maxCache(10);
  * ```
  *
-<<<<<<< HEAD
- * Additionally, each platform can have it's own config within the `$ionicConfigProvider.platform`
-=======
  * Additionally, each platform can have its own config within the `$ionicConfigProvider.platform`
->>>>>>> b3fed34bfc8238feea1a3302c68d4753728e6e7e
  * property. The config below would only apply to Android devices.
  *
  * ```js
@@ -10620,11 +10608,7 @@ function headerFooterBarDirective(isHeader) {
  * reach to trigger the on-infinite expression. Default: 1%.
  * @param {string=} spinner The {@link ionic.directive:ionSpinner} to show while loading. The SVG
  * {@link ionic.directive:ionSpinner} is now the default, replacing rotating font icons.
-<<<<<<< HEAD
- * @param {string=} icon The icon to show while loading. Default: 'ion-load-d'.  This is depreicated
-=======
  * @param {string=} icon The icon to show while loading. Default: 'ion-load-d'.  This is depreciated
->>>>>>> b3fed34bfc8238feea1a3302c68d4753728e6e7e
  * in favor of the SVG {@link ionic.directive:ionSpinner}.
  * @param {boolean=} immediate-check Whether to check the infinite scroll bounds immediately on load.
  *
@@ -13312,10 +13296,6 @@ function($animate, $timeout, $compile, $ionicSlideBoxDelegate, $ionicHistory, $i
  * @ngdoc directive
  * @name ionSlides
  * @module ionic
-<<<<<<< HEAD
- * @delegate ionic.service:$ionicSlideBoxDelegate
-=======
->>>>>>> b3fed34bfc8238feea1a3302c68d4753728e6e7e
  * @restrict E
  * @description
  * The Slides component is a powerful multi-page container where each page can be swiped or dragged between.
