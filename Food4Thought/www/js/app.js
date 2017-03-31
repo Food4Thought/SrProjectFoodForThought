@@ -34,6 +34,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'jett.ionic.filter.ba
 
 	// Each tab has its own nav history stack:
 
+	.state('tab.welcome', {
+		url: '/welcome',
+		views: {
+			'tab-welcome': {
+				templateUrl: 'templates/login.html',
+				controller: 'LoginCtrl'
+			}   
+		}   
+	})
 	.state('tab.home', {
 		url: '/home',
 		views: {
