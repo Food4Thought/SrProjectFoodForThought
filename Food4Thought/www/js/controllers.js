@@ -23,7 +23,24 @@ angular.module('starter.controllers', [])
 	}
 })
 
-.controller('HomeCtrl', function($scope, $ionicModal) {
+.controller('HomeCtrl', function($state, $scope, $ionicModal, $localStorage) {
+
+	$scope.$storage = $localStorage;
+	
+	$scope.$storage = $localStorage.$default({
+		firstTime: true
+	});
+
+	//TODO: Check directly that we have the user info by checking for name
+	//Redirect to actual info getting page
+	if($scope.$storage.firstTime == true){ //User is visiting for the first time, redirect them to the info gathering page
+		$state.go('welcome');
+		$scope.$storage.firstTime = true;
+	}
+	else { //We have the user info, go to main screen
+	}
+
+
 	$scope.shifts = [ 
 	{loc: 'MSU', date: '12/5/12', organization: 'Food4Thought', info: '7:30-9:30am\nThe Regency Athletic Complex at MSU Denver.\n1390 Shoshone St, Denver, CO 80204'},
 	{loc: 'Ellis', date: '3/3/17', organization: 'Food4Thought', info: '2-3:30pm\nEllis Elementary School.\n1651 S Dahlia St, Denver, CO 80222'}
