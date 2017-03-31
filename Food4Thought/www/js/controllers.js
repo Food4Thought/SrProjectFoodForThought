@@ -1,5 +1,28 @@
 angular.module('starter.controllers', [])
 
+.controller('LoginCtrl', function($state, $scope, $localStorage){
+	//TODO: On entering info, add to local storage and redirect to main screen
+	//		
+	$scope.user = {};
+	$scope.$storage = $localStorage;
+
+	function testFunc(){
+		console.log("HEYYYY");
+	}
+
+	function storeCredentials(){
+		$scope.$storage.firstName = $scope.user.firstName;
+		$scope.$storage.lastName = $scope.user.lastName;
+		$scope.$storage.phoneNumber = $scope.user.phoneNumber;
+		if($scope.$storage.firstName != null){
+			$state.go('tab.home');
+		}
+		else{
+			console.log("Error: User info not stored");
+		}
+	}
+})
+
 .controller('HomeCtrl', function($scope, $ionicModal) {
 	$scope.shifts = [ 
 	{loc: 'MSU', date: '12/5/12', organization: 'Food4Thought', info: '7:30-9:30am\nThe Regency Athletic Complex at MSU Denver.\n1390 Shoshone St, Denver, CO 80204'},
