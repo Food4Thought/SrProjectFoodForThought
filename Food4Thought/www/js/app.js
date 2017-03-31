@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'jett.ionic.filter.bar'])
+angular.module('starter', ['ionic', 'starter.controllers', 'jett.ionic.filter.bar', 'ngStorage'])
 
 .run(function($ionicPlatform) {
 	$ionicPlatform.ready(function() {
@@ -34,14 +34,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'jett.ionic.filter.ba
 
 	// Each tab has its own nav history stack:
 
-	.state('tab.welcome', {
+	.state('welcome', {
 		url: '/welcome',
-		views: {
-			'tab-welcome': {
-				templateUrl: 'templates/login.html',
-				controller: 'LoginCtrl'
-			}   
-		}   
+		templateUrl: 'templates/login.html',
+		controller: 'LoginCtrl'
 	})
 	.state('tab.home', {
 		url: '/home',

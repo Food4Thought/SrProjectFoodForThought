@@ -6,14 +6,14 @@ angular.module('starter.controllers', [])
 	$scope.user = {};
 	$scope.$storage = $localStorage;
 
-	function testFunc(){
+	$scope.testFunc = function(){
 		console.log("HEYYYY");
 	}
 
 	function storeCredentials(){
-		$scope.$storage.firstName = $scope.user.firstName;
-		$scope.$storage.lastName = $scope.user.lastName;
-		$scope.$storage.phoneNumber = $scope.user.phoneNumber;
+		$scope.$storage.firstName = $scope.userData.firstName;
+		$scope.$storage.lastName = $scope.userData.lastName;
+		$scope.$storage.phoneNumber = $scope.userData.phoneNumber;
 		if($scope.$storage.firstName != null){
 			$state.go('tab.home');
 		}
