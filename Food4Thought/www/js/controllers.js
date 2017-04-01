@@ -5,44 +5,50 @@ angular.module('starter.controllers', [])
 	//		
 	$scope.userData = {};
 	$scope.$storage = $localStorage;
+	$scope.$storage = $localStorage.$default({
+		firstTime: true
+	});
+	var vm = this;
+	vm.storeCredentials = storeCredentials;	
+	
+	console.log($scope.$storage.firstTime);
+	if($scope.$storage.firstTime == false){
+		$state.go('tab.home');
+	}
 
-	$scope.storeCredentials = function(){
-		console.log($scope.userData);
+	function storeCredentials(){
+		if(vm.welcomeForm.$valid){
+			$scope.$storage.firstTime = false;	
 
-		$scope.$storage.firstName = $scope.userData.firstName;
-		$scope.$storage.lastName = $scope.userData.lastName;
-		$scope.$storage.email = $scope.userData.email;
-		$scope.$storage.phoneNumber = $scope.userData.phoneNumber;
-		console.log($scope.$storage.firstName);
-		console.log($scope.$storage.lastName);
-		console.log($scope.$storage.email);
-		console.log($scope.$storage.phoneNumber);
-	//	if($scope.$storage.firstName != null){
-	//		$state.go('tab.home');
-	//	}
-	//	else{
-	//		console.log("Error: User info not stored");
-	//	}
+			$scope.$storage.firstName = $scope.userData.firstName;
+			$scope.$storage.lastName = $scope.userData.lastName;
+			$scope.$storage.email = $scope.userData.email;
+			$scope.$storage.phoneNumber = $scope.userData.phoneNumber;
+
+			console.log($scope.$storage.firstName);
+			console.log($scope.$storage.lastName);
+			console.log($scope.$storage.email);
+			console.log($scope.$storage.phoneNumber);
+			$state.go('tab.home');
+		}
+		else{
+			console.log("Form was invalid, doing nothing");
+		}
+
+//		if($scope.$storage.firstName != null){
+//			$state.go('tab.home');
+//		}
+//		else{
+//			console.log("Error: User info not stored");
+//		}
 	}
 })
 
 .controller('HomeCtrl', function($state, $scope, $ionicModal, $localStorage) {
 
 	$scope.$storage = $localStorage;
-	
-	$scope.$storage = $localStorage.$default({
-		firstTime: true
-	});
 
-	//TODO: Check directly that we have the user info by checking for name
-	//Redirect to actual info getting page
-	if($scope.$storage.firstTime == true){ //User is visiting for the first time, redirect them to the info gathering page
-		$state.go('welcome');
-		$scope.$storage.firstTime = true;
-	}
-	else { //We have the user info, go to main screen
-	}
-
+	console.log($scope.$storage.firstName);
 
 	$scope.shifts = [ 
 	{loc: 'MSU', date: '12/5/12', organization: 'Food4Thought', info: '7:30-9:30am\nThe Regency Athletic Complex at MSU Denver.\n1390 Shoshone St, Denver, CO 80204'},
