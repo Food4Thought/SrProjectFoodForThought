@@ -3,13 +3,15 @@ angular.module('starter.controllers', [])
 .controller('LoginCtrl', function($state, $scope, $localStorage){
 	//TODO: On entering info, add to local storage and redirect to main screen
 	//		
-	$scope.user = {};
+	$scope.userData = {};
 	$scope.$storage = $localStorage;
 
 	$scope.storeCredentials = function(){
+		console.log($scope.userData);
+
 		$scope.$storage.firstName = $scope.userData.firstName;
 		$scope.$storage.lastName = $scope.userData.lastName;
-		$scope.$storage.phoneNumber = $scope.userData.email;
+		$scope.$storage.email = $scope.userData.email;
 		$scope.$storage.phoneNumber = $scope.userData.phoneNumber;
 		console.log($scope.$storage.firstName);
 		console.log($scope.$storage.lastName);

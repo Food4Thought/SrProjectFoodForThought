@@ -1,30 +1,58 @@
-<ion-view view-title="Welcome">
-<ion-nav-view name="main"></ion-nav-view>
-	<ion-nav-bar class="f4t-blue"></ion-nav-bar>
+<ion-view view-title="Welcome!">
+	<ion-nav-bar class="bar-stable"></ion-nav-bar>
   <ion-content>
-    <form ng-submit="console.log('sdfsdfs')">
+<div class="card">
+  <div class="item item-text-wrap">
+    It looks like it's your first time using the FoodForThough app. Enter your info below to get started!
+  </div>
+</div>
+<script id="templates/form-errors.html" type="text/ng-template">  
+  <div class="form-error" ng-message="required">This field is required.</div>
+  <div class="form-error" ng-message="email">Please enter a valid email address</div>
+  <div class="form-error" ng-message="pattern">Please enter a valid phone number</div>
+</script> 
+    <form name="welcomeForm" ng-submit="lctr.storeCredentials()" novalidate>
       <div class="list">
-        <label class="item item-input">
-          <span class="input-label">First Name</span>
-          <input type="text" ng-model="userData.firstName">
-        </label>
-        <label class="item item-input">
-          <span class="input-label">Last Name</span>
-          <input type="text" ng-model="userData.lastName">
-        </label>
-        <label class="item item-input">
-          <span class="input-label">Email</span>
-          <input type="text" ng-model="userData.email">
-        </label>
-        <label class="item item-input">
-          <span class="input-label">Phone</span>
-          <input type="text" ng-model="userData.phoneNumber">
-        </label>
-		<label class="item">
-          <button class="button button-block button-positive" type="submit">Log in</button>
-        </label>
-	  </div>
-    </form>
 
-  </ion-content>
+        <label class="item item-input" ng-class="{'has-error' :  welcomeForm.firstname.$invalid && welcomeForm.$submitted}">
+          <span class="input-label">First Name</span>
+          <input name="firstname" type="text" ng-model="userData.firstName" required>
+        </label>
+
+		<div class="form-errors" ng-show="welcomeForm.firstname.$invalid && welcomeForm.$submitted" ng-messages="welcomeForm.firstname.$error" ng-messages-include="templates/form-errors.html">  
+		</div> 	
+
+        <label class="item item-input" ng-class="{'has-error' : welcomeForm.lastname.$invalid && welcomeForm.$submitted}">
+          <span class="input-label">Last Name</span>
+          <input name="lastname" type="text" ng-model="userData.lastName" required>
+        </label>
+
+		<div class="form-errors" ng-show="welcomeForm.lastname.$invalid && welcomeForm.$submitted" ng-messages="welcomeForm.lastname.$error" ng-messages-include="templates/form-errors.html">  
+		</div> 
+
+        <label class="item item-input" ng-class="{'has-error' : welcomeForm.email.$invalid && welcomeForm.$submitted}">
+          <span class="input-label">Email</span>
+          <input name="email" type="email" ng-model="userData.email" required>
+        </label>
+		
+		<div class="form-errors" ng-show="welcomeForm.email.$invalid && welcomeForm.$submitted" ng-messages="welcomeForm.email.$error" ng-messages-include="templates/form-errors.html">  
+		</div> 
+
+        <label class="item item-input" ng-class="{'has-error' : welcomeForm.phone.$invalid && welcomeForm.$submitted}">
+          <span class="input-label">Phone Number</span>
+          <input name="phone" type="tel" pattern="^[0-9\-\+\s\(\)]*$" ng-model="userData.phoneNumber" required>
+        </label>
+
+		<div class="form-errors" ng-show="welcomeForm.phone.$invalid && welcomeForm.$submitted" ng-messages="welcomeForm.phone.$error" ng-messages-include="templates/form-errors.html">  
+		</div> 
+
+	<button type="submit" ng-click= "storeCredentials()" class="button button-block button-positive">submit test</button>
+
+      </div>
+    </form>
+	<p ng-show="welcomeForm.email.$invalid && !welcomeForm.email.$error.required">Please enter a valid email address</p>
+  <ion-item class="button button-dark" ng-click="storeCredentials()">
+				Sign up to volunteer!
+			</ion-item>
+	</ion-content>
 </ion-view>
