@@ -46,13 +46,9 @@
 		<div class="form-errors" ng-show="welcomeForm.phone.$invalid && welcomeForm.$submitted" ng-messages="welcomeForm.phone.$error" ng-messages-include="templates/form-errors.html">  
 		</div> 
 
-	<button type="submit" ng-click= "storeCredentials()" class="button button-block button-positive">submit test</button>
+	<button type="submit" ng-click= "storeCredentials()" class="button button-block button-positive">Submit</button>
 
       </div>
     </form>
-	<p ng-show="welcomeForm.email.$invalid && !welcomeForm.email.$error.required">Please enter a valid email address</p>
-  <ion-item class="button button-dark" ng-click="storeCredentials()">
-				Sign up to volunteer!
-			</ion-item>
 	</ion-content>
 </ion-view>

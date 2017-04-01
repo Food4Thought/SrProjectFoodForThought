@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('LoginCtrl', function($state, $scope, $localStorage){
+.controller('WelcomeCtrl', function($state, $scope, $localStorage){
 	//TODO: On entering info, add to local storage and redirect to main screen
 	//		
 	$scope.userData = {};
