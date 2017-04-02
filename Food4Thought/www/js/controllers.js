@@ -43,7 +43,8 @@ angular.module('starter.controllers', [])
 //		}
 	}
 })
-
+.controller('LoginCtrl', function($state, $scope, $localStorage){
+})
 .controller('HomeCtrl', function($state, $scope, $ionicModal, $localStorage) {
 
 	$scope.$storage = $localStorage;

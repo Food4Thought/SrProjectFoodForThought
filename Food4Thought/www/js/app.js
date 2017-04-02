@@ -39,6 +39,13 @@ angular.module('starter', ['ionic', 'starter.controllers', 'jett.ionic.filter.ba
 		templateUrl: 'templates/welcome.html',
 		controller: 'WelcomeCtrl'
 	})
+
+	.state('login', {
+		url: '/login',
+		templateUrl: 'templates/login.html',
+		controller: 'LoginCtrl'
+	})
+	
 	.state('tab.home', {
 		url: '/home',
 		views: {

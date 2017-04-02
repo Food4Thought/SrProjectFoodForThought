@@ -1,0 +1,34 @@
+<ion-view view-title="Welcome!">
+	<ion-nav-bar class="bar-stable"></ion-nav-bar>
+<ion-nav-buttons side="primary">
+	<button class="button button-light icon ion-ios-arrow-back" ui-sref="welcome">
+	</button>
+</ion-nav-buttons>
+
+  <ion-content>
+<div class="card">
+  <div class="item item-text-wrap center-text">
+    Enter your email address and click "Login" below.
+  </div>
+</div>
+<script id="templates/form-errors.html" type="text/ng-template">  
+  <div class="form-error" ng-message="required">This field is required.</div>
+  <div class="form-error" ng-message="email">Please enter a valid email address</div>
+</script> 
+    <form ng-controller="LoginCtrl as ctrl" name="ctrl.welcomeForm" novalidate>
+      <div class="list">
+
+        <label class="item item-input" ng-class="{'has-error' : ctrl.welcomeForm.email.$invalid && ctrl.welcomeForm.$submitted}">
+          <span class="input-label">Email</span>
+          <input name="email" type="email" ng-model="userData.email" required>
+        </label>
+		
+		<div class="form-errors" ng-show="ctrl.welcomeForm.email.$invalid && ctrl.welcomeForm.$submitted" ng-messages="ctrl.welcomeForm.email.$error" ng-messages-include="templates/form-errors.html">  
+		</div> 
+
+	<button type="submit" ng-click= "ctrl.login()" class="button button-block button-positive">Submit</button>
+
+      </div>
+    </form>
+	</ion-content>
+</ion-view>
