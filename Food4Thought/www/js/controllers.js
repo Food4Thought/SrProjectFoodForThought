@@ -6,7 +6,8 @@ angular.module('starter.controllers', [])
 	$scope.userData = {};
 	$scope.$storage = $localStorage;
 	$scope.$storage = $localStorage.$default({
-		firstTime: true
+		firstTime: true,
+		users: {}
 	});
 	var vm = this;
 	vm.storeCredentials = storeCredentials;	
@@ -19,16 +20,15 @@ angular.module('starter.controllers', [])
 	function storeCredentials(){
 		if(vm.welcomeForm.$valid){
 			$scope.$storage.firstTime = false;	
+			
+			$scope.$storage.users[$scope.userData.email] = {
+				firstName: $scope.userData.firstName,
+				lastName: $scope.userData.lastName,
+				email: $scope.userData.email,
+				phoneNumber: $scope.userData.phoneNumber
+			};
+			console.log($scope.$storage.users);
 
-			$scope.$storage.firstName = $scope.userData.firstName;
-			$scope.$storage.lastName = $scope.userData.lastName;
-			$scope.$storage.email = $scope.userData.email;
-			$scope.$storage.phoneNumber = $scope.userData.phoneNumber;
-
-			console.log($scope.$storage.firstName);
-			console.log($scope.$storage.lastName);
-			console.log($scope.$storage.email);
-			console.log($scope.$storage.phoneNumber);
 			$state.go('tab.home');
 		}
 		else{
