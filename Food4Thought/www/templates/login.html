@@ -1,4 +1,4 @@
-<ion-view view-title="Welcome!">
+<ion-view view-title="Login">
 	<ion-nav-bar class="bar-stable"></ion-nav-bar>
 <ion-nav-buttons side="primary">
 	<button class="button button-light icon ion-ios-arrow-back" ui-sref="welcome">
@@ -14,19 +14,20 @@
 <script id="templates/form-errors.html" type="text/ng-template">  
   <div class="form-error" ng-message="required">This field is required.</div>
   <div class="form-error" ng-message="email">Please enter a valid email address</div>
+  <div class="form-error" ng-message="noUserMatch">No user could be found for that email. Check for typos or go back to the welcome screen to register</div>
 </script> 
-    <form ng-controller="LoginCtrl as ctrl" name="ctrl.welcomeForm" novalidate>
+    <form ng-controller="LoginCtrl as ctrl" name="ctrl.loginForm" novalidate>
       <div class="list">
 
-        <label class="item item-input" ng-class="{'has-error' : ctrl.welcomeForm.email.$invalid && ctrl.welcomeForm.$submitted}">
+        <label class="item item-input" ng-class="{'has-error' : ctrl.loginForm.email.$invalid && ctrl.loginForm.$submitted}">
           <span class="input-label">Email</span>
-          <input name="email" type="email" ng-model="userData.email" required>
+          <input name="email" type="email" ng-model="userData.email" ng-change="ctrl.resetUserMatchError()" required>
         </label>
 		
-		<div class="form-errors" ng-show="ctrl.welcomeForm.email.$invalid && ctrl.welcomeForm.$submitted" ng-messages="ctrl.welcomeForm.email.$error" ng-messages-include="templates/form-errors.html">  
+		<div class="form-errors" ng-show="ctrl.loginForm.email.$invalid && ctrl.loginForm.$submitted" ng-messages="ctrl.loginForm.email.$error" ng-messages-include="templates/form-errors.html">  
 		</div> 
 
-	<button type="submit" ng-click= "ctrl.login()" class="button button-block button-positive">Submit</button>
+	<button type="submit" ng-click= "ctrl.login()" class="button button-block button-positive">Login</button>
 
       </div>
     </form>

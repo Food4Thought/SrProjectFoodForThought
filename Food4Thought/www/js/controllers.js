@@ -7,6 +7,7 @@ angular.module('starter.controllers', [])
 	$scope.$storage = $localStorage;
 	$scope.$storage = $localStorage.$default({
 		firstTime: true,
+		currentUser: null,
 		users: {}
 	});
 	var vm = this;
@@ -34,16 +35,50 @@ angular.module('starter.controllers', [])
 		else{
 			console.log("Form was invalid, doing nothing");
 		}
-
-//		if($scope.$storage.firstName != null){
-//			$state.go('tab.home');
-//		}
-//		else{
-//			console.log("Error: User info not stored");
-//		}
 	}
 })
 .controller('LoginCtrl', function($state, $scope, $localStorage){
+	//TODO:
+	//Check if form is valid!
+	//Check if email is in $scope.$storage.users
+	//If so, set current user and goto home (need to create 'current user' var)
+	//If not, tell the user (use form error css, yo.), suggesting there was a typo, or that they don't have their info registered
+
+	$scope.$storage = $localStorage;
+
+	$scope.userData = {};
+
+	var vm = this;
+	vm.login = login;
+	vm.resetUserMatchError = resetUserMatchError;
+
+	function resetUserMatchError(){
+		vm.loginForm.email.$error.noUserMatch = false;
+		vm.loginForm.$submitted = false;
+	}
+
+	function login(){
+
+		if(vm.loginForm.$valid){
+			if($scope.userData.email in $scope.$storage.users){
+				vm.loginForm.email.$error.noUserMatch = false;
+				currentUser = $scope.$storage.users[$scope.userData.email];
+				console.log(currentUser);
+				$state.go('tab.home');
+			}
+			else{
+				vm.loginForm.email.$error.noUserMatch = true;
+				console.log("No match");	
+			}
+		}
+	}
+				//User is in list of users. Set them as active user and navigate to home page
+
+			//look for $scope.userData.email in $scope.$storage.users
+	
+
+
+
 })
 .controller('HomeCtrl', function($state, $scope, $ionicModal, $localStorage) {
 
