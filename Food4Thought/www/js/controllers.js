@@ -29,6 +29,7 @@ angular.module('starter.controllers', [])
 				phoneNumber: $scope.userData.phoneNumber
 			};
 			console.log($scope.$storage.users);
+			$scope.$storage.currentUser = $scope.$storage.users[$scope.userData.email]; 
 
 			$state.go('tab.home');
 		}
@@ -81,10 +82,9 @@ angular.module('starter.controllers', [])
 
 })
 .controller('HomeCtrl', function($state, $scope, $ionicModal, $localStorage) {
-
+	
 	$scope.$storage = $localStorage;
-
-	console.log($scope.$storage.firstName);
+	console.log($scope.$storage.currentUser);
 
 	$scope.shifts = [ 
 	{loc: 'MSU', date: '12/5/12', organization: 'Food4Thought', info: '7:30-9:30am\nThe Regency Athletic Complex at MSU Denver.\n1390 Shoshone St, Denver, CO 80204'},
