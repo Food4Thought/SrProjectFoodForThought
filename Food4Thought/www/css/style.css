@@ -1,5 +1,10 @@
 /* Empty. Add your own CSS if you like */
 
+iframe {
+	width: 1px;
+	width: 100%;
+}
+
 .f4t-red {
 	background-color:#bf101a;
 	color:white;
