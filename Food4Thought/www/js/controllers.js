@@ -37,8 +37,20 @@ angular.module('starter.controllers', [])
 		return $scope.shownShift === shift;
 	};
 
+	function pickNewShiftModal () {
+		if(ionic.Platform.isIOS()){
+			return ('/templates/newShiftModals/ios.html');
+		}
+		if(ionic.Platform.isAndroid()){
+			return ('/templates/newShiftModals/android.html');
+		}
+		else {
+			return ('/templates/newShiftModals/web.html');
+		}
+	}
+
 	// Sign Up Modal
-	$ionicModal.fromTemplateUrl('templates/admin/modals/newShift.html', {
+	$ionicModal.fromTemplateUrl(pickNewShiftModal(), {
 		id: '1',
 		scope: $scope,
 		animation: 'slide-in-up'
@@ -62,8 +74,7 @@ angular.module('starter.controllers', [])
 		//$scope.checkInModal.show();
 	};
 	$scope.closeModal = function() {
-		if(modalID == 1) $scope.signUpModal.hide();
-		else $scope.checkInModal.hide();
+		$scope.signUpModal.hide();
 	};
 
 	// Cleanup the modal when we're done with it!
