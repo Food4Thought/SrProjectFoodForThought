@@ -17,6 +17,12 @@ iframe {
 	background-color:#47628f;
 	color:white;
 }
+.f4t-water {
+	background: url(../images/Full.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
 
 .center-text {
 	text-align: center;
