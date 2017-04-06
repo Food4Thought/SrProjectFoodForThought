@@ -1,26 +1,35 @@
-<div data-ui-view="admin-checkin"></div>
-<ion-modal-view>
-  <ion-header-bar>
-    <h1 class="title">Login</h1>
-    <div class="buttons">
-      <button class="button button-clear" ng-click="closeLogin()">Close</button>
-    </div>
-  </ion-header-bar>
+<ion-view view-title="Login">
+	<ion-nav-bar class="bar-stable"></ion-nav-bar>
+<ion-nav-buttons side="primary">
+	<button class="button button-light icon ion-ios-arrow-back" ui-sref="welcome">
+	</button>
+</ion-nav-buttons>
+
   <ion-content>
-    <form ng-submit="doLogin()">
+<div class="card">
+  <div class="item item-text-wrap center-text">
+    Enter your email address and click "Login" below.
+  </div>
+</div>
+<script id="templates/form-errors.html" type="text/ng-template">  
+  <div class="form-error" ng-message="required">This field is required.</div>
+  <div class="form-error" ng-message="email">Please enter a valid email address</div>
+  <div class="form-error" ng-message="noUserMatch">No user could be found for that email. Check for typos or go back to the welcome screen to register</div>
+</script> 
+    <form ng-controller="LoginCtrl as ctrl" name="ctrl.loginForm" novalidate>
       <div class="list">
-        <label class="item item-input">
-          <span class="input-label">Username</span>
-          <input type="text" ng-model="loginData.username">
+
+        <label class="item item-input" ng-class="{'has-error' : ctrl.loginForm.email.$invalid && ctrl.loginForm.$submitted}">
+          <span class="input-label">Email</span>
+          <input name="email" type="email" ng-model="userData.email" ng-change="ctrl.resetUserMatchError()" required>
         </label>
-        <label class="item item-input">
-          <span class="input-label">Password</span>
-          <input type="password" ng-model="loginData.password">
-        </label>
-        <label class="item">
-          <button class="button button-block button-positive" type="submit">Log in</button>
-        </label>
+		
+		<div class="form-errors" ng-show="ctrl.loginForm.email.$invalid && ctrl.loginForm.$submitted" ng-messages="ctrl.loginForm.email.$error" ng-messages-include="templates/form-errors.html">  
+		</div> 
+
+	<button type="submit" ng-click= "ctrl.login()" class="button button-block button-positive">Login</button>
+
       </div>
     </form>
-  </ion-content>
-</ion-modal-view>
+	</ion-content>
+</ion-view>
