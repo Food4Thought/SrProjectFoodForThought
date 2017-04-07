@@ -1,10 +1,12 @@
 angular.module('starter.controllers', [])
 
 .controller('HomeCtrl', function($scope, $ionicModal) {
-	$scope.shifts = [ 
-	{loc: 'MSU', date: '12/5/12', organization: 'Food4Thought', time: '7:30-9:30am', location: 'The Regency Athletic Complex at MSU Denver.', address: '1390 Shoshone St, Denver, CO 80204'},
-	{loc: 'Ellis', date: '3/3/17', organization: 'Food4Thought', time: '2-3:30pm', location: 'Ellis Elementary School.', address: '1651 S Dahlia St, Denver, CO 80222'}
-	];
+	$scope.shifts = [];
+
+	var shift1 = {loc: 'MSU', date: '12/5/12', organization: 'Food4Thought', time: '7:30-9:30am', location: 'The Regency Athletic Complex at MSU Denver.', address: '1390 Shoshone St, Denver, CO 80204'};
+
+	var shift2 = {loc: 'Ellis', date: '3/3/17', organization: 'Food4Thought', time: '2-3:30pm', location: 'Ellis Elementary School.', address: '1651 S Dahlia St, Denver, CO 80222'};
+
 
 	$scope.clothInfo = "Please wear comforable clothing and dress for working in an outdoor covered location.";
 
@@ -18,11 +20,10 @@ angular.module('starter.controllers', [])
 			address: shift.address,
 			info2: $scope.clothInfo
 		}); 
-		shift.loc = ""; 
-		shift.date = ""; 
-		shift.organization = "";
-		shift.info = "";
 	};
+
+	$scope.createShift(shift1);
+	$scope.createShift(shift2);
 
 	$scope.toggleShift = function(shift) {
 		if($scope.isShiftShown(shift)) {
