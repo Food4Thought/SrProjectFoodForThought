@@ -21,17 +21,17 @@
 					<ion-item class="item-accordian row", ng-show="isShiftShown(shift)">
 
 						<div class="col col-25" ng-click="launchMaps(shift.location)">
-						<div class="shift-details">{{shift.time}}</div>
-						<p class="shift-details">{{shift.location}}</p>
-						<p class="shift-details">{{shift.address}}</p>
+						<pre class="shift-details">{{shift.time}}</pre>
+						<pre class="shift-details">{{shift.location}}</pre>
+						<pre class="shift-details">{{shift.address}}</pre>
 						</div>
 
 						<div class="col col-40">
-							<i class="button button-bold icon ion-location"> Directions</i>
+							<i class="button button-bold icon ion-location" ng-click="launchMaps(shift.address)"> Directions</i>
 						</div>
 
 						<div class="col col-35">
-						<p class="shift-details">{{clothInfo}}</p>
+						<pre class="shift-details">{{clothInfo}}</pre>
 						</div>
 					</ion-item>
 				</div>
