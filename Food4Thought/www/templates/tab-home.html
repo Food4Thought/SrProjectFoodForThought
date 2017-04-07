@@ -20,7 +20,9 @@
 					</ion-item>
 					<ion-item class="item-accordian row", ng-show="isShiftShown(shift)">
 						<div class="col col-50">
-						<pre style="font-family:verdana; font-size:85%;">{{shift.info}}</pre>
+						<pre style="font-family:verdana; font-size:85%;">{{shift.time}}</pre>
+						<pre style="font-family:verdana; font-size:85%;">{{shift.location}}</pre>
+						<pre style="font-family:verdana; font-size:85%;">{{shift.address}}</pre>
 						</div>
 						<div class="col col-50">
 						<pre style="font-family:verdana; font-size:85%;">{{clothInfo}}</pre>
@@ -39,6 +41,11 @@
 			<ion-item class="button button-assertive" ng-click="openModal(2)">
 				Check In
 			</ion-item>
+
+			<ion-item class="button button-assertive" ng-click="launchMaps('4791 White Rock Cir, Boulder CO')">
+				mapstest
+			</ion-item>
+
 		</center>
 	</ion-content>
 </ion-view>
