@@ -19,13 +19,19 @@
 						<div class="col col-35">{{shift.organization}}</div>
 					</ion-item>
 					<ion-item class="item-accordian row", ng-show="isShiftShown(shift)">
-						<div class="col col-50">
-						<pre style="font-family:verdana; font-size:85%;">{{shift.time}}</pre>
-						<pre style="font-family:verdana; font-size:85%;">{{shift.location}}</pre>
-						<pre style="font-family:verdana; font-size:85%;">{{shift.address}}</pre>
+
+						<div class="col col-25" ng-click="launchMaps(shift.location)">
+						<pre class="shift-details">{{shift.time}}</pre>
+						<pre class="shift-details">{{shift.location}}</pre>
+						<pre class="shift-details">{{shift.address}}</pre>
 						</div>
-						<div class="col col-50">
-						<pre style="font-family:verdana; font-size:85%;">{{clothInfo}}</pre>
+
+						<div class="col col-40">
+						<pre class="shift-details">MAPSSS</pre>
+						</div>
+
+						<div class="col col-35">
+						<pre class="shift-details">{{clothInfo}}</pre>
 						</div>
 					</ion-item>
 				</div>
@@ -40,10 +46,6 @@
 			<br><br><br>
 			<ion-item class="button button-assertive" ng-click="openModal(2)">
 				Check In
-			</ion-item>
-
-			<ion-item class="button button-assertive" ng-click="launchMaps('4791 White Rock Cir, Boulder CO')">
-				mapstest
 			</ion-item>
 
 		</center>

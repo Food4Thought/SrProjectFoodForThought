@@ -37,16 +37,15 @@ angular.module('starter.controllers', [])
 	};
 
 	$scope.launchMaps = function(address){
-	console.log($scope.shownShift.info);
-//		if(ionic.Platform.isIOS()){
-//			window.location.href = "maps://maps.apple.com/?daddr=" + address;
-//		}
-//		else if(ionic.Platform.isAndroid()){
-//			window.location.href = "geo:?q=" + address;
-//		}
-//		else{
-//			window.location.href = "https://www.google.com/maps/place/" + address;	
-//		}
+		if(ionic.Platform.isIOS()){
+			window.location.href = "maps://maps.apple.com/?daddr=" + address;
+		}
+		else if(ionic.Platform.isAndroid()){
+			window.location.href = "geo:?q=" + address;
+		}
+		else{
+			window.location.href = "https://www.google.com/maps/place/" + address;	
+		}
 	};
 
 	function pickNewShiftModal () {
