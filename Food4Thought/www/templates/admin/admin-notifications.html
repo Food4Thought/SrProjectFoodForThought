@@ -1,51 +1,48 @@
 <ion-view view-title="Manage Notifications">
-	<ion-nav-view nav-direction="back"></ion-nav-view>
+	<ion-nav-view animation="slide-left-right"></ion-nav-view>
 	<ion-nav-bar class="f4t-blue">
-
 		<ion-nav-buttons>
 			<button class="button button-light icon ion-ios-arrow-back" ui-sref="tab.admin">
 			</button>
 		</ion-nav-buttons>
-
-
-
 	</ion-nav-bar>
-	<ion-content>
 
+	<ion-content ng-controller="NotificationsCtrl">
 		<div class="list card">
-			<ion-list ng-controller="NotificationsCtrl">
-				<ion-item class="item item-divider f4t-red center-text">
-					urgent!
+			<ion-list>
+				<ion-item class="item item-divider f4t-red row" style="text-align:center;">
+					<div class="col col-80" style="padding-top:15px;">Urgent Notifications</div>
+					<button class="icon ion-ios-plus-outline col col-20 button f4t-red" ng-click="showAddChangeUrgent('add')"></button>
 				</ion-item>
-				<ion-item ng-repeat="notification in notificationsUrgent">
-					<div class = "item item-icon-right">
-						<i class="button button-light icon ion-edit" ng-click="openModal(1)"></i>
-						{{notification.title}}
+				<ion-item ng-if="urgent.length == 0">
+				Press <i class="icon ion-ios-plus-outline"></i> to add item
+				</ion-item>
+				<ion-item class="item item-text-wrap" ng-repeat="item in urgent">
+				{{item.description}}
+				<div style="text-align:right;">
+					<button class="button button-assertive" on-click="removeUrgent(item)" on-tap="removeUrgent(item)">Delete</button>
+					<button class="button button-calm" on-click="showEditItem(item)" on-tap="showEditUrgent(item)">Edit</button>
+				</div>
+				</ion-item>
+			</ion-list>
+		</div>
+		<div class="list card">
+			<ion-list>
+				<ion-item class="item item-divider row" style="text-align:center; background-color:black; color:white;">
+					<div class="col col-80" style="padding-top:15px;"> Other Notifications </div>
+					<button class="icon ion-ios-plus-outline col col-20 button" style="background-color:black; color:white" ng-click="showAddChangeInfo('add')"></button>
+				</ion-item>
+				<ion-item ng-if="info.length == 0">
+					Press <i class="icon ion-ios-plus-outline"></i> to add item
+				</ion-item>
+				<ion-item class="item item-text-wrap" ng-repeat="item in info">
+					{{item.description}}
+					<div style="text-align:right;">
+						<button class="button button-assertive" on-click="removeInfo(item)" on-tap="removeInfo(item)">Delete</button>
+						<button class="button button-calm" on-click="showEditItem(item)" on-tap="showEditInfo(item)">Edit</button>
 					</div>
 				</ion-item>
 			</ion-list>
-
 		</div>
-
-		<div class="list card">
-			<ion-list ng-controller="NotificationsCtrl">
-				<ion-list>
-					<ion-item class="item item-divider f4t-blue center-text"">
-						other...
-					</ion-item>
-					<ion-item ng-repeat="notification in notificationsInfo">
-						<div class = "item item-icon-right">
-							<i class="button button-light icon ion-edit" ng-click="openModal(1)"></i>
-							{{notification.title}}
-						</div>
-					</ion-item>
-				</ion-list>
-		</div>
-		<div class="card">
-			<div class="item item-text-wrap center-text" ng-click="openModal(2)">
-				<p>New Notification</p>
-			</div>
-		</div>
-
-			</ion-content>
-	</ion-view>
+	</ion-content>
+</ion-view>
