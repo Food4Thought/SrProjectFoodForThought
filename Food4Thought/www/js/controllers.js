@@ -1,5 +1,6 @@
 angular.module('starter.controllers', [])
 
+
 .controller('WelcomeCtrl', function($state, $scope, $localStorage){
 	//TODO: On entering info, add to local storage and redirect to main screen
 	//		
@@ -76,24 +77,15 @@ angular.module('starter.controllers', [])
 				//User is in list of users. Set them as active user and navigate to home page
 
 			//look for $scope.userData.email in $scope.$storage.users
-	
-
-
 
 })
-.controller('HomeCtrl', function($state, $scope, $ionicModal, $localStorage) {
-	
-	$scope.$storage = $localStorage;
-	console.log($scope.$storage.currentUser);
 
-	$scope.shifts = [ 
-	{loc: 'MSU', date: '12/5/12', organization: 'Food4Thought', info: '7:30-9:30am\nThe Regency Athletic Complex at MSU Denver.\n1390 Shoshone St, Denver, CO 80204'},
-	{loc: 'Ellis', date: '3/3/17', organization: 'Food4Thought', info: '2-3:30pm\nEllis Elementary School.\n1651 S Dahlia St, Denver, CO 80222'}
-	];
+.controller('HomeCtrl', function($scope, $ionicModal) {
+	$scope.shifts = [];
 
-	$scope.locDetails = [
-		{name: 'MSU', info: '7:30-9:30am\nThe Regency Athletic Complex at MSU Denver. 1390 Shoshone St, Denver, CO 80204'}
-	];
+	var shift1 = {loc: 'MSU', date: '12/5/12', organization: 'Food4Thought', time: '7:30-9:30am', location: 'The Regency Athletic Complex at MSU Denver.', address: '1390 Shoshone St, Denver, CO 80204'};
+
+	var shift2 = {loc: 'Ellis', date: '3/3/17', organization: 'Food4Thought', time: '2-3:30pm', location: 'Ellis Elementary School.', address: '1651 S Dahlia St, Denver, CO 80222'};
 
 	$scope.clothInfo = "Please wear comforable clothing and dress for working in an outdoor covered location.";
 
@@ -102,14 +94,15 @@ angular.module('starter.controllers', [])
 			loc: shift.loc,
 			date: shift.date,
 			organization: shift.organization,
-			info: shift.info,
+			time: shift.time,
+			location: shift.location,
+			address: shift.address,
 			info2: $scope.clothInfo
 		}); 
-		shift.loc = ""; 
-		shift.date = ""; 
-		shift.organization = "";
-		shift.info = "";
 	};
+
+	$scope.createShift(shift1);
+	$scope.createShift(shift2);
 
 	$scope.toggleShift = function(shift) {
 		if($scope.isShiftShown(shift)) {
@@ -122,11 +115,23 @@ angular.module('starter.controllers', [])
 		return $scope.shownShift === shift;
 	};
 
+	$scope.launchMaps = function(address){
+		if(ionic.Platform.isIOS()){
+			window.location.href = "maps://maps.apple.com/?daddr=" + address;
+		}
+		else if(ionic.Platform.isAndroid()){
+			window.location.href = "geo:?q=" + address;
+		}
+		else{
+			window.location.href = "https://www.google.com/maps/place/" + address;	
+		}
+	};
+
 	function pickNewShiftModal () {
 		if(ionic.Platform.isIOS()){
 			return ('/templates/newShiftModals/ios.html');
 		}
-		if(ionic.Platform.isAndroid()){
+		else if(ionic.Platform.isAndroid()){
 			return ('/templates/newShiftModals/android.html');
 		}
 		else {
