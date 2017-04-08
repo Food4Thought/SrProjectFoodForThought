@@ -1,12 +1,91 @@
 angular.module('starter.controllers', [])
 
+
+.controller('WelcomeCtrl', function($state, $scope, $localStorage){
+	//TODO: On entering info, add to local storage and redirect to main screen
+	//		
+	$scope.userData = {};
+	$scope.$storage = $localStorage;
+	$scope.$storage = $localStorage.$default({
+		firstTime: true,
+		currentUser: null,
+		users: {}
+	});
+	var vm = this;
+	vm.storeCredentials = storeCredentials;	
+	
+	console.log($scope.$storage.firstTime);
+	if($scope.$storage.firstTime == false){
+		$state.go('tab.home');
+	}
+
+	function storeCredentials(){
+		if(vm.welcomeForm.$valid){
+			$scope.$storage.firstTime = false;	
+			
+			$scope.$storage.users[$scope.userData.email] = {
+				firstName: $scope.userData.firstName,
+				lastName: $scope.userData.lastName,
+				email: $scope.userData.email,
+				phoneNumber: $scope.userData.phoneNumber
+			};
+			console.log($scope.$storage.users);
+			$scope.$storage.currentUser = $scope.$storage.users[$scope.userData.email]; 
+
+			$state.go('tab.home');
+		}
+		else{
+			console.log("Form was invalid, doing nothing");
+		}
+	}
+})
+.controller('LoginCtrl', function($state, $scope, $localStorage){
+	//TODO:
+	//Check if form is valid!
+	//Check if email is in $scope.$storage.users
+	//If so, set current user and goto home (need to create 'current user' var)
+	//If not, tell the user (use form error css, yo.), suggesting there was a typo, or that they don't have their info registered
+
+	$scope.$storage = $localStorage;
+
+	$scope.userData = {};
+
+	var vm = this;
+	vm.login = login;
+	vm.resetUserMatchError = resetUserMatchError;
+
+	function resetUserMatchError(){
+		vm.loginForm.email.$error.noUserMatch = false;
+		vm.loginForm.$submitted = false;
+	}
+
+	function login(){
+
+		if(vm.loginForm.$valid){
+			if($scope.userData.email in $scope.$storage.users){
+				vm.loginForm.email.$error.noUserMatch = false;
+				currentUser = $scope.$storage.users[$scope.userData.email];
+				console.log(currentUser);
+				$state.go('tab.home');
+			}
+			else{
+				vm.loginForm.email.$error.noUserMatch = true;
+				console.log("No match");	
+			}
+		}
+	}
+				//User is in list of users. Set them as active user and navigate to home page
+
+			//look for $scope.userData.email in $scope.$storage.users
+
+})
+
 .controller('HomeCtrl', function($scope, $ionicModal) {
 	$scope.shifts = [];
 
 	var shift1 = {loc: 'MSU', date: '12/5/12', organization: 'Food4Thought', time: '7:30-9:30am', location: 'The Regency Athletic Complex at MSU Denver.', address: '1390 Shoshone St, Denver, CO 80204'};
 
 	var shift2 = {loc: 'Ellis', date: '3/3/17', organization: 'Food4Thought', time: '2-3:30pm', location: 'Ellis Elementary School.', address: '1651 S Dahlia St, Denver, CO 80222'};
-
 
 	$scope.clothInfo = "Please wear comforable clothing and dress for working in an outdoor covered location.";
 
