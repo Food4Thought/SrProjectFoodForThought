@@ -25,7 +25,7 @@ angular.module('starter.services', [])
 
 .factory('InfoFactory', function() {
 	var infoNotifications = [];
-	var infoStore = localStorage.getItem("itemNotifications");
+	var infoStore = localStorage.getItem("infoNotifications");
 	if(infoStore != null && infoStore != '' && angular.isArray(angular.fromJson(infoStore))) {
 		infoNotifications = angular.fromJson(infoStore);
 	}
