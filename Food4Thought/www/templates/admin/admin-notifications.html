@@ -15,14 +15,14 @@
 					<button class="icon ion-ios-plus-outline col col-20 button f4t-red" ng-click="showAddChangeUrgent('add')"></button>
 				</ion-item>
 				<ion-item ng-if="urgent.length == 0">
-				Press <i class="icon ion-ios-plus-outline"></i> to add item
+					Press <i class="icon ion-ios-plus-outline"></i> to add item
 				</ion-item>
 				<ion-item class="item item-text-wrap" ng-repeat="item in urgent">
-				{{item.description}}
-				<div style="text-align:right;">
-					<button class="button button-assertive" on-tap="removeUrgent(item)">Delete</button>
-					<button class="button button-calm" on-tap="showEditUrgent(item)">Edit</button>
-				</div>
+					<p>{{item.description}}</p>
+					<div style="text-align:right;">
+						<i class="button button-calm icon ion-edit" on-tap="showEditUrgent(item)"></i>
+						<i class="button button-assertive icon ion-trash-a" on-tap="removeUrgent(item)"></i>
+					</div>
 				</ion-item>
 			</ion-list>
 		</div>
@@ -38,8 +38,8 @@
 				<ion-item class="item item-text-wrap" ng-repeat="item in info">
 					{{item.description}}
 					<div style="text-align:right;">
-						<button class="button button-assertive" on-tap="removeInfo(item)">Delete</button>
-						<button class="button button-calm" on-tap="showEditInfo(item)">Edit</button>
+						<i class="button button-calm icon ion-edit" on-tap="showEditInfo(item)"></i>
+						<i class="button button-assertive icon ion-trash-a" on-tap="removeInfo(item)"></i>
 					</div>
 				</ion-item>
 			</ion-list>
