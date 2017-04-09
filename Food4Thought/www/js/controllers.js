@@ -232,7 +232,11 @@ angular.module('starter.controllers', [])
 	$scope.info = InfoFactory.getList();
 
 	$scope.saveEmpty = function(form) {
-		$scope.form = angular.copy(form);
+		$scope.notifForm = angular.copy(form);
+	};
+
+	$scope.urgentSaveEmpty = function(form) {
+		$scope.urgentForm = angular.copy(form);
 	};
 
 	$scope.addUrgent = function(form) {
@@ -274,16 +278,21 @@ angular.module('starter.controllers', [])
 	$scope.showEditUrgent = function(item) {
 		// remember edit item to change it later
 		$scope.tmpEditUrgent = item;
-
 		// preset form values
-		$scope.form.description.$setViewValue(item.description);
+		$scope.urgentForm.description.$setViewValue(item.description);
+		// render updated view value
+		$scope.urgentForm.description.$render();
 		// open dialog
 		$scope.showAddChangeUrgent('change');
 	};
 	$scope.showEditInfo = function(item) {
+		// remember edit item to change it later
 		$scope.tmpEditInfo = item;
-
-		$scope.form.description.$setViewValue(item.description);
+		// preset form values
+		$scope.notifForm.description.$setViewValue(item.description);
+		// render updated view value
+		$scope.notifForm.description.$render();
+		// open dialog
 		$scope.showAddChangeInfo('change');
 	};
 

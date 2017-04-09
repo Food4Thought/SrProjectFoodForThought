@@ -11,7 +11,7 @@
 					<span class="input-label">Description</span>
 					<input type="text" placeholder="" name="description" ng-model="description" required />        
 				</li>
-				<ion-button ng-show="urgentAction == 'add'" ng-init="saveEmptyUrgent(form)" class="button button-block button-positive" ng-click="addUrgent(form)">
+				<ion-button ng-show="urgentAction == 'add'" ng-init="urgentSaveEmpty(form)" class="button button-block button-positive" ng-click="addUrgent(form)">
 					Add
 				</ion-button>
 				<ion-button ng-show="urgentAction == 'change'" class="button button-block button-positive" ng-click="editUrgent(form)">

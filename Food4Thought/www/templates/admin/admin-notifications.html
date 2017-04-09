@@ -20,8 +20,8 @@
 				<ion-item class="item item-text-wrap" ng-repeat="item in urgent">
 				{{item.description}}
 				<div style="text-align:right;">
-					<button class="button button-assertive" on-click="removeUrgent(item)" on-tap="removeUrgent(item)">Delete</button>
-					<button class="button button-calm" on-click="showEditItem(item)" on-tap="showEditUrgent(item)">Edit</button>
+					<button class="button button-assertive" on-tap="removeUrgent(item)">Delete</button>
+					<button class="button button-calm" on-tap="showEditUrgent(item)">Edit</button>
 				</div>
 				</ion-item>
 			</ion-list>
@@ -38,8 +38,8 @@
 				<ion-item class="item item-text-wrap" ng-repeat="item in info">
 					{{item.description}}
 					<div style="text-align:right;">
-						<button class="button button-assertive" on-click="removeInfo(item)" on-tap="removeInfo(item)">Delete</button>
-						<button class="button button-calm" on-click="showEditItem(item)" on-tap="showEditInfo(item)">Edit</button>
+						<button class="button button-assertive" on-tap="removeInfo(item)">Delete</button>
+						<button class="button button-calm" on-tap="showEditInfo(item)">Edit</button>
 					</div>
 				</ion-item>
 			</ion-list>
