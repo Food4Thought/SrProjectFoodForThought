@@ -1,8 +1,26 @@
 <ion-modal-view>
-  <ion-header-bar>
-    <h1 class="title">Edit Location</h1>
-  </ion-header-bar>
-  <ion-content>
-     </ion-content>
+	<ion-header-bar class="f4t-blue">
+		<button class="button icon-left button-clear" style="color:white;" ng-click="leaveEditLocation()">Close</button>
+		<h1 class="title" style="color:white;">Edit Location</h1>
+	</ion-header-bar>
+
+	<ion-content has-header="true">
+		<form name="form" ng-model="form">
+			<ion-list>
+				<li class="item item-input item-stacked-label">
+					<span class="input-label">Location Name</span>
+					<input type="text" placeholder="Name" name="name" ng-model="name" required />
+					<span class="input-label">Address</span>
+					<input type="text" placeholder="Address" name="address" ng-model="address" required />
+					<input type="text" placeholder="City" name="city" ng-model="city" required />
+					<input type="text" placeholder="State" name="state" ng-model="state" required />
+					<input type="text" placeholder="Zip Code" name="zipCode" ng-model="zipCode" required />
+				</li>
+				<ion-button class="button button-block button-positive" ng-click="editLocation(form)">
+					Change 
+				</ion-button>
+			</ion-list>
+		</form>
+	</ion-content>
 </ion-modal-view>
 

@@ -8,16 +8,28 @@
 	</ion-nav-bar>
 
 	<ion-content>
-		<form ng-submit="createShift(shift)">
+		<form name="form" ng-model="form" ng-submit="addTime(form)">
 			<div class="list">
+				<label class="item item-input item-select">
+					<div class="input-label">
+						Location
+					</div>
+					<select name="locName" ng-model="locName" required>
+						<option ng-repeat="loc in locations">
+							{{loc.name}}
+						</option>
+					</select>
+				</label>
+				<!--
+		<label class="item item-input">
+		<input type="text" placeholder="Location" name="loc" ng-model="loc" required />
+		</label>
+				-->
 				<label class="item item-input">
-					<input type="text" placeholder="Location" ng-model="shift.loc">
+					<input type="date" name="date" ng-model="date">
 				</label>
 				<label class="item item-input">
-					<input type="date", ng-model="shift.date">
-				</label>
-				<label class="item item-input">
-					<input type="text", placeholder="Organization" ng-model="shift.organization">
+					<input type="time" name="time" ng-model="time">
 				</label>
 			</div>
 			<div class="padding">
@@ -25,8 +37,11 @@
 			</div>
 		</form>
 		<ion-list>
-			<ion-item ng-repeat="task in tasks">
-				{{shift.loc}} {{shift.date}} {{shift.organizatoin}}
+			<ion-item class="item" ng-repeat="item in shifts" item="item">
+				<p>{{item.locName}} {{item.locAddress}} {{item.locCity}} {{item.locState}} {{item.locZipCode}} {{item.date}} {{item.time}}</p>
+				<div style="text-align:right;">
+					<i class="button button-calm icon ion-trash-a" on-tap="removeTime(item)" on-click="removeTime(item)"></i>
+				</div>
 			</ion-item>
 		</ion-list>
 	</ion-content>

@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'jett.ionic.filter.bar', 'ngStorage', 'ngMessages'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'jett.ionic.filter.bar', 'ngStorage', 'ngMessages'])
 
 .run(function($ionicPlatform) {
 	$ionicPlatform.ready(function() {
@@ -122,7 +122,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'jett.ionic.filter.ba
 		url:"/admin/times",
 		views:{
 			'tab-admin':{
-				templateUrl: 'templates/admin/admin-times.html'
+				templateUrl: 'templates/admin/admin-times.html',
+				controller: 'Admin-TimesCtrl'
 			}
 		}
 	});
