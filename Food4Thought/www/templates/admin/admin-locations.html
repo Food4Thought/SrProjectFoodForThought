@@ -24,30 +24,10 @@
 				</ion-item>
 			</ion-list>
 		</div>
-		<!--<div class="list card">
-	  <div class="item item-icon-right">
-	  <i class="button button-light icon ion-edit" ng-click="showEditLocation()"></i>
-
-	  <h2 class="ion-location"> CU Boulder</h2>
-	  <p>1060 18th St, Boulder, CO 80309<p>
-	  </div>
-
-	  <div class="item item-icon-right">
-	  <i class="button button-light icon ion-edit" ng-click="showEditLocation()"></i>
-	  <h2>MSU Denver</h2>
-	  <p>1600 W Colfax Ave, Denver, CO 80204<p>
-	  </div>
-	  </div>
-		-->
 		<div class="card">
-			<div class="item item-text-wrap center-text" ng-click="showNewLocation()">
+			<div class="item item-text-wrap center-text" ng-click="showLocationModal('add')">
 				<p>Add a Location</p>
 			</div>
 		</div>
-		<ion-list>
-			<ion-item ng-repeat="loc in locations">
-				{{loc.name}} {{loc.address}} {{loc.city}} {{loc.state}} {{loc.zipCode}}
-			</ion-item>
-		</ion-list>
 	</ion-content>
 </ion-view>

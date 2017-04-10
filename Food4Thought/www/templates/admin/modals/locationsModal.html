@@ -1,10 +1,10 @@
 <ion-modal-view>
-  <ion-header-bar class="f4t-blue">
-	  <button class="button icon-left button-clear" style="color:white;" ng-click="leaveNewLocation()">Close</button>
-    <h1 class="title" style="color:white">Add Location</h1>
-  </ion-header-bar>
-  
-  <ion-content has-header="true">
+	<ion-header-bar class="f4t-blue">
+		<button class="button icon-left button-clear" style="color:white;" ng-click="leaveLocationModal()">Close</button>
+		<h1 class="title" style="color:white">Add Location</h1>
+	</ion-header-bar>
+
+	<ion-content has-header="true">
 		<form name="form" ng-model="form">
 			<ion-list>
 				<li class="item item-input item-stacked-label">
@@ -16,11 +16,13 @@
 					<input type="text" placeholder="State" name="state" ng-model="state" required />
 					<input type="text" placeholder="Zip Code" name="zipCode" ng-model="zipCode" required />
 				</li>
-				<ion-button ng-init="saveEmptyLoc(form)" class="button button-block button-positive" ng-click="addLocation(form)">
+				<ion-button ng-show"locAction == 'add'" ng-init="saveEmptyLoc(form)" class="button button-block button-positive" ng-click="addLocation(form)">
 					Add
 				</ion-button>
-			</ion-list>
-		</form>
-  </ion-content>
+				<ion-button ng-show="locAction == 'change'" class="button button-block button-positive" ng-click="editLocation(form)">
+					Edit
+				</ion-button>
+			</ion-list> 
+		</form>     
+	</ion-content>
 </ion-modal-view>
-

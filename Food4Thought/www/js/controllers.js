@@ -290,49 +290,45 @@ angular.module('starter.controllers', [])
 .controller('Admin-LocCtrl', function(LocFactory, $scope, $ionicModal) {
 	$scope.locations = LocFactory.getList();
 
-	// Edit Location Modal
-	$ionicModal.fromTemplateUrl('templates/admin/modals/editLocation.html', function(modal) {
-		$scope.editLocationModal = modal;
+	// Location Modal
+	$ionicModal.fromTemplateUrl('templates/admin/modals/locationsModal.html', function(modal) {
+		$scope.locationModal = modal;
 	}, {
 		scope: $scope,
 		animation: 'slide-in-up'
 	});
-	// New Location Modal
-	$ionicModal.fromTemplateUrl('templates/admin/modals/newLocation.html', function(modal) {
-		$scope.newLocationModal = modal;
-	}, {
-		scope: $scope,
-		animation: 'slide-in-up'
-	});
+
+	$scope.showLocationModal = function(action) {
+		$scope.locAction = action;
+		$scope.locationModal.show();
+	};
+
+	$scope.saveEmptyLoc = function(form) {
+		$scope.locForm = angular.copy(form);
+	};
 
 	$scope.showEditLocation = function(item) {
 		$scope.tmpEditItem = item;
 		// Preset form values
-		$scope.form.name.$setViewValue(item.name);
-		$scope.form.address.$setViewValue(item.address);
-		$scope.form.city.$setViewValue(item.city);
-		$scope.form.state.$setViewValue(item.state);
-		$scope.form.zipCode.$setViewValue(item.zipCode);
+		$scope.locForm.name.$setViewValue(item.name);
+		$scope.locForm.address.$setViewValue(item.address);
+		$scope.locForm.city.$setViewValue(item.city);
+		$scope.locForm.state.$setViewValue(item.state);
+		$scope.locForm.zipCode.$setViewValue(item.zipCode);
+		//render updated view value
+		$scope.locForm.name.$render();
+		$scope.locForm.address.$render();
+		$scope.locForm.city.$render();
+		$scope.locForm.state.$render();
+		$scope.locForm.zipCode.$render();
 
-		$scope.editLocationModal.show();
+		$scope.showLocationModal('change');
 	};
-	$scope.showNewLocation = function() {
-		$scope.newLocationModal.show();
-	};
-
-	$scope.leaveNewLocation = function() {
-		$scope.newLocationModal.remove();
-		$ionicModal.fromTemplateUrl('templates/admin/modals/newLocation.html', function(modal) {
-			$scope.newLocationModal = modal;
-		}, {
-			scope: $scope,
-			animation: 'slide-in-up'
-		});
-	};
-	$scope.leaveEditLocation = function() {
-		$scope.editLocationModal.remove();
-		$ionicModal.fromTemplateUrl('templates/admin/modals/editLocation.html', function(modal) {
-			$scope.editLocationModal = modal;
+	
+	$scope.leaveLocationModal = function() {
+		$scope.locationModal.remove();
+		$ionicModal.fromTemplateUrl('templates/admin/modals/locationsModal.html', function(modal) {
+			$scope.locationModal = modal;
 		}, {
 			scope: $scope,
 			animation: 'slide-in-up'
@@ -348,7 +344,7 @@ angular.module('starter.controllers', [])
 		newItem.zipCode = form.zipCode.$modelValue;
 		$scope.locations.push(newItem);
 		LocFactory.setList($scope.locations);
-		$scope.leaveNewLocation();
+		$scope.leaveLocationModal();
 	};
 	$scope.editLocation = function(form) {
 		var item = {};
@@ -361,7 +357,7 @@ angular.module('starter.controllers', [])
 		var editIndex = LocFactory.getList().indexOf($scope.tmpEditItem);
 		$scope.locations[editIndex] = item;
 		LocFactory.setList($scope.locations);
-		$scope.leaveEditLocation();
+		$scope.leaveLocationModal();
 	};
 
 	$scope.removeLocation = function(item) {
