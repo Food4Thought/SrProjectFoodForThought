@@ -141,7 +141,6 @@ angular.module('starter.controllers', [])
 	};
 	$scope.showCheckIn = function(item) {
 		$scope.tmpItem = item;
-		console.log($scope.tmpItem.locName);
 		$scope.checkInModal.show();
 	};
 
