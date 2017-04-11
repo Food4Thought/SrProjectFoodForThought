@@ -17,6 +17,11 @@
 	text-align: center;
 }
 
+.shift-details{
+	font-family:verdana; 
+	font-size:85%;
+}
+
 .item-checkbox-right .checkbox input,
 .item-checkbox-right .checkbox-icon {
 	float: right;
