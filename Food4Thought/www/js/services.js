@@ -44,7 +44,7 @@ angular.module('starter.services', [])
 		}
 	};
 	return infoSrv;
-});
+})
 
 .factory('ShiftFactory', function() {
 
