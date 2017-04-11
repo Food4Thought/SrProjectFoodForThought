@@ -8,18 +8,18 @@
 
 					urgent!
 				</ion-item>
-				<ion-item ng-repeat="notification in notifications">
-					{{notification.title}}
+				<ion-item class="item item-text-wrap" ng-repeat="item in urgent">
+					{{item.description}}
 				</ion-item>
 			</ion-list>
 		</div>
 		<div class="list card">
 			<ion-list>
-				<ion-item class="item item-divider f4t-blue" style="text-align:center;">
+				<ion-item class="item item-divider" style="text-align:center; background-color:black; color:white;">
 					other...
 				</ion-item>
-				<ion-item class="item">
-					something informative and cool, yay kids!
+				<ion-item class="item item-text-wrap" ng-repeat="item in info">
+					{{item.description}}
 				</ion-item>
 			</ion-list>
 		</div>

@@ -93,5 +93,3 @@ angular.module('starter.services', [])
 	};
 	return locSrv;
 });
-
-
