@@ -13,7 +13,7 @@ angular.module('starter.controllers', [])
 	});
 	var vm = this;
 	vm.storeCredentials = storeCredentials;	
-	
+
 	console.log($scope.$storage.firstTime);
 	if($scope.$storage.firstTime == false){
 		$state.go('tab.home');
@@ -22,7 +22,7 @@ angular.module('starter.controllers', [])
 	function storeCredentials(){
 		if(vm.welcomeForm.$valid){
 			$scope.$storage.firstTime = false;	
-			
+
 			$scope.$storage.users[$scope.userData.email] = {
 				firstName: $scope.userData.firstName,
 				lastName: $scope.userData.lastName,
@@ -74,28 +74,17 @@ angular.module('starter.controllers', [])
 			}
 		}
 	}
-				//User is in list of users. Set them as active user and navigate to home page
+	//User is in list of users. Set them as active user and navigate to home page
 
-			//look for $scope.userData.email in $scope.$storage.users
+	//look for $scope.userData.email in $scope.$storage.users
 
 })
 
-.controller('HomeCtrl', function(ShiftFactory, $scope, $ionicModal) {
+.controller('HomeCtrl', function(ShiftFactory, LocFactory, $scope, $ionicModal) {
 	$scope.shifts = ShiftFactory.getList();
+	$scope.locations = LocFactory.getList();
 
-	$scope.clothInfo = "Please wear comforable clothing and dress for working in an outdoor covered location.";
-
-	$scope.createShift = function(shift) {
-		$scope.shifts.push({
-			loc: shift.loc,
-			date: shift.date,
-			organization: shift.organization,
-			time: shift.time,
-			location: shift.location,
-			address: shift.address,
-			info2: $scope.clothInfo
-		}); 
-	};
+	$scope.clothInfo = "Please wear comfortable clothing and dress for working in an outdoor covered location.";
 
 	$scope.toggleShift = function(shift) {
 		if($scope.isShiftShown(shift)) {
@@ -108,15 +97,15 @@ angular.module('starter.controllers', [])
 		return $scope.shownShift === shift;
 	};
 
-	$scope.launchMaps = function(address){
+	$scope.launchMaps = function(address, city, state, zipCode){
 		if(ionic.Platform.isIOS()){
-			window.location.href = "maps://maps.apple.com/?daddr=" + address;
+			window.location.href = "maps://maps.apple.com/?daddr=" + address + city + state + zipCode;
 		}
 		else if(ionic.Platform.isAndroid()){
-			window.location.href = "geo:?q=" + address;
+			window.location.href = "geo:?q=" + address + city + state + zipCode;
 		}
 		else{
-			window.location.href = "https://www.google.com/maps/place/" + address;	
+			window.location.href = "https://www.google.com/maps/place/" + address + city + state + zipCode;
 		}
 	};
 
@@ -133,31 +122,56 @@ angular.module('starter.controllers', [])
 	}
 
 	// Sign Up Modal
-	$ionicModal.fromTemplateUrl(pickNewShiftModal(), {
-		id: '1',
-		scope: $scope,
-		animation: 'slide-in-up'
-	}).then(function(modal) {
+	$ionicModal.fromTemplateUrl(pickNewShiftModal(), function(modal) {
 		$scope.signUpModal = modal;
-	});
-
-
-	// Check-in Modal
-	$ionicModal.fromTemplateUrl('templates/start.html', {
-		id: '2',
+	}, {
 		scope: $scope,
 		animation: 'slide-in-up'
-	}).then(function(modal) {
-		$scope.checkInModal = modal;
 	});
+	// Check-in Modal
+	$ionicModal.fromTemplateUrl('templates/start.html', function(modal) {
+		$scope.checkInModal = modal;
+	}, {
+		scope: $scope,
+		animation: 'slide-in-up'
+	});
+
+	$scope.showSignUp = function() {
+		$scope.signUpModal.show();
+	};
+	$scope.showCheckIn = function(item) {
+		$scope.tmpItem = item;
+		console.log($scope.tmpItem.locName);
+		$scope.checkInModal.show();
+	};
+
+	$scope.leaveSignUp = function() {
+		$scope.signUpModal.remove();
+		$ionicModal.fromTemplateUrl(pickNewShiftModal(), function(modal) {
+			$scope.signUpModal = modal;
+		}, {
+			scope: $scope,
+			animation: 'slide-in-up'
+		});
+	};
+	$scope.leaveCheckIn = function() {
+		$scope.checkInModal.remove();
+		$ionicModal.fromTemplateUrl('templates/start.html', function(modal) {
+			$scope.checkInModal = modal;
+		}, {
+			scope: $scope,
+			animation: 'slide-in-up'
+		});
+	};
 
 	$scope.openModal = function(modalID) {
 		if(modalID == 1) $scope.signUpModal.show();
 		else $scope.checkInModal.show();
 		//$scope.checkInModal.show();
 	};
-	$scope.closeModal = function() {
-		$scope.signUpModal.hide();
+	$scope.closeModal = function(modalID) {
+		if(modalID == 1) $scope.signUpModal.hide();
+		else $scope.checkInModal.hide();
 	};
 
 	// Cleanup the modal when we're done with it!
@@ -166,18 +180,6 @@ angular.module('starter.controllers', [])
 		$scope.checkInModal.remove();
 	});
 }) 
-
-.controller('NotCtrl', function($scope) {
-	// With the new view caching in Ionic, Controllers are only called
-	// when they are recreated or on app start, instead of every page change.
-	// To listen for when this page is active (for example, to refresh data),
-	// listen for the $ionicView.enter event:
-	//  
-	//$scope.$on('$ionicView.enter', function(e) {
-	//});
-
-})
-
 
 .controller('NotificationsCtrl', function($scope) {
 	$scope.notificationsUrgent = [
@@ -208,6 +210,32 @@ angular.module('starter.controllers', [])
 	$scope.shifts = ShiftFactory.getList();
 	$scope.locations = LocFactory.getList();
 
+	$ionicModal.fromTemplateUrl('templates/admin/modals/timesModal.html', function(modal) {
+		$scope.timeModal = modal;
+	}, {
+		scope: $scope,
+		animation: 'slide-in-up'
+	});
+
+	$scope.showTimeModal = function(action) {
+		$scope.timeAction = action;
+		$scope.timeModal.show();
+	};
+
+	$scope.leaveTimeModal = function() {
+		$scope.timeModal.remove();
+		$ionicModal.fromTemplateUrl('templates/admin/modals/timesModal.html', function(modal) {
+			$scope.timeModal = modal;
+		}, {
+			scope: $scope,
+			animation: 'slide-in-up'
+		});
+	};
+
+	$scope.saveEmpty = function(form) {
+		$scope.timeForm = angular.copy(form);
+	};
+
 	$scope.removeTime = function(item) {
 		$scope.shifts.splice($scope.shifts.indexOf(item), 1);
 		ShiftFactory.setList($scope.shifts);
@@ -216,35 +244,46 @@ angular.module('starter.controllers', [])
 	$scope.addTime = function(form) {
 		var newItem = {};
 		// add values from form to object
-		newItem.locName = form.locName.$modelValue;
-		/*newItem.locAddress = $scope.locations[4].address;
-		newItem.locCity = $scope.locations[4].city;
-		newItem.locState = $scope.locations[4].state;
-		newItem.locZipCode = $scope.locations[4].zipCode;*/
-/*		var loc3 = form.locName.$modelValue;
-		var locc = loc3.toString();
-		var loc2 = $scope.locations.map(function(item) {
+		newItem.locName = form.loc.$modelValue;
+		var index = $scope.locations.map(function(item) {
 			return item.name;
-		}).indexOf('my house');
-		var index = $scope.locations.map(function (item) {
-			return item.name;
-		}).indexOf(locc);*/
-		for (var i = 0; i < $scope.locations.length ; i++) {
-			console.log(newItem.locName);
-			console.log($scope.locations[i].name);
-		  if ($scope.locations[i][name] == newItem.locName) {
-			  console.log('in if statement');
-		  locIndex = i;
-		  break;
-		  }
-		};
-		//newItem.locAddress = locc;//$scope.locations[index].address;
-		//newItem.locCity = index;//$scope.locations[index].address;
-		//newItem.date = form.date.$modelValue;
+		}).indexOf(newItem.locName);
+		console.log(newItem.locName);
+		console.log($scope.locations[index].name);
+		newItem.locAddress = $scope.locations[index].address;
+		newItem.locCity = $scope.locations[index].city;
+		newItem.locState = $scope.locations[index].state;
+		newItem.locZipCode = $scope.locations[index].zipCode;
+		newItem.date = form.date.$modelValue;
 		newItem.time = form.time.$modelValue;
 		// save new item in scope and factory
 		$scope.shifts.push(newItem);
 		ShiftFactory.setList($scope.shifts);
+		$scope.leaveTimeModal();
+	};
+
+	$scope.showEditTime = function(item) {
+		$scope.tmpEditTime = item;
+		$scope.timeForm.loc.$setViewValue(item.loc);
+		$scope.timeForm.loc.$render();
+		$scope.timeForm.date.$setViewValue(item.date);
+		$scope.timeForm.date.$render();
+		$scope.timeForm.time.$setViewValue(item.time);
+		$scope.timeForm.time.$render();
+
+		$scope.showTimeModal('change');
+	};
+
+	$scope.editTime = function(form) {
+		var item = {};
+		item.loc = form.loc.$modelValue;
+		item.date = form.date.$modelValue;
+		item.time = form.time.$modelValue;
+
+		var editIndex = ShiftFactory.getList().indexOf($scope.tmpEditTime);
+		$scope.shifts[editIndex] = item;
+		ShiftFactory.setList($scope.shifts);
+		$scope.leaveTimeModal();
 	};
 
 })
@@ -324,7 +363,7 @@ angular.module('starter.controllers', [])
 
 		$scope.showLocationModal('change');
 	};
-	
+
 	$scope.leaveLocationModal = function() {
 		$scope.locationModal.remove();
 		$ionicModal.fromTemplateUrl('templates/admin/modals/locationsModal.html', function(modal) {

@@ -16,7 +16,7 @@
 					<input type="text" placeholder="State" name="state" ng-model="state" required />
 					<input type="text" placeholder="Zip Code" name="zipCode" ng-model="zipCode" required />
 				</li>
-				<ion-button ng-show"locAction == 'add'" ng-init="saveEmptyLoc(form)" class="button button-block button-positive" ng-click="addLocation(form)">
+				<ion-button ng-show="locAction == 'add'" ng-init="saveEmptyLoc(form)" class="button button-block button-positive" ng-click="addLocation(form)">
 					Add
 				</ion-button>
 				<ion-button ng-show="locAction == 'change'" class="button button-block button-positive" ng-click="editLocation(form)">

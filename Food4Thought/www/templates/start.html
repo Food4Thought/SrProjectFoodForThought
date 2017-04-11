@@ -1,20 +1,16 @@
 <ion-modal-view>
-  <ion-header-bar>
-    <h1 class="title">Sign In!</h1>
-    <div class="buttons">
-      <button class="button button-clear" ng-click="closeLogin()">Close</button>
-    </div>
-  </ion-header-bar>
-  <ion-content>
-    <br>
-    <center><font size = "5">How would you like to check in?<font></center>
-    <br><br><br>
-    <center>
-	    <div class="button-bar">
-		   <button class="button button-large" ng-click="closeStart()">Cancel</button>
-	       <button class="button button-large f4t-red" ng-click="closeStart()">QR Code</button>
-		   <button class="button button-large f4t-blue" ng-click="closeStart()">Choose a Location</button>
-	    </div>
-	</center>
-  </ion-content>
+	<ion-header-bar class="f4t-blue">
+		<button class="button icon-left button-clear" style="color:white;" ng-click="leaveCheckIn()">Close</button>
+		<h1 class="title" style="color:white;">Check In!</h1>
+	</ion-header-bar>
+
+	<ion-content has-header="true">
+		<br>
+		<center>
+			<h1 style="font-size:20px;">Selected Shift</h1>
+			<p>{{tmpItem.locName}} {{tmpItem.date | date:'MM-dd-yyyy'}} {{tmpItem.time | date:'HH:mm a'}}</p>
+			<button class="button button-assertive" ng-click="leaveCheckIn()">Cancel</button>
+			<button class="button button-balanced">Check In</button>
+		</center>
+	</ion-content>
 </ion-modal-view>

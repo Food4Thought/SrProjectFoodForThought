@@ -1,48 +1,32 @@
-<ion-view view-title="New Shifts">
+<ion-view view-title="Manage Times">
 	<ion-nav-view nav-direction="back"></ion-nav-view>
 	<ion-nav-bar class="f4t-blue">
+
 		<ion-nav-buttons>
 			<button class="button button-light icon ion-ios-arrow-back" ui-sref="tab.admin">
 			</button>
 		</ion-nav-buttons>
-	</ion-nav-bar>
 
+	</ion-nav-bar>
 	<ion-content>
-		<form name="form" ng-model="form" ng-submit="addTime(form)">
-			<div class="list">
-				<label class="item item-input item-select">
-					<div class="input-label">
-						Location
+		<div class="list card">
+			<ion-list>
+				<ion-item class="item item-divider" style="text-align:center;">
+					Times
+				</ion-item>
+				<ion-item class="item item-text-wrap" ng-repeat="item in shifts" item="item">
+					<p>{{item.locName}} {{item.date | date:'MM-dd-yyyy'}} {{item.time | date:'HH:mm a'}}</p> 
+					<div style="text-align:right;">
+						<i class="button button-light icon ion-edit" ng-click="showEditTime(item)" ng-tap="showEditTime(item)"></i>
+						<i class="button button-light icon ion-trash-a" ng-tap="removeTime(item)" ng-click="removeTime(item)"></i>
 					</div>
-					<select name="locName" ng-model="locName" required>
-						<option ng-repeat="loc in locations">
-							{{loc.name}}
-						</option>
-					</select>
-				</label>
-				<!--
-		<label class="item item-input">
-		<input type="text" placeholder="Location" name="loc" ng-model="loc" required />
-		</label>
-				-->
-				<label class="item item-input">
-					<input type="date" name="date" ng-model="date">
-				</label>
-				<label class="item item-input">
-					<input type="time" name="time" ng-model="time">
-				</label>
-			</div>
-			<div class="padding">
-				<button type="submit" class="button button-block button-positive">Create Task</button>
-			</div>
-		</form>
-		<ion-list>
-			<ion-item class="item" ng-repeat="item in shifts" item="item">
-				<p>{{item.locName}} {{item.locAddress}} {{item.locCity}} {{item.locState}} {{item.locZipCode}} {{item.date}} {{item.time}}</p>
-				<div style="text-align:right;">
-					<i class="button button-calm icon ion-trash-a" on-tap="removeTime(item)" on-click="removeTime(item)"></i>
-				</div>
-			</ion-item>
-		</ion-list>
+				</ion-item>
+			</ion-list>
+		</div>  
+		<div class="card">
+			<div class="item item-text-wrap center-text" ng-click="showTimeModal('add')">  
+				<p>Add a Shift</p>
+			</div>  
+		</div>  
 	</ion-content>
 </ion-view>
