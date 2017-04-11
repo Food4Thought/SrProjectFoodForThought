@@ -8,26 +8,29 @@
 					Your Shifts
 				</ion-item>
 				<ion-item class="item-divider row">
-					<div class="col col-25">Date</div>
-					<div class="col col-40">Location</div>
-					<div class="col col-35">Organization</div>
+					<div class="col col-30">Date</div>
+					<div class="col col-45">Location</div>
+					<div class="col col-25">Time</div>
 				</ion-item>
-				<div ng-repeat="shift in shifts">
-					<ion-item class="row", ng-click="toggleShift(shift)", ng-class="{active: isShiftShown(shift)}">
-						<div class="col col-25">{{shift.date}}</div>
-						<div class="col col-40">{{shift.loc}}</div>
-						<div class="col col-35">{{shift.organization}}</div>
+				<div ng-repeat="item in shifts" item="item">
+					<ion-item class="item item-text-wrap row", ng-click="toggleShift(item)", ng-class="{active: isShiftShown(item)}">
+						<div class="col col-30">{{item.date | date:'MM-dd-yyyy'}}</div>
+						<div class="col col-45">{{item.locName}}</div>
+						<div class="col col-25">{{item.time | date:'HH:mm a'}}</div>
 					</ion-item>
-					<ion-item class="item-accordian row", ng-show="isShiftShown(shift)">
+					<ion-item class="item-accordian row", ng-show="isShiftShown(item)">
 
-						<div class="col col-25" ng-click="launchMaps(shift.location)">
-						<pre class="shift-details">{{shift.time}}</pre>
-						<pre class="shift-details">{{shift.location}}</pre>
-						<pre class="shift-details">{{shift.address}}</pre>
+						<div class="col col-30">
+						<pre class="shift-details">{{item.time | date:'HH:mm a'}}</pre>
+						<pre class="shift-details">{{item.locName}}</pre>
+						<pre class="shift-details">{{item.locAddress}}</pre>
+						<pre class="shift-details">{{item.locCity}}, {{item.locState}} {{item.locZipCode}}</pre>
 						</div>
 
-						<div class="col col-40">
-							<i class="button button-bold icon ion-location" ng-click="launchMaps(shift.address)"> Directions</i>
+						<div class="col col-35" style="text-align:center;">
+							<i class="button button-bold icon ion-location" ng-click="launchMaps(item.locAddress, item.locCity, item.locState, item.locZipCode)">Directions</i>
+							<br><br>
+							<button class="button button-positive" ng-click="showCheckIn(item)">Check In</button>
 						</div>
 
 						<div class="col col-35">
@@ -40,14 +43,9 @@
 		<br>
 		<center>
 
-			<ion-item class="button button-dark" ng-click="openModal(1)">
+			<ion-item class="button button-dark" ng-click="showSignUp()">
 				Sign up to volunteer!
 			</ion-item>
-			<br><br><br>
-			<ion-item class="button button-assertive" ng-click="openModal(2)">
-				Check In
-			</ion-item>
-
 		</center>
 	</ion-content>
 </ion-view>

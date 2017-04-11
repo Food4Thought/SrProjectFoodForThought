@@ -122,7 +122,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
 		url:"/admin/times",
 		views:{
 			'tab-admin':{
-				templateUrl: 'templates/admin/admin-times.html'
+				templateUrl: 'templates/admin/admin-times.html',
+				controller: 'Admin-TimesCtrl'
 			}
 		}
 	});
