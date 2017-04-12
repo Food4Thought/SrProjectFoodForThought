@@ -11,6 +11,7 @@
   <access origin="*"/>
   <allow-navigation href="*"/>
   <allow-navigation href="http://192.168.0.7:8100"/>
+  <allow-navigation href="http://192.168.0.3:8100"/>
   <preference name="webviewbounce" value="false"/>
   <preference name="UIWebViewBounce" value="false"/>
   <preference name="DisallowOverscroll" value="true"/>
