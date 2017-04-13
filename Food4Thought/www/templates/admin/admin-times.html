@@ -1,33 +1,32 @@
-<ion-view view-title="New Shifts">
+<ion-view view-title="Manage Times">
 	<ion-nav-view nav-direction="back"></ion-nav-view>
 	<ion-nav-bar class="f4t-blue">
+
 		<ion-nav-buttons>
 			<button class="button button-light icon ion-ios-arrow-back" ui-sref="tab.admin">
 			</button>
 		</ion-nav-buttons>
-	</ion-nav-bar>
 
+	</ion-nav-bar>
 	<ion-content>
-		<form ng-submit="createShift(shift)">
-			<div class="list">
-				<label class="item item-input">
-					<input type="text" placeholder="Location" ng-model="shift.loc">
-				</label>
-				<label class="item item-input">
-					<input type="date", ng-model="shift.date">
-				</label>
-				<label class="item item-input">
-					<input type="text", placeholder="Organization" ng-model="shift.organization">
-				</label>
-			</div>
-			<div class="padding">
-				<button type="submit" class="button button-block button-positive">Create Task</button>
-			</div>
-		</form>
-		<ion-list>
-			<ion-item ng-repeat="task in tasks">
-				{{shift.loc}} {{shift.date}} {{shift.organizatoin}}
-			</ion-item>
-		</ion-list>
+		<div class="list card">
+			<ion-list>
+				<ion-item class="item item-divider" style="text-align:center;">
+					Times
+				</ion-item>
+				<ion-item class="item item-text-wrap" ng-repeat="item in shifts" item="item">
+					<p>{{item.locName}} {{item.date | date:'MM-dd-yyyy'}} {{item.time | date:'HH:mm a'}}</p> 
+					<div style="text-align:right;">
+						<i class="button button-light icon ion-edit" ng-click="showEditTime(item)" ng-tap="showEditTime(item)"></i>
+						<i class="button button-light icon ion-trash-a" ng-tap="removeTime(item)" ng-click="removeTime(item)"></i>
+					</div>
+				</ion-item>
+			</ion-list>
+		</div>  
+		<div class="card">
+			<div class="item item-text-wrap center-text" ng-click="showTimeModal('add')">  
+				<p>Add a Shift</p>
+			</div>  
+		</div>  
 	</ion-content>
 </ion-view>

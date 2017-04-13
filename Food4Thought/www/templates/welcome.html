@@ -1,0 +1,55 @@
+<ion-view view-title="Welcome!">
+	<ion-nav-bar class="bar-stable"></ion-nav-bar>
+  <ion-content>
+<div class="card">
+  <div class="center-text item item-text-wrap">
+    It looks like it's your first time using the FoodForThough app. Enter your info below to get started!
+  </div>
+</div>
+<script id="templates/form-errors.html" type="text/ng-template">  
+  <div class="form-error" ng-message="required">This field is required.</div>
+  <div class="form-error" ng-message="email">Please enter a valid email address</div>
+  <div class="form-error" ng-message="pattern">Please enter a valid phone number</div>
+</script> 
+    <form ng-controller="WelcomeCtrl as ctrl" name="ctrl.welcomeForm" novalidate>
+      <div class="list">
+
+        <label class="item item-input" ng-class="{'has-error' :  ctrl.welcomeForm.firstname.$invalid && ctrl.welcomeForm.$submitted}">
+          <span class="input-label">First Name</span>
+          <input name="firstname" type="text" ng-model="userData.firstName" required>
+        </label>
+
+		<div class="form-errors" ng-show="ctrl.welcomeForm.firstname.$invalid && ctrl.welcomeForm.$submitted" ng-messages="ctrl.welcomeForm.firstname.$error" ng-messages-include="templates/form-errors.html">  
+		</div> 	
+
+        <label class="item item-input" ng-class="{'has-error' : ctrl.welcomeForm.lastname.$invalid && ctrl.welcomeForm.$submitted}">
+          <span class="input-label">Last Name</span>
+          <input name="lastname" type="text" ng-model="userData.lastName" required>
+        </label>
+
+		<div class="form-errors" ng-show="ctrl.welcomeForm.lastname.$invalid && ctrl.welcomeForm.$submitted" ng-messages="ctrl.welcomeForm.lastname.$error" ng-messages-include="templates/form-errors.html">  
+		</div> 
+
+        <label class="item item-input" ng-class="{'has-error' : ctrl.welcomeForm.email.$invalid && ctrl.welcomeForm.$submitted}">
+          <span class="input-label">Email</span>
+          <input name="email" type="email" ng-model="userData.email" required>
+        </label>
+		
+		<div class="form-errors" ng-show="ctrl.welcomeForm.email.$invalid && ctrl.welcomeForm.$submitted" ng-messages="ctrl.welcomeForm.email.$error" ng-messages-include="templates/form-errors.html">  
+		</div> 
+
+        <label class="item item-input" ng-class="{'has-error' : ctrl.welcomeForm.phone.$invalid && ctrl.welcomeForm.$submitted}">
+          <span class="input-label">Phone Number</span>
+          <input name="phone" type="tel" pattern="^[0-9\-\+\s\(\)]*$" ng-model="userData.phoneNumber" required>
+        </label>
+
+		<div class="form-errors" ng-show="ctrl.welcomeForm.phone.$invalid && ctrl.welcomeForm.$submitted" ng-messages="ctrl.welcomeForm.phone.$error" ng-messages-include="templates/form-errors.html">  
+		</div> 
+
+	<button type="submit" ng-click= "ctrl.storeCredentials()" class="button button-block button-positive">Submit</button>
+
+      </div>
+    </form>
+	<div><p class="center-text"><a ui-sref="login">Have you already entered this information? Click Here!</a></p></div>
+	</ion-content>
+</ion-view>

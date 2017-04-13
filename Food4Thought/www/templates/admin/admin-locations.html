@@ -2,36 +2,32 @@
 	<ion-nav-view nav-direction="back"></ion-nav-view>
 	<ion-nav-bar class="f4t-blue">
 
-    <ion-nav-buttons>
-        <button class="button button-light icon ion-ios-arrow-back" ui-sref="tab.admin">
-        </button>
-    </ion-nav-buttons>
-
-
+		<ion-nav-buttons>
+			<button class="button button-light icon ion-ios-arrow-back" ui-sref="tab.admin">
+			</button>
+		</ion-nav-buttons>
 
 	</ion-nav-bar>
 	<ion-content>
-
 		<div class="list card">
-		  <div class="item item-icon-right">
-		  	<i class="button button-light icon ion-edit" ng-click="openModal(1)"></i>
-			
-			<h2 class="ion-location"> CU Boulder</h2>
-			<p>1060 18th St, Boulder, CO 80309<p>
-		  </div>
-
-		  <div class="item item-icon-right">
-			<i class="button button-light icon ion-edit" ng-click="openModal(1)"></i>
-			<h2>MSU Denver</h2>
-			<p>1600 W Colfax Ave, Denver, CO 80204<p>
-		  </div>
+			<ion-list>
+				<ion-item class="item item-divider" style="text-align:center;">
+					Locations
+				</ion-item>
+				<ion-item class="item" ng-repeat="item in locations" item="item">
+					<h2 class="ion-location">{{item.name}}</h2>
+					<p>{{item.address}} {{item.city}} {{item.state}} {{item.zipCode}}</p>
+					<div style="text-align:right;">
+						<i class="button button-light icon ion-edit" ng-click="showEditLocation(item)" ng-tap="showEditLocation(item)"></i>
+						<i class="button button-light icon ion-trash-a" ng-click="removeLocation(item)" ng-tap="removeLocation(item)"></i>
+					</div>
+				</ion-item>
+			</ion-list>
 		</div>
-
 		<div class="card">
-			<div class="item item-text-wrap center-text" ng-click="openModal(2)">
+			<div class="item item-text-wrap center-text" ng-click="showLocationModal('add')">
 				<p>Add a Location</p>
 			</div>
 		</div>
-
 	</ion-content>
 </ion-view>
