@@ -1,10 +1,5 @@
 /* Empty. Add your own CSS if you like */
 
-iframe {
-	width: 1px;
-	width: 100%;
-}
-
 .f4t-red {
 	background-color:#bf101a;
 	color:white;
@@ -29,6 +24,11 @@ iframe {
 
 .center-text {
 	text-align: center;
+}
+
+.shift-details{
+	font-family:verdana; 
+	font-size:85%;
 }
 
 .item-checkbox-right .checkbox input,
@@ -86,3 +86,18 @@ a.button .icon:before,
 a.button.icon:before,
 a.button.icon-left:before,
 a.button.icon-right:before { margin-top: 0 }
+
+
+/** Styling for form error messages **/
+label.item.has-error {  
+	border-bottom: 2px solid red;
+}
+
+/** Styling for the error text and container **/
+.form-errors {
+	margin: 5px 0
+}
+.form-error {
+	padding: 2px 0 2px 16px;
+	color: red;
+}
