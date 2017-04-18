@@ -16,12 +16,13 @@
 					<ion-item class="item item-text-wrap row", ng-click="toggleShift(item)", ng-class="{active: isShiftShown(item)}">
 						<div class="col col-30">{{item.date | date:'MM-dd-yyyy'}}</div>
 						<div class="col col-45">{{item.locName}}</div>
-						<div class="col col-25">{{item.time | date:'HH:mm a'}}</div>
+						<div class="col col-25">{{item.time | date:'hh:mm a'}}</div>
 					</ion-item>
 					<ion-item class="item-accordian row", ng-show="isShiftShown(item)">
 
 						<div class="col col-30">
-						<pre class="shift-details">{{item.time | date:'HH:mm a'}}</pre>
+						<pre class="shift-details">{{item.time | date:'hh:mm a'}}</pre>
+            <pre class="shift-details"><b>{{item.job}}</b></pre>
 						<pre class="shift-details">{{item.locName}}</pre>
 						<pre class="shift-details">{{item.locAddress}}</pre>
 						<pre class="shift-details">{{item.locCity}}, {{item.locState}} {{item.locZipCode}}</pre>
@@ -43,7 +44,7 @@
 		<br>
 		<center>
 
-			<ion-item class="button button-dark" ng-click="showSignUp()">
+			<ion-item class="button button-dark" ng-click="openModal(1)">
 				Sign up to volunteer!
 			</ion-item>
 		</center>
