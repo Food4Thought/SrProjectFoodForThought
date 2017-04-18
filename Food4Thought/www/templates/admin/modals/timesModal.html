@@ -15,6 +15,14 @@
 						<option ng-repeat="loc in locations">{{loc.name}}</option>
 					</select>
 				</label>
+				<label class="item item-input item-select">
+					<div class="input-label">
+						Job
+					</div>
+					<select name="job" ng-model="job" required>
+						<option ng-repeat="job in jobs">{{job.name}}</option>
+					</select>
+				</label>
 				<!--
 		<label class="item item-input">
 		<input type="text" placeholder="Location" name="loc" ng-model="loc" required />

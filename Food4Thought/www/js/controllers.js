@@ -205,9 +205,10 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('Admin-TimesCtrl', function(LocFactory, ShiftFactory, $scope, $ionicModal) {
+.controller('Admin-TimesCtrl', function(LocFactory, ShiftFactory, JobFactory, $scope, $ionicModal) {
 	$scope.shifts = ShiftFactory.getList();
 	$scope.locations = LocFactory.getList();
+	$scope.jobs = JobFactory.getList();
 
 	$ionicModal.fromTemplateUrl('templates/admin/modals/timesModal.html', function(modal) {
 		$scope.timeModal = modal;
@@ -247,12 +248,11 @@ angular.module('starter.controllers', [])
 		var index = $scope.locations.map(function(item) {
 			return item.name;
 		}).indexOf(newItem.locName);
-		console.log(newItem.locName);
-		console.log($scope.locations[index].name);
 		newItem.locAddress = $scope.locations[index].address;
 		newItem.locCity = $scope.locations[index].city;
 		newItem.locState = $scope.locations[index].state;
 		newItem.locZipCode = $scope.locations[index].zipCode;
+		newItem.job = form.job.$modelValue;
 		newItem.date = form.date.$modelValue;
 		newItem.time = form.time.$modelValue;
 		// save new item in scope and factory

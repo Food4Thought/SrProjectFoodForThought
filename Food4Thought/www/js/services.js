@@ -92,6 +92,33 @@ angular.module('starter.services', [])
 		}
 	};
 	return locSrv;
+})
+
+.factory('JobFactory', function() {
+	var jobs = [];
+	var jobStore = localStorage.getItem("jobs");
+	if(jobStore != null && jobStore != '' && angular.isArray(angular.fromJson(jobStore))) {
+		jobs = angular.fromJson(jobStore);
+	}
+	var jobSrv = {
+		setList: function(newList) {
+			jobs = newList;
+			localStorage.setItem("jobs", angular.toJson(jobs));
+			return true;
+		},
+		getList: function() {
+			if(jobs != null) {
+				return jobs;
+			} else {
+				return [];
+			}
+		}
+	};
+	return jobSrv;
 });
+
+
+
+
 
 
