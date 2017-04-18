@@ -1,5 +1,5 @@
 <ion-view view-title="Manage Times">
-	<ion-nav-view nav-direction="back"></ion-nav-view>
+	<ion-nav-view animation="slide-left-right"></ion-nav-view>
 	<ion-nav-bar class="f4t-blue">
 
 		<ion-nav-buttons>
@@ -15,7 +15,7 @@
 					Times
 				</ion-item>
 				<ion-item class="item item-text-wrap" ng-repeat="item in shifts" item="item">
-					<p>{{item.locName}} {{item.date | date:'MM-dd-yyyy'}} {{item.time | date:'HH:mm a'}}</p> 
+					<p><b>{{item.job}}</b> {{item.locName}} {{item.date | date:'MM-dd-yyyy'}} {{item.time | date:'HH:mm a'}}</p> 
 					<div style="text-align:right;">
 						<i class="button button-light icon ion-edit" ng-click="showEditTime(item)" ng-tap="showEditTime(item)"></i>
 						<i class="button button-light icon ion-trash-a" ng-tap="removeTime(item)" ng-click="removeTime(item)"></i>

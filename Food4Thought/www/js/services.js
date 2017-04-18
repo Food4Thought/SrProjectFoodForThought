@@ -95,7 +95,7 @@ angular.module('starter.services', [])
 })
 
 .factory('JobFactory', function() {
-	var jobs = [];
+	var jobs = [{name:"Packer"}, {name:"Delivery"}];
 	var jobStore = localStorage.getItem("jobs");
 	if(jobStore != null && jobStore != '' && angular.isArray(angular.fromJson(jobStore))) {
 		jobs = angular.fromJson(jobStore);
