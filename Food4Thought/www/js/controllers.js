@@ -178,16 +178,62 @@ angular.module('starter.controllers', [])
 }) 
 
 
-.controller('NotCtrl', function($scope) {
-	// With the new view caching in Ionic, Controllers are only called
-	// when they are recreated or on app start, instead of every page change.
-	// To listen for when this page is active (for example, to refresh data),
-	// listen for the $ionicView.enter event:
-	//  
-	//$scope.$on('$ionicView.enter', function(e) {
-	//});
+.controller('GeoCtrl', function($cordovaGeolocation) {
+	  var posOptions = {timeout: 10000, enableHighAccuracy: false};
+  $cordovaGeolocation
+    .getCurrentPosition(posOptions)
+    .then(function (position) {
+      var lat  = position.coords.latitude
+      var long = position.coords.longitude
+	  console.log(lat);
+    }, function(err) {
+      // error
+    });
+
+  var watchOptions = {
+    timeout : 3000,
+    enableHighAccuracy: false // may cause errors if true
+  };
+
+  var watch = $cordovaGeolocation.watchPosition(watchOptions);
+  watch.then(
+    null,
+    function(err) {
+      // error
+    },
+    function(position) {
+      var lat  = position.coords.latitude
+      var long = position.coords.longitude
+  });
+
+
+  watch.clearWatch();
+  // OR
+//  $cordovaGeolocation.clearWatch(watch)
+//    .then(function(result) {
+//      // success
+//      }, function (error) {
+//      // error
+//    });
+
+var date = new Date("April 14, 2017 14:10:00");
+cordova.plugins.notification.local.schedule({
+    id: 1,
+    title: "Production Jour fixe",
+    text: "Duration 1h",
+    firstAt: date,
+    every: "week",
+    sound: "file://sounds/reminder.mp3",
+    icon: "http://icons.com/?cal_id=1",
+    data: { meetingId:"123#fg8" }
+});
+
+cordova.plugins.notification.local.on("click", function (notification) {
+	console.log("YOOOO ITS TIME TO PARTY");
+});
 
 })
+
 
 
 .controller('NotificationsCtrl', function(UrgentFactory, InfoFactory, $scope, $ionicModal) {
