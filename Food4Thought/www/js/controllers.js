@@ -74,6 +74,7 @@ angular.module('starter.controllers', [])
 			}
 		}
 	}
+})
 	//User is in list of users. Set them as active user and navigate to home page
 
 	//look for $scope.userData.email in $scope.$storage.users
