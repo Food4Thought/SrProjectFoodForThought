@@ -15,10 +15,10 @@
 					Times
 				</ion-item>
 				<ion-item class="item item-text-wrap" ng-repeat="item in shifts" item="item">
-					<p>{{item.locName}} {{item.date | date:'MM-dd-yyyy'}} {{item.time | date:'HH:mm a'}}</p> 
+					<p>{{item.locName}} {{item.date | date:'MM-dd-yyyy'}} {{item.time | date:'hh:mm a'}}</p> 
 					<div style="text-align:right;">
 						<i class="button button-light icon ion-edit" ng-click="showEditTime(item)" ng-tap="showEditTime(item)"></i>
-						<i class="button button-light icon ion-trash-a" ng-tap="removeTime(item)" ng-click="removeTime(item)"></i>
+						<i class="button button-light icon ion-trash-a" ng-tap="showTimeDelete(item)" ng-click="showTimeDelete(item)"></i>
 					</div>
 				</ion-item>
 			</ion-list>

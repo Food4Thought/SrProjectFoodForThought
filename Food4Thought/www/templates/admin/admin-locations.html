@@ -19,7 +19,7 @@
 					<p>{{item.address}} {{item.city}} {{item.state}} {{item.zipCode}}</p>
 					<div style="text-align:right;">
 						<i class="button button-light icon ion-edit" ng-click="showEditLocation(item)" ng-tap="showEditLocation(item)"></i>
-						<i class="button button-light icon ion-trash-a" ng-click="removeLocation(item)" ng-tap="removeLocation(item)"></i>
+						<i class="button button-light icon ion-trash-a" ng-click="showConfirmDelete(item)" ng-tap="removeLocation(item)"></i>
 					</div>
 				</ion-item>
 			</ion-list>

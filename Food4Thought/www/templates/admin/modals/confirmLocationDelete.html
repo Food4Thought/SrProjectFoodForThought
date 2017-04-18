@@ -1,0 +1,17 @@
+<ion-modal-view>
+	<ion-header-bar class="f4t-blue">
+		<button class="button icon-left button-clear" style="color:white;" ng-click="leaveConfirmDelete()">Close</button>
+		<h1 class="title" style="color:white;">Are you sure?</h1>
+	</ion-header-bar>
+
+	<ion-content has-header="true">
+		<br>
+		<center>
+			<h1 style="font-size:20px;">Location To Delete</h1>
+			<p>{{tmpLocDelete.name}}</p>
+      <p>{{tmpLocDelete.address}}<br>{{tmpLocDelete.city}} {{tmpLocDelete.state}} {{tmpLocDelete.zipCode}}</p>
+			<button class="button button-assertive" ng-click="leaveConfirmDelete()">Cancel</button>
+			<button class="button button-balanced" ng-click="removeLocation(tmpLocDelete)">Delete</button>
+		</center>
+	</ion-content>
+</ion-modal-view>

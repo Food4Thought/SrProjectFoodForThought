@@ -1,0 +1,16 @@
+<ion-modal-view>
+	<ion-header-bar class="f4t-blue">
+		<button class="button icon-left button-clear" style="color:white;" ng-click="leaveTimeDelete()">Close</button>
+		<h1 class="title" style="color:white;">Are you sure?</h1>
+	</ion-header-bar>
+
+	<ion-content has-header="true">
+		<br>
+		<center>
+			<h1 style="font-size:20px;">Time To Delete</h1>
+			<p>{{tmpTimeDelete.locName}}<br>{{tmpTimeDelete.date | date:'MM-dd-yyyy'}} {{tmpTimeDelete.time | date:'hh:mm a'}}</p>
+			<button class="button button-assertive" ng-click="leaveTimeDelete()">Cancel</button>
+			<button class="button button-balanced" ng-click="removeTime(tmpTimeDelete)">Delete</button>
+		</center>
+	</ion-content>
+</ion-modal-view>
