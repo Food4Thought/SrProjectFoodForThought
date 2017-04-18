@@ -78,8 +78,6 @@ angular.module('starter.controllers', [])
 
 	//look for $scope.userData.email in $scope.$storage.users
 
-})
-
 .controller('HomeCtrl', function(ShiftFactory, LocFactory, $scope, $ionicModal) {
 	$scope.shifts = ShiftFactory.getList();
 	$scope.locations = LocFactory.getList();
@@ -180,29 +178,212 @@ angular.module('starter.controllers', [])
 	});
 }) 
 
-.controller('NotificationsCtrl', function($scope) {
-	$scope.notificationsUrgent = [
-	{ title: "snowman apocalypse" },
-	{ title: "blah" }
-	];
 
-	$scope.notificationsInfo = [
-	{title: "something cool and informative, yay kids!"}
-	];
+.controller('NotCtrl', function($scope) {
+	// With the new view caching in Ionic, Controllers are only called
+	// when they are recreated or on app start, instead of every page change.
+	// To listen for when this page is active (for example, to refresh data),
+	// listen for the $ionicView.enter event:
+	//  
+	//$scope.$on('$ionicView.enter', function(e) {
+	//});
 
-	$scope.createUrgent = function(notification) {
+})
+
+
+.controller('NotificationsCtrl', function(UrgentFactory, InfoFactory, $scope, $ionicModal) {
+	// load the add/change dialog from the given template url
+	$ionicModal.fromTemplateUrl('templates/admin/urgent-dialog.html', function(modal) {
+		$scope.addUrgentDialog = modal;
+	},  {
+		scope: $scope,
+		animation: 'slide-in-up'
+	});
+	$ionicModal.fromTemplateUrl('templates/admin/info-dialog.html', function(modal) {
+		$scope.addInfoDialog = modal;
+	}, {
+		scope: $scope,
+		animation: 'slide-in-up'
+	});
+
+	$scope.showAddChangeUrgent = function(action) {
+		$scope.urgentAction = action;
+		$scope.addUrgentDialog.show();
+	};
+	$scope.showAddChangeInfo = function(action) {
+		$scope.infoAction = action;
+		$scope.addInfoDialog.show();
+	};
+
+	$scope.leaveAddChangeUrgent = function() {
+		// remove dialog
+		$scope.addUrgentDialog.remove();
+		// reload modal template to have cleared form
+		$ionicModal.fromTemplateUrl('templates/admin/urgent-dialog.html', function(modal) {
+			$scope.addUrgentDialog = modal;
+		}, {
+			scope: $scope,
+			animation: 'slide-in-up'
+		});
+	};
+	$scope.leaveAddChangeInfo = function() {
+		//remove dialog
+		$scope.addInfoDialog.remove();
+		//reload modal template to have cleared form
+		$ionicModal.fromTemplateUrl('templates/admin/info-dialog.html', function(modal) {
+			$scope.addInfoDialog = modal;
+		}, {
+			scope: $scope,
+			animation: 'slide-in-up'
+		});
+	};
+
+	$scope.urgent = UrgentFactory.getList();
+	$scope.info = InfoFactory.getList();
+
+	$scope.saveEmpty = function(form) {
+		$scope.notifForm = angular.copy(form);
+	};
+
+	$scope.urgentSaveEmpty = function(form) {
+		$scope.urgentForm = angular.copy(form);
+	};
+
+	$scope.addUrgent = function(form) {
+		var newItem = {};
+		// add values from form to object
+		newItem.description = form.description.$modelValue;
+		// save new list in scope and factory
+		$scope.urgent.push(newItem);
+		UrgentFactory.setList($scope.urgent);
+		// close dialog
+		$scope.leaveAddChangeUrgent();
+	};
+	$scope.addInfo = function(form) {
+		var newItem = {};
+		// add values from form to object
+		newItem.description = form.description.$modelValue;
+		// save new list in scope and factory
+		$scope.info.push(newItem);
+		InfoFactory.setList($scope.info);
+		// close dialog
+		$scope.leaveAddChangeInfo();
+	};
+
+	$scope.removeUrgent = function(item) {
+		// search & destroy item from list
+		$scope.urgent.splice($scope.urgent.indexOf(item), 1);
+		// if this item was the default we set first item in list to default
+		// save list in factory
+		UrgentFactory.setList($scope.urgent);
+	};
+	$scope.removeInfo = function(item) {
+		// search & destroy item from list
+		$scope.info.splice($scope.info.indexOf(item), 1);
+		// if this item was the default we set first item in list to default
+		// save list in factory
+		InfoFactory.setList($scope.info);
+	};
+
+	$scope.showEditUrgent = function(item) {
+		// remember edit item to change it later
+		$scope.tmpEditUrgent = item;
+		// preset form values
+		$scope.urgentForm.description.$setViewValue(item.description);
+		// render updated view value
+		$scope.urgentForm.description.$render();
+		// open dialog
+		$scope.showAddChangeUrgent('change');
+	};
+	$scope.showEditInfo = function(item) {
+		// remember edit item to change it later
+		$scope.tmpEditInfo = item;
+		// preset form values
+		$scope.notifForm.description.$setViewValue(item.description);
+		// render updated view value
+		$scope.notifForm.description.$render();
+		// open dialog
+		$scope.showAddChangeInfo('change');
+	};
+
+	$scope.editUrgent = function(form) {
+		var item = {};
+		item.description = form.description.$modelValue;
+
+		var editIndex = UrgentFactory.getList().indexOf($scope.tmpEditUrgent);
+		$scope.urgent[editIndex] = item;
+		// set first item to default
+		UrgentFactory.setList($scope.urgent);
+		$scope.leaveAddChangeUrgent();
+	};
+	$scope.editInfo = function(form) {
+		var item = {};
+		item.description = form.description.$modelValue;
+
+		var editIndex = InfoFactory.getList().indexOf($scope.tmpEditInfo);
+		$scope.info[editIndex] = item;
+		// set first item to default 
+		InfoFactory.setList($scope.info);
+		$scope.leaveAddChangeInfo();
+	};      
+
+	/*	$scope.notificationsUrgent = [
+		{ title: "snowman apocalypse" },
+		{ title: "blah" }
+		];
+		$scope.notificationsInfo = [
+		{title: "something cool and informative, yay kids!"}
+		];
+		$scope.createUrgent = function(notification) {
 		$scope.notificationsUrgent.push({
-			title: notification.title
+		title: notification.title
 		});
 		notification.title = "";
-	};
-	$scope.createInfo = function(notification) {
+		};
+		$scope.createInfo = function(notification) {
 		$scope.notificationsInfo.push({
-			title: notification.title
+		title: notification.title
 		});
 		notification.title = "";
+		};*/
+})
+
+.controller('Admin-NotCtrl', function($scope, $ionicModal) {
+
+	// Edit Notification Modal
+	$ionicModal.fromTemplateUrl('templates/admin/modals/editNotification.html', {
+		id: '1',
+		scope: $scope,
+		animation: 'slide-in-up'
+	}).then(function(modal) {
+		$scope.signUpModal = modal;
+	});
+
+
+	// New Notification Modal
+	$ionicModal.fromTemplateUrl('templates/admin/modals/newNotification.html', {
+		id: '2',
+		scope: $scope,
+		animation: 'slide-in-up'
+	}).then(function(modal) {
+		$scope.checkInModal = modal;
+	});
+
+	$scope.openModal = function(modalID) {
+		if(modalID == 1) $scope.signUpModal.show();
+		else $scope.checkInModal.show();
+		//$scope.checkInModal.show();
+	};
+	$scope.closeModal = function() {
+		if(modalID == 1) $scope.signUpModal.hide();
+		else $scope.checkInModal.hide();
 	};
 
+	// Cleanup the modal when we're done with it!
+	$scope.$on('$destroy', function() {
+		$scope.signUpModal.remove();
+		$scope.checkInModal.remove();
+	});
 })
 
 .controller('Admin-TimesCtrl', function(LocFactory, ShiftFactory, JobFactory, $scope, $ionicModal) {

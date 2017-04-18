@@ -116,9 +116,3 @@ angular.module('starter.services', [])
 	};
 	return jobSrv;
 });
-
-
-
-
-
-
