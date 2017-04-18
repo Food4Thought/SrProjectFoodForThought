@@ -192,13 +192,13 @@ angular.module('starter.controllers', [])
 
 .controller('NotificationsCtrl', function(UrgentFactory, InfoFactory, $scope, $ionicModal) {
 	// load the add/change dialog from the given template url
-	$ionicModal.fromTemplateUrl('templates/admin/urgent-dialog.html', function(modal) {
+	$ionicModal.fromTemplateUrl('templates/admin/modals/urgent-dialog.html', function(modal) {
 		$scope.addUrgentDialog = modal;
 	},  {
 		scope: $scope,
 		animation: 'slide-in-up'
 	});
-	$ionicModal.fromTemplateUrl('templates/admin/info-dialog.html', function(modal) {
+	$ionicModal.fromTemplateUrl('templates/admin/modals/info-dialog.html', function(modal) {
 		$scope.addInfoDialog = modal;
 	}, {
 		scope: $scope,
@@ -218,7 +218,7 @@ angular.module('starter.controllers', [])
 		// remove dialog
 		$scope.addUrgentDialog.remove();
 		// reload modal template to have cleared form
-		$ionicModal.fromTemplateUrl('templates/admin/urgent-dialog.html', function(modal) {
+		$ionicModal.fromTemplateUrl('templates/admin/modals/urgent-dialog.html', function(modal) {
 			$scope.addUrgentDialog = modal;
 		}, {
 			scope: $scope,
@@ -229,7 +229,7 @@ angular.module('starter.controllers', [])
 		//remove dialog
 		$scope.addInfoDialog.remove();
 		//reload modal template to have cleared form
-		$ionicModal.fromTemplateUrl('templates/admin/info-dialog.html', function(modal) {
+		$ionicModal.fromTemplateUrl('templates/admin/modals/info-dialog.html', function(modal) {
 			$scope.addInfoDialog = modal;
 		}, {
 			scope: $scope,
@@ -326,25 +326,6 @@ angular.module('starter.controllers', [])
 		$scope.leaveAddChangeInfo();
 	};      
 
-	/*	$scope.notificationsUrgent = [
-		{ title: "snowman apocalypse" },
-		{ title: "blah" }
-		];
-		$scope.notificationsInfo = [
-		{title: "something cool and informative, yay kids!"}
-		];
-		$scope.createUrgent = function(notification) {
-		$scope.notificationsUrgent.push({
-		title: notification.title
-		});
-		notification.title = "";
-		};
-		$scope.createInfo = function(notification) {
-		$scope.notificationsInfo.push({
-		title: notification.title
-		});
-		notification.title = "";
-		};*/
 })
 
 .controller('Admin-NotCtrl', function($scope, $ionicModal) {
