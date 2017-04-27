@@ -1,0 +1,8 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      </button>
+      <a class="navbar-brand" href="#">FoodForThought App Docs</a>
+    </div>
+  </div>
+</nav>
