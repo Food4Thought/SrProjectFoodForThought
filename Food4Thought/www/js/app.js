@@ -80,7 +80,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
 		url: '/admin',
 		views: {
 			'tab-admin': {
-				templateUrl: 'templates/tab-info.html',
+				templateUrl: 'templates/tab-admin.html',
 				controller: 'AdminCtrl'
 			}   
 		}   

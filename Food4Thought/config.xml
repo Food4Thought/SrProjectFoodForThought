@@ -10,6 +10,7 @@
   <content src="index.html"/>
   <access origin="*"/>
   <allow-navigation href="*"/>
+  <allow-navigation href="http://ionic.local/*"/>
   <allow-navigation href="http://192.168.0.7:8100"/>
   <allow-navigation href="http://10.201.147.90:8100"/>
   <allow-navigation href="http://10.1.10.63:8100"/>
