@@ -10,8 +10,9 @@ Installing Volunteers for Salesforce Package For Salesforce
 -	Volunteers for Salesforce can be either be install in production or Sandbox environment. Select “Install in production” option.
 -	Click on the “I have read and agree to the terms and conditions” and click the blue “Confirm and Install!” button.
 -	Select “Install for All Users” and select on the blue “install” button.
-Configuring Volunteers for Salesforce
-===
+
+### Configuring Volunteers for Salesforce
+
 -	Once Volunteers for Salesforce is installed return to your Salesforce homepage and click on setup tab which is next to your username.
 -	On the left hand side of the screen under the Build option click on the drop down button of Create.
 -	In the drop down menu of Create select and click Apps.
