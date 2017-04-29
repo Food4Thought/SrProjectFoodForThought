@@ -1,5 +1,4 @@
-Installing Volunteers for Salesforce Package For Salesforce
-===
+### Installing Volunteers for Salesforce Package For Salesforce
 -	Salesforce Classic and Lighting Experience can be switched by clicking on the username and selecting the appropriate option. All instructions are written for Salesforce Classic.
 -	Once logged into Salesforce.com on the blue “Site.com” button. 
 -	Select AppExchange on the popup menu of “Site.com”.
@@ -10,8 +9,7 @@ Installing Volunteers for Salesforce Package For Salesforce
 -	Volunteers for Salesforce can be either be install in production or Sandbox environment. Select “Install in production” option.
 -	Click on the “I have read and agree to the terms and conditions” and click the blue “Confirm and Install!” button.
 -	Select “Install for All Users” and select on the blue “install” button.
-Configuring Volunteers for Salesforce
-===
+### Configuring Volunteers for Salesforce
 -	Once Volunteers for Salesforce is installed return to your Salesforce homepage and click on setup tab which is next to your username.
 -	On the left hand side of the screen under the Build option click on the drop down button of Create.
 -	In the drop down menu of Create select and click Apps.
@@ -49,8 +47,8 @@ Configuring Volunteers for Salesforce
 -	Click save when complete.
 -	These tabs should now be on the top bar of Salesforce.
 
-Mass Emailing Volunteers with Volunteers for Salesforce
-===
+### Mass Emailing Volunteers with Volunteers for Salesforce
+
 **1.	Under the Volunteer Jobs tab**
 -	Click the Volunteer Jobs tab.
 -	Select all jobs or specific jobs in the View: field and click on the Go! Button.
@@ -83,8 +81,7 @@ Mass Emailing Volunteers with Volunteers for Salesforce
 
 -	Once selection has been made click on the blue send button on the upper right corner.
 
-Creating Email Templates
-===
+### Creating Email Templates
 -	Select on the username in the upper right corner
 -	Select My Setting on the pop-up window
 -	Select the Email tab on the left side
