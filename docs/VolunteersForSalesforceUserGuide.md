@@ -13,7 +13,7 @@ Installing Volunteers for Salesforce Package For Salesforce
 
 ### Configuring Volunteers for Salesforce
 
--	Once Volunteers for Salesforce is installed return to your Salesforce homepage and click on setup tab which is next to your username.
+-	Once Volunteers for Salesforce is installed return to your Salesforce homepage and click on the setup tab which is next to your username.
 -	On the left hand side of the screen under the Build option click on the drop down button of Create.
 -	In the drop down menu of Create select and click Apps.
 -	 Click on edit of the Volunteer App Label.
