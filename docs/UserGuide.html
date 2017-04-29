@@ -56,7 +56,7 @@
           <li><a href="#home-screen">Home Screen</a></li>
           <li><a href="#notifications-screen">Notifications Screen</a></li>
           <li><a href="#settings-screen">Settings Screen</a></li>
-          <li><a href="#contact-screen">Contact Screen</a></li>
+          <li><a href="#info-screen">Info Screen</a></li>
           </ul></li>
           <li><a href="#admin-features">Admin Features</a><ul>
           <li><a href="#check-in">Check In</a></li>
@@ -83,52 +83,97 @@
 <h3 id="welcome-screen">Welcome Screen</h3>
 <p>The first time you open the app, you'll be presented with this screen.</p>
 <div class="figure">
-<img src="images/WelcomeScreen.png" />
+<img src="images/Welcome.png" />
 
 </div>
 <p>We ask for your name, email and phone number so that we can sign you up to volunteer. You'll need to provide all of these in order to use the app.</p>
 <p>If you've already entered your information on a device, but have logged out, you can click the link below the &quot;Submit&quot; button to log back in. To log back in, you only need to provide your email address.</p>
 <p><strong>Note: Your information is not synced between devices, so you won't be able to log in to a device you haven't previously provided information on.</strong></p>
 <h3 id="navigation-tabs">Navigation Tabs</h3>
-<p>You can navigate the different screens of the FoodForThought app using the tabs at the bottom of the screen. The different screen and their functions are listed below.</p>
+<p>You can navigate the different screens of the FoodForThought app using the tabs at the bottom of the screen. The icons represent the &quot;Home&quot;, &quot;Notifications&quot;, Settings&quot;, and &quot;Info&quot; screens. If you are logged in as an admin, the &quot;info&quot; tab will be replaced with an &quot;admin&quot; tab. The different screen and their functions are listed below.</p>
 <div class="figure">
 <img src="images/navtabs.png" />
 
 </div>
 <h3 id="home-screen">Home Screen</h3>
 <p>This is the main screen of the FoodForThought app. This screen lets you sign up to volunteer, get directions to volunteer locations, and sign in once you arrive.</p>
+<div class="figure">
+<img src="images/Home.png" />
+
+</div>
 <h4 id="your-shifts-tab">&quot;Your Shifts&quot; Tab</h4>
 <p>If you've already signed up for a shift, it will show up here. Clicking on a shift will show details about the shift, including the time, location, job description, and any additional notes FoodForThought has decided to include, such as weather information. You can get directions to the shift's location by pressing the &quot;Directions&quot; button, and check in when you get there by pressing the &quot;Check In&quot; button.</p>
+<div class="figure">
+<img src="images/shifts.png" />
+
+</div>
 <h4 id="signing-up-to-volunteer">Signing up to Volunteer</h4>
 <p>You can press the &quot;Sign Up to Volunteer&quot; button to sign up for a shift. When you do, you'll see a calendar view where you can select what day you'd like to sign up for. You then have to confirm by selecting the date again. This is a quirk with Salesforce. You will then be prompted for sign up information, which should be re-filled based on the information you provided at the welcome screen.</p>
+<div class="figure">
+<img src="images/Sign-up.png" />
+
+</div>
 <h3 id="notifications-screen">Notifications Screen</h3>
 <p>On this screen, you can see any messages FoodForThought has sent out. These are split into regular and urgent notifications. Urgent notifications generally contain information about cancellations or severe weather.</p>
+<div class="figure">
+<img src="images/Notifications.png" />
+
+</div>
 <h3 id="settings-screen">Settings Screen</h3>
+<p><strong>Note: Automatic check-in and log out are currently non-functional</strong></p>
 <p>The settings screen allows you to switch users and enable auto-check in. Enabling auto check in allows you to check in automatically when you're near the volunteer location.</p>
-<h3 id="contact-screen">Contact Screen</h3>
-<p>The contact screen contains links to FoodForThought's social media and donation page.</p>
+<div class="figure">
+<img src="images/Settings.png" />
+
+</div>
+<h3 id="info-screen">Info Screen</h3>
+<p>The info screen contains a brief description of what FoodForThought is all about, and has links to FoodForThought's social media and donation page.</p>
+<div class="figure">
+<img src="images/Info1.png" />
+
+</div>
 <h2 id="admin-features">Admin Features</h2>
 <p>The admin tab takes the place of the contact screen when an Admin is using the FoodForThought app. From here, you can check volunteers in, create new notifications, and manage shift times and locations.</p>
 <h3 id="check-in">Check In</h3>
 <h4 id="this-feature-is-currently-non-functional-due-to-back-end-issues."><em>This feature is currently non-functional due to back-end issues.</em></h4>
+<div class="figure">
+<img src="images/Admin-Checkin.png" />
+
+</div>
 <p>The admin check in screen allows you to check in volunteers that are signed up for a given shift. This allows you to better keep track of volunteers that don't want to use (or can't use) the app.</p>
 <p>You can select the shift you want to check volunteers in for using the dropdown box in the upper right of the screen. After selecting a shift, you'll be able to see a list of volunteers that are signed up for that shift.</p>
 <p>You can then mark people for check in by pressing the checkboxes on the right side of each name. The selected volunteers can be checked in by pressing the &quot;Check in Selected&quot; button at the bottom of the check in list.</p>
 <p>You can search for volunteers using the search button (denoted by a magnifying glass) in he upper right hand corner. Pressing the button and typing in a name will narrow down the list of volunteers to those matching what you've typed in.</p>
 <h3 id="notifications">Notifications</h3>
 <h4 id="this-feature-is-currently-non-functional-due-to-back-end-issues.-1"><em>This feature is currently non-functional due to back-end issues.</em></h4>
+<div class="figure">
+<img src="images/ManageNotifications.png" />
+
+</div>
 <p>The admin notifications screen allows you to create, edit and delete notifications that will be sent out to volunteers using the FoodForThought app.</p>
 <p>Notifications are split into &quot;urgent&quot; and &quot;&quot;non-urgent&quot; categories. Non-urgent notifications simply show up in the volunteers' &quot;Notifications&quot; tab, while urgent notifications send a push notification as well.</p>
 <p>You can create new notifications in each category by clicking the &quot;+&quot; symbol on the right side of the category's title. You can then write your notification in the new window.</p>
+<div class="figure">
+<img src="images/newnotif.png" />
+
+</div>
 <p>Created notifications can be edited by pressing the pencil icon to the right of the notification, or deleted by pressing the trash can icon.</p>
 <h3 id="manage-locations">Manage locations</h3>
 <h4 id="this-feature-is-currently-non-functional-due-to-back-end-issues.-2"><em>This feature is currently non-functional due to back-end issues.</em></h4>
+<div class="figure">
+<img src="images/ManageLocations.png" />
+
+</div>
 <p>The &quot;Manage Locations&quot; screen allows admins to add volunteer locations, which can then be used to create new shifts.</p>
 <p>Locations are displayed in the &quot;Locations&quot; tab, and can be edited and deleted using the pencil and trashcan icons respectively.</p>
 <p>You can add volunteer locations by pressing the &quot;Add a Location&quot; button. You will be prompted for a name for the location, along with all the details about where it actually is. You can then press &quot;Add&quot; to add it to the list.</p>
 <p><strong>Note: A location has to be created before you can create new shifts in the &quot;Manage Times&quot; screen.</strong></p>
 <h3 id="manage-times">Manage Times</h3>
 <h4 id="this-feature-is-currently-non-functional-due-to-back-end-issues.-3"><em>This feature is currently non-functional due to back-end issues.</em></h4>
+<div class="figure">
+<img src="images/ManageTimes.png" />
+
+</div>
 <p>The &quot;Manage Times&quot; screen allows admins to manage when volunteer shifts should take place. Times are displayed in the &quot;Times&quot; tab, and can be edited and deleted using the pencil and trashcan icons respectively.</p>
 <p>You can add a volunteer shift by pressing the &quot;Add a Shift&quot; button. you will be prompted to select the location of the shift, the job description (Packer or Driver), a date, and a time. You can then press &quot;Add&quot; to add the new time to the list.</p>
         </div>
