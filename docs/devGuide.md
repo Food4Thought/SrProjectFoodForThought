@@ -246,3 +246,24 @@ Given a list of volunteers, an admin can move them from a "Unchecked" list to a 
 
 
 ## Building the Docs
+
+The developer guide (this document) and the user guide are both written in markdown, and then rendered to a styled html document using pandoc.
+
+Follow the instructions [here][628df441] for installing pandoc for your operating system.
+
+  [628df441]: http://pandoc.org/installing.html "Pandoc Installation Guide"
+
+Once you have pandoc installed, navigate to the documentation folder.
+
+```
+SrProjectFoodForThought/docs
+```
+
+Then, convert the markdown files to html.
+
+```
+pandoc devGuide.md --template toc-sidebar.html --toc -B nav -o devGuide.html
+pandoc UserGuide.md --template toc-sidebar.html --toc -B nav -o UserGuide.html
+```
+
+Make sure the "js", "css", and "images" folders are all in the same directory as the html documents.
