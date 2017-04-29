@@ -90,9 +90,9 @@ git checkout Geolocation
 
 You then need to manually navigate to the geolocation test page in your browser.
 ```
-localhost:8100/
+localhost:8100/#/geo
 ```
-
+You can then press "F12" to open the developer console (on chrome) and see your
 ## Back End Information
 
 ## Building the Docs
