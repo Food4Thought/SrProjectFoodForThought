@@ -23,8 +23,17 @@ In order to build the app for Android and iOS, you will need to follow the [Andr
 
 ### Installing
 
+Clone the FoodForThought app git repository.
+
+[//]: # (Need to change the github url for when we give it to Danielle)
+
+```
+git clone https://github.com/DJW0519/SrProjectFoodForThought
+```
+
 Run the app in your web browser to verify that it works. Make sure you are in the "FoodForThought" folder.
 ```
+cd SrProjectFoodForThought/FoodForThought
 ionic serve
 ```
 
@@ -73,7 +82,16 @@ When making a new screen, you'll want to create an html template for it, add a c
 
 #### Geolocation
 
-We've started working on checking people when they arrive at a volunteer location. 
+We've started working on checking people when they arrive at a volunteer location. We've implemented a basic example that returns your current lattitude and longitude using the Cordova Geolocation Plugin. You can play with it in the 'Geolocation' git branch.
+
+```
+git checkout Geolocation
+```
+
+You then need to manually navigate to the geolocation test page in your browser.
+```
+localhost:8100/
+```
 
 ## Back End Information
 
