@@ -1,7 +1,7 @@
 Installing Volunteers for Salesforce Package For Salesforce
 ===
 -	Salesforce Classic and Lighting Experience can be switched by clicking on the username and selecting the appropriate option. All instructions are written for Salesforce Classic.
--	Once logged into Salesforce.com on the blue “Site.com” button. 
+-	Once logged into Salesforce.com click on the blue “Site.com” button. 
 -	Select AppExchange on the popup menu of “Site.com”.
 -	On the Apps search bar enter “Volunteer for Salesforce”.
 -	Find and select the Volunteers for Salesforce app.
