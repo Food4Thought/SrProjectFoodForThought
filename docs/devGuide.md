@@ -80,6 +80,11 @@ SrProjectFoodForThought/FoodForThought/www/js/app.js
 ```
 When making a new screen, you'll want to create an html template for it, add a controller for it in controllers.js, and then define both of them in app.js
 
+Since back-end functionality for the Admin tabs was not completed, the functions and local storage takes place in services.js.
+```
+SrProjectFoodForThought/FoodForThought/www/js/services.js
+```
+
 ### Ionic Plugins
 
 We installed a few plugins on top of ionic. There is no need to reinstall them, but it may be helpful to reference their docs.
