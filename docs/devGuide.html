@@ -63,10 +63,9 @@
           <li><a href="#back-end-information">Back End Information</a><ul>
           <li><a href="#installing-volunteers-for-salesforce-package-for-salesforce">Installing Volunteers for Salesforce Package For Salesforce</a></li>
           <li><a href="#configuring-volunteers-for-salesforce">Configuring Volunteers for Salesforce</a></li>
-          </ul></li>
-          </ul></li>
           <li><a href="#mass-emailing-volunteers-with-volunteers-for-salesforce">Mass Emailing Volunteers with Volunteers for Salesforce</a></li>
-          <li><a href="#creating-email-templates">Creating Email Templates</a><ul>
+          <li><a href="#creating-email-templates">Creating Email Templates</a></li>
+          </ul></li>
           <li><a href="#building-the-docs">Building the Docs</a></li>
           </ul></li>
           </ul>
@@ -105,6 +104,8 @@ ionic emulate android</code></pre>
 <p>These two are linked in the stateprovider, which is located in app.js</p>
 <pre><code>SrProjectFoodForThought/FoodForThought/www/js/app.js</code></pre>
 <p>When making a new screen, you'll want to create an html template for it, add a controller for it in controllers.js, and then define both of them in app.js</p>
+<p>Since back-end functionality for the Admin tabs was not completed, the functions and local storage takes place in services.js.</p>
+<pre><code>SrProjectFoodForThought/FoodForThought/www/js/services.js</code></pre>
 <h3 id="ionic-plugins">Ionic Plugins</h3>
 <p>We installed a few plugins on top of ionic. There is no need to reinstall them, but it may be helpful to reference their docs.</p>
 <h4 id="ionic-filter-bar">Ionic Filter Bar</h4>
@@ -136,6 +137,9 @@ ionic emulate android</code></pre>
 <h3 id="checking-in-volunteers-as-admin">Checking in Volunteers as Admin</h3>
 <p>Given a list of volunteers, an admin can move them from a &quot;Unchecked&quot; list to a &quot;Checked in&quot; list locally in the app. This feature needs to be able to pull a list of volunteers for a given shift from Salesforce, and needs to be able to check in each volunteer through Salesforce.</p>
 <h2 id="back-end-information">Back End Information</h2>
+<p>The Food For Thought app back end is Salesforce, specifically Volunteers for Salesforce. Volunteers for Salesforce is a package that is install on your Salesforce instance. Once installed Volunteers for Salesforce can manage the volunteers, jobs, shifts, and hours. Volunteer for Salesforce can also track and create reports on all the data that is generated from volunteer’s events and shifts. Basically, the majority of the back end is utilizing the Volunteers for Salesforce package and having the Food For Thought app interface with it.</p>
+<p>This is where we ran into our biggest problem that we unfortunately were not able to implement a viable working solution. We were not able to get our Food for Thought app to interface with the Volunteers for Salesforce package at all. We ran into a lot of problems, but we also learned a few things that hopefully can provide you with the knowledge to solve these problems going forward.</p>
+<p>This portion of the guide will cover what we learned and what problems we encountered on the back end.</p>
 <h3 id="installing-volunteers-for-salesforce-package-for-salesforce">Installing Volunteers for Salesforce Package For Salesforce</h3>
 <ul>
 <li>Salesforce Classic and Lighting Experience can be switched by clicking on the username and selecting the appropriate option. All instructions are written for Salesforce Classic.</li>
@@ -170,7 +174,7 @@ ionic emulate android</code></pre>
 <li>Click save when complete.</li>
 <li>These tabs should now be on the top bar of Salesforce.</li>
 </ul>
-<h1 id="mass-emailing-volunteers-with-volunteers-for-salesforce">Mass Emailing Volunteers with Volunteers for Salesforce</h1>
+<h3 id="mass-emailing-volunteers-with-volunteers-for-salesforce">Mass Emailing Volunteers with Volunteers for Salesforce</h3>
 <p><strong>1. Under the Volunteer Jobs tab</strong> - Click the Volunteer Jobs tab. - Select all jobs or specific jobs in the View: field and click on the Go! Button. - Select the hyperlink under Volunteer Job Name or hyperlink under the Select the Campaign (Choosing the hyperlink under the Campaign will select all users that are associated with the campaign). - Depending on the selection of the previous action the next screen will be the job detail page or the Campaign detail page. - Click on the Mass Email Volunteers tab. - Complete the requested fields:</p>
 <p>     <strong>From</strong> – selecting who the email is from. <br>      <strong>Email volunteers with Status</strong> - status filter field. <br>      <strong>Include Contacts only once</strong> – selecting this will send one email to each unique contact, leaving this field unchecked will <br>      email each contact for very hours on a job or shift. <br>      <strong>Log an Activity for each email</strong> – selecting this will log the activity on the contact’s record. <br>      <strong>Template Based on Object</strong> – select the object field that will be populated on selected email template (Object and Email <br>      template should match each other). <br>      <strong>Email Template</strong> – select created email template.</p>
 <ul>
@@ -181,7 +185,7 @@ ionic emulate android</code></pre>
 <ul>
 <li>Once selection has been made click on the blue send button on the upper right corner.</li>
 </ul>
-<h1 id="creating-email-templates">Creating Email Templates</h1>
+<h3 id="creating-email-templates">Creating Email Templates</h3>
 <ul>
 <li>Select on the username in the upper right corner</li>
 <li>Select My Setting on the pop-up window</li>
@@ -190,6 +194,14 @@ ionic emulate android</code></pre>
 <li>Select “New Template” button to create a new template or select the premade Salesforce template. The premade Salesforce template can be edited by clicking on the edit button.</li>
 </ul>
 <h2 id="building-the-docs">Building the Docs</h2>
+<p>The developer guide (this document) and the user guide are both written in markdown, and then rendered to a styled html document using pandoc.</p>
+<p>Follow the instructions <a href="http://pandoc.org/installing.html" title="Pandoc Installation Guide">here</a> for installing pandoc for your operating system.</p>
+<p>Once you have pandoc installed, navigate to the documentation folder.</p>
+<pre><code>SrProjectFoodForThought/docs</code></pre>
+<p>Then, convert the markdown files to html.</p>
+<pre><code>pandoc devGuide.md --template toc-sidebar.html --toc -B nav -o devGuide.html
+pandoc UserGuide.md --template toc-sidebar.html --toc -B nav -o UserGuide.html</code></pre>
+<p>Make sure the &quot;js&quot;, &quot;css&quot;, and &quot;images&quot; folders are all in the same directory as the html documents.</p>
         </div>
       </div>
     </div>
