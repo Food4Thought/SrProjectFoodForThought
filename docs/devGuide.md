@@ -152,7 +152,7 @@ Given a list of volunteers, an admin can move them from a "Unchecked" list to a 
 
 The Food For Thought app back end is Salesforce, specifically Volunteers for Salesforce. Volunteers for Salesforce is a package that is install on your Salesforce instance. Once installed Volunteers for Salesforce can manage the volunteers, jobs, shifts, and hours. Volunteer for Salesforce can also track and create reports on all the data that is generated from volunteer’s events and shifts. Basically, the majority of the back end is utilizing the Volunteers for Salesforce package and having the Food For Thought app interface with it.
 
-This is where we ran into our biggest problem that we unfortunately were not able to implement a viable working solution. We were not able to get our Food for Thought app to interface with the Volunteers for Salesforce package at all. We ran into a lot of problems, but we also learned a few things that hopefully can provide you with the knowledge to solve all these problems going forward.
+This is where we ran into our biggest problem that we unfortunately were not able to implement a viable working solution. We were not able to get our Food for Thought app to interface with the Volunteers for Salesforce package at all. We ran into a lot of problems, but we also learned a few things that hopefully can provide you with the knowledge to solve these problems going forward.
 
 This portion of the guide will cover what we learned and what problems we encountered on the back end.
 
