@@ -18,7 +18,7 @@
 					<p><b>{{item.job}}</b> {{item.locName}} {{item.date | date:'MM-dd-yyyy'}} {{item.time | date:'HH:mm a'}}</p> 
 					<div style="text-align:right;">
 						<i class="button button-light icon ion-edit" ng-click="showEditTime(item)" ng-tap="showEditTime(item)"></i>
-						<i class="button button-light icon ion-trash-a" ng-tap="removeTime(item)" ng-click="removeTime(item)"></i>
+						<i class="button button-light icon ion-trash-a" ng-tap="showTimeDelete(item)" ng-click="showTimeDelete(item)"></i>
 					</div>
 				</ion-item>
 			</ion-list>

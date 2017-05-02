@@ -21,7 +21,7 @@
 					<p>{{item.description}}</p>
 					<div style="text-align:right;">
 						<i class="button button-calm icon ion-edit" on-tap="showEditUrgent(item)"></i>
-						<i class="button button-assertive icon ion-trash-a" on-tap="removeUrgent(item)"></i>
+						<i class="button button-assertive icon ion-trash-a" on-tap="showUrgentDelete(item)"></i>
 					</div>
 				</ion-item>
 			</ion-list>
@@ -39,7 +39,7 @@
 					{{item.description}}
 					<div style="text-align:right;">
 						<i class="button button-calm icon ion-edit" on-tap="showEditInfo(item)"></i>
-						<i class="button button-assertive icon ion-trash-a" on-tap="removeInfo(item)"></i>
+						<i class="button button-assertive icon ion-trash-a" on-tap="showInfoDelete(item)"></i>
 					</div>
 				</ion-item>
 			</ion-list>

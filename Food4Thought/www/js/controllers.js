@@ -193,18 +193,30 @@ angular.module('starter.controllers', [])
 
 .controller('NotificationsCtrl', function(UrgentFactory, InfoFactory, $scope, $ionicModal) {
 	// load the add/change dialog from the given template url
-	$ionicModal.fromTemplateUrl('templates/admin/urgent-dialog.html', function(modal) {
+	$ionicModal.fromTemplateUrl('templates/admin/modals/urgent-dialog.html', function(modal) {
 		$scope.addUrgentDialog = modal;
 	},  {
 		scope: $scope,
 		animation: 'slide-in-up'
 	});
-	$ionicModal.fromTemplateUrl('templates/admin/info-dialog.html', function(modal) {
+	$ionicModal.fromTemplateUrl('templates/admin/modals/info-dialog.html', function(modal) {
 		$scope.addInfoDialog = modal;
 	}, {
 		scope: $scope,
 		animation: 'slide-in-up'
 	});
+  $ionicModal.fromTemplateUrl('templates/admin/modals/confirmUrgentDelete.html', function(modal) {
+    $scope.confirmUrgentDelete = modal;
+  }, {
+    scope: $scope,
+    animation: 'slide-in-up'
+  });
+  $ionicModal.fromTemplateUrl('templates/admin/modals/confirmInfoDelete.html', function(modal) {
+    $scope.confirmInfoDelete = modal;
+  }, {
+    scope: $scope,
+    animation: 'slide-in-up'
+  });
 
 	$scope.showAddChangeUrgent = function(action) {
 		$scope.urgentAction = action;
@@ -214,12 +226,20 @@ angular.module('starter.controllers', [])
 		$scope.infoAction = action;
 		$scope.addInfoDialog.show();
 	};
+  $scope.showUrgentDelete = function(item) {
+    $scope.tmpUrgentDelete = item;
+    $scope.confirmUrgentDelete.show();
+  };
+  $scope.showInfoDelete = function(item) {
+    $scope.tmpInfoDelete = item;
+    $scope.confirmInfoDelete.show();
+  };
 
 	$scope.leaveAddChangeUrgent = function() {
 		// remove dialog
 		$scope.addUrgentDialog.remove();
 		// reload modal template to have cleared form
-		$ionicModal.fromTemplateUrl('templates/admin/urgent-dialog.html', function(modal) {
+		$ionicModal.fromTemplateUrl('templates/admin/modals/urgent-dialog.html', function(modal) {
 			$scope.addUrgentDialog = modal;
 		}, {
 			scope: $scope,
@@ -230,13 +250,31 @@ angular.module('starter.controllers', [])
 		//remove dialog
 		$scope.addInfoDialog.remove();
 		//reload modal template to have cleared form
-		$ionicModal.fromTemplateUrl('templates/admin/info-dialog.html', function(modal) {
+		$ionicModal.fromTemplateUrl('templates/admin/modals/info-dialog.html', function(modal) {
 			$scope.addInfoDialog = modal;
 		}, {
 			scope: $scope,
 			animation: 'slide-in-up'
 		});
 	};
+  $scope.leaveUrgentDelete = function() {
+    $scope.confirmUrgentDelete.remove();
+    $ionicModal.fromTemplateUrl('templates/admin/modals/confirmUrgentDelete.html', function(modal) {
+      $scope.confirmUrgentDelete = modal;
+    }, {
+      scope: $scope,
+      animation: 'slide-in-up'
+    });
+  };
+  $scope.leaveInfoDelete = function() {
+    $scope.confirmInfoDelete.remove();
+    $ionicModal.fromTemplateUrl('templates/admin/modals/confirmInfoDelete.html', function(modal) {
+      $scope.confirmInfoDelete = modal;
+    }, {
+      scope: $scope,
+      animation: 'slide-in-up'
+    });
+  };
 
 	$scope.urgent = UrgentFactory.getList();
 	$scope.info = InfoFactory.getList();
@@ -276,6 +314,7 @@ angular.module('starter.controllers', [])
 		// if this item was the default we set first item in list to default
 		// save list in factory
 		UrgentFactory.setList($scope.urgent);
+    $scope.leaveUrgentDelete();
 	};
 	$scope.removeInfo = function(item) {
 		// search & destroy item from list
@@ -283,6 +322,7 @@ angular.module('starter.controllers', [])
 		// if this item was the default we set first item in list to default
 		// save list in factory
 		InfoFactory.setList($scope.info);
+    $scope.leaveInfoDelete();
 	};
 
 	$scope.showEditUrgent = function(item) {
@@ -327,25 +367,6 @@ angular.module('starter.controllers', [])
 		$scope.leaveAddChangeInfo();
 	};      
 
-	/*	$scope.notificationsUrgent = [
-		{ title: "snowman apocalypse" },
-		{ title: "blah" }
-		];
-		$scope.notificationsInfo = [
-		{title: "something cool and informative, yay kids!"}
-		];
-		$scope.createUrgent = function(notification) {
-		$scope.notificationsUrgent.push({
-		title: notification.title
-		});
-		notification.title = "";
-		};
-		$scope.createInfo = function(notification) {
-		$scope.notificationsInfo.push({
-		title: notification.title
-		});
-		notification.title = "";
-		};*/
 })
 
 .controller('Admin-NotCtrl', function($scope, $ionicModal) {
@@ -397,11 +418,21 @@ angular.module('starter.controllers', [])
 		scope: $scope,
 		animation: 'slide-in-up'
 	});
+  $ionicModal.fromTemplateUrl('templates/admin/modals/confirmTimeDelete.html', function(modal) {
+    $scope.confirmDelete = modal;
+  }, {
+    scope: $scope,
+    animation: 'slide-in-up'
+  });
 
 	$scope.showTimeModal = function(action) {
 		$scope.timeAction = action;
 		$scope.timeModal.show();
 	};
+  $scope.showTimeDelete = function(item) {
+    $scope.tmpTimeDelete = item;
+    $scope.confirmDelete.show();
+  };
 
 	$scope.leaveTimeModal = function() {
 		$scope.timeModal.remove();
@@ -412,6 +443,15 @@ angular.module('starter.controllers', [])
 			animation: 'slide-in-up'
 		});
 	};
+  $scope.leaveTimeDelete = function() {
+    $scope.confirmDelete.remove();
+    $ionicModal.fromTemplateUrl('templates/admin/modals/confirmTimeDelete.html', function(modal) {
+      $scope.confirmDelete = modal;
+    }, {
+      scope: $scope,
+      animation: 'slide-in-up'
+    });
+  };
 
 	$scope.saveEmpty = function(form) {
 		$scope.timeForm = angular.copy(form);
@@ -420,6 +460,7 @@ angular.module('starter.controllers', [])
 	$scope.removeTime = function(item) {
 		$scope.shifts.splice($scope.shifts.indexOf(item), 1);
 		ShiftFactory.setList($scope.shifts);
+    $scope.leaveTimeDelete();
 	};
 
 	$scope.addTime = function(form) {
@@ -516,11 +557,21 @@ angular.module('starter.controllers', [])
 		scope: $scope,
 		animation: 'slide-in-up'
 	});
+  $ionicModal.fromTemplateUrl('templates/admin/modals/confirmLocationDelete.html', function(modal) {
+    $scope.confirmDelete = modal;
+  }, {
+    scope: $scope,
+    animation: 'slide-in-up'
+  });
 
 	$scope.showLocationModal = function(action) {
 		$scope.locAction = action;
 		$scope.locationModal.show();
 	};
+  $scope.showConfirmDelete = function(item) {
+    $scope.tmpLocDelete = item;
+    $scope.confirmDelete.show();
+  };
 
 	$scope.saveEmptyLoc = function(form) {
 		$scope.locForm = angular.copy(form);
@@ -553,6 +604,15 @@ angular.module('starter.controllers', [])
 			animation: 'slide-in-up'
 		});
 	};
+  $scope.leaveConfirmDelete = function() {
+    $scope.confirmDelete.remove();
+    $ionicModal.fromTemplateUrl('templates/admin/modals/confirmLocationDelete.html', function(modal) {
+      $scope.confirmDelete = modal;
+    }, {
+      scope: $scope,
+      animation: 'slide-in-up'
+    });
+  };
 
 	$scope.addLocation = function(form) {
 		var newItem = {};
@@ -582,6 +642,7 @@ angular.module('starter.controllers', [])
 	$scope.removeLocation = function(item) {
 		$scope.locations.splice($scope.locations.indexOf(item), 1);
 		LocFactory.setList($scope.locations);
+    $scope.leaveConfirmDelete();
 	};
 })
 
