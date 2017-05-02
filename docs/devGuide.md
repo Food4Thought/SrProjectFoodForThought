@@ -191,6 +191,10 @@ To find this list and more information on the custom objects of Volunteer for Sa
 - Once Objects is selected it will show you all the custom objects of Volunteer for Salesforce
 - Click on each label to find more information about each custom objects
 
+### Issues with API Call and Salesforce
+
+We were using a Salesforce Starter Application code that was created by Salesforce and Ionic to test our back end and we discovered a few issues that we were never able to resolve. The first one we discovered is that you need a Salesforce account to access information on Salesforce and you can only access that Salesforce instance of information. We originally thought that by creating a consumer key on a Salesforce instance and implementing that key in our code base it will allow us to grant any user the ability to access our Salesforce account or any account of Salesforce if the right consumer key was used. 
+
 ### Installing Volunteers for Salesforce Package For Salesforce
 
 -	Salesforce Classic and Lighting Experience can be switched by clicking on the username and selecting the appropriate option. All instructions are written for Salesforce Classic.
