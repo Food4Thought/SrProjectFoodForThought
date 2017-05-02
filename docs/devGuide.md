@@ -193,7 +193,7 @@ To find this list and more information on the custom objects of Volunteer for Sa
 
 ### Issues with API Call and Salesforce
 
-We were using a Salesforce Starter Application code that was created by Salesforce and Ionic to test our back end and we discovered a few issues that we were never able to resolve. The first one we discovered is that you need a Salesforce account to access information on Salesforce and you can only access that Salesforce instance of information. We originally thought that by creating a consumer key on a Salesforce instance and implementing that key in our code base it will allow us to grant any user the ability to access our Salesforce account data or any other Salesforce account data if the right consumer key was used. 
+We were using a Salesforce Starter Application code that was created by Salesforce and Ionic to test our back end and we discovered a few issues that we were never able to resolve. The first one we discovered is that you need a Salesforce account to access information on Salesforce and you can only access that Salesforce instance of information. We originally thought that by creating a consumer key on a Salesforce instance and implementing that key in our code base it will allow us to grant any user the ability to access our Salesforce account data or any other Salesforce account data if the right consumer key was used, that was not the case. 
 
 ### Installing Volunteers for Salesforce Package For Salesforce
 
