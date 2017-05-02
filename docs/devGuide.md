@@ -163,7 +163,7 @@ This portion of the guide will cover what we learned and what problems we encoun
 
 ### API and Salesforce Objects
 
-We choose to use REST api to interface with Salesforce since it is friendly for mobile and web application. Also because we are just sending messages from client to server and sending back a response. The REST api call is interacting with Salesforce Objects to add and modify data to Salesforce. Some of the standard Saleforce objects are:
+We choose to use REST api to interface with Salesforce since it is friendly for mobile and web application. Also because we are just sending messages from client to server and sending back a response. The REST api call is interacting with Salesforce Objects to add and modify data to your Salesforce instance. Some of the standard Saleforce objects are:
 
 
 ```
