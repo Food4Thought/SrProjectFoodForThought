@@ -161,6 +161,35 @@ This is where we ran into our biggest problem that we unfortunately were not abl
 
 This portion of the guide will cover what we learned and what problems we encountered on the back end.
 
+### API and Salesforce Objects
+
+We choose to use REST api to interface with Salesforce since it is friendly for mobile and web application. Also because we are just sending messages from client to server and sending back a response. The REST api call is interacting with Salesforce Objects to add and modify data to Salesforce. Some of the standard Saleforce objects are:
+
+
+```
+Account, Campaign, Contact, etc.
+```
+
+The full list of standard Salesforce Objects can be found here:
+
+```
+https://developer.salesforce.com/docs/atlas.en-us.object_reference.meta/object_reference/sforce_api_objects_list.htm
+```
+The Volunteer for Salesforce package uses custom objects. Volunteers for Salesforce custom objects are:
+
+- Job Recurrence Schedule
+- Volunteer Hours
+- Volunteer Job
+- Volunteer Recurrence Schedule
+- Volunteer Shift
+
+To find this list and more information on the custom objects of Volunteer for Salesforce:
+
+- Login into Salesforce and click setup on the upper right hand corner of the screen
+- Navigate to Create on the left hand side of the screen and click on the play button next to create
+- On the drop down menu of select Objects
+- Once Objects is selected it will show you all the custom objects of Volunteer for Salesforce
+- Click on each label to find more information about each custom objects
 
 ### Installing Volunteers for Salesforce Package For Salesforce
 
