@@ -16,7 +16,7 @@ You'll need to install node.js and ionic to get started with our app. Node.js ca
 npm install -g cordova ionic
 ```
 
-**Note: This app was created using ionic v1. While you don't have to do anything during install to specify that you;re using v1, you will need to make sure you reference the v1 docs, and not v2.**
+**Note: This app was created using ionic v1. While you don't have to do anything during install to specify that you're using v1, you will need to make sure you reference the v1 docs, and not v2.**
 
 In order to build the app for Android and iOS, you will need to follow the [Android][33764a3e] and [iOS][90d500ab] platform guides respectively.
 
@@ -152,6 +152,110 @@ New locations and volunteer times can be created in the admin section of the app
 ### Checking in Volunteers as Admin
 
 Given a list of volunteers, an admin can move them from a "Unchecked" list to a "Checked in" list locally in the app. This feature needs to be able to pull a list of volunteers for a given shift from Salesforce, and needs to be able to check in each volunteer through Salesforce.
+
+## App Deployment Information
+
+### Ionic Framework
+The Ionic App ID is 3bd901cf. This ID is used in the ionic.config.json file to connect the code to the app on the Ionic site.
+
+#### Ionic Website Tools
+When logged into the Ionic website, you can access the code that you have built using the command line.
+
+When an app is built, it shows up in the Package tab of the ionic site. This is where you can download the .ipa file which shows up in the Library portion of Apps on iTunes.
+
+![](images/IonicPackage.png)
+
+This can be loaded onto a phone connected to the computer.
+
+![](images/iTunesApp.png)
+
+The certificates for the App are in the Settings tab under Certificates. They were obtained from iTunes Connect and Android.
+
+![](images/IonicCertificates.png)
+
+#### Ionic Command Line
+##### Building
+iOS:
+```
+$ ionic package build ios --profile foodforthoughtsecurity
+```
+Android:
+```
+$ ionic package build android --profile androidkeystore
+```
+
+#### Release
+iOS:
+```
+$ ionic package build ios --profile foodforthoughtsecurity --release
+```
+Android:
+```
+$ ionic package build android --profile androidkeystore --release
+```
+
+#### Build Information
+Check the status of the different builds by listing them.
+```
+$ ionic package list
+```
+
+#### Build Output
+If a build fails, you can find out why by viewing the output.
+BUILD_ID The build's ID found with ionic package list.
+```
+$ ionic package info BUILD_ID
+```
+
+#### Download
+You can download successful builds. This will put the .ipa or .apk file in your app's directory.
+BUILD_ID The build's ID found with ionic package list
+```
+$ ionic package download BUILD_ID
+```
+
+### iTunes Connect
+Most of the information needed for application to the app store in iTunes Connect is self-explanatory. These are parts I had to research and go over multiple times.
+
+#### Adding Screenshots
+##### Configuring Xcode
+After opening Xcode, go to Xcode->Preferences.
+Here you will click on the Accounts tab. Then click the + symbol at the bottom of the pop up and select Add Apple ID...
+Email: jelarkins@foodforthoughtdenver.org
+Password: CU2017srproject
+
+![](images/AddAppleID.png)
+
+##### Load App into Xcode
+Go to File->Open and select the Xcode project which can be found at SrProjectFoodForThought/Food4Thought/platforms/ios/Food4Thought.xcodeproj
+
+##### Take Screenshots
+Screenshots are needed to display in the App Store so people can see what app they are getting.
+Select which device to use in the upper left corner of the Xcode screen. You will use the iPhone 6 Plus for the 5.5 inch display pictures and the iPad Pro 12.9 inch for the 12.9 inch pictures.
+
+![](images/DeviceSelect.png)
+
+After selecting which device you want to use, select Product->Run. This will run the app on an emulated device. On this device you will navigate to the views you want to submit as screenshots. Select File->Save Screen Shot, which will save the screenshots to the Desktop.
+These can then be uploaded into iTunes Connect.
+
+#### Adding a Build
+In order to submit an app to the App Store, you need to give iTunes a build.
+
+##### Building the App
+Make sure that in the upper left corner, the device chosen is Generic iOS Device.
+
+![](images/GenericiOSDevice.png)
+
+Go to Product->Build to build the project.
+
+##### Archive
+Once the project is built with no errors, go to Product->Archive. This will package the app together so you can submit it to iTunes Connect. This window pops up when the archive is finished, but can also be accessed through Window->Organizer.
+Choose Export to save the packaged build to your computer.
+
+![](images/ArchiveWindow.png)
+
+##### Put Build in iTunes Connect
+In the Build section of preparing the app for submission, click the + symbol and select the file you exported from Xcode.
 
 ## Back End Information
 
