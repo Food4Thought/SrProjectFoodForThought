@@ -110,13 +110,13 @@ angular.module('starter.controllers', [])
 
 	function pickNewShiftModal () {
 		if(ionic.Platform.isIOS()){
-			return ('/templates/newShiftModals/ios.html');
+			return ('templates/newShiftModals/ios.html');
 		}
 		else if(ionic.Platform.isAndroid()){
-			return ('/templates/newShiftModals/android.html');
+			return ('templates/newShiftModals/android.html');
 		}
 		else {
-			return ('/templates/newShiftModals/web.html');
+			return ('templates/newShiftModals/web.html');
 		}
 	}
 
