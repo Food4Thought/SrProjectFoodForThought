@@ -265,6 +265,9 @@ This is where we ran into our biggest problem that we unfortunately were not abl
 
 This portion of the guide will cover what we learned and what problems we encountered on the back end.
 
+### Existing Salesforce Account
+To log into the Salesforce Sandbox, click https://cs43.lightning.force.com/one/one.app, with username darren.white@colorado.edu.cuapp. The current password is CU2017SeniorProject, with security question of Childhood Nickname being Rachel. This information should all be changed as seen fit by future users. The Salesforce Food For Thought administrator should be able to create additional logins to the company sandbox, as to not neccesarily require these existing account credentials. 
+
 ### API and Salesforce Objects
 
 We choose to use REST api to interface with Salesforce since it is friendly for mobile and web application. Also because we are just sending messages from client to server and sending back a response. The REST api call is interacting with Salesforce Objects to add and modify data to your Salesforce instance. Some of the standard Saleforce objects are:
