@@ -435,7 +435,7 @@ We were using a Salesforce Starter Application code that was created by Salesfor
 -	Click “Register My Force.com Domain
 
 
-####Troubleshooting
+### Troubleshooting
 -	I never found a great way to go about this unfortunately. Typically, if you try to access a page with a non-functioning class or page you will get a confusing security error that you suddenly do not have permission to access this page. This is so that the innerworkings of your site are not accidentally exposed which is nice but frustrating without a doubt. 
 -	My solution was to create a class and page called ErrorFinder and use them to call the broken page.
 -	To do this go into the error finder apex class and look for the section that says Page.NAME_OF_PAGE.getContent().toString() 
