@@ -405,7 +405,7 @@ We were using a Salesforce Starter Application code that was created by Salesfor
 -	In order to make any changes to either of these sections you must make your own copy of that file.
 -	VisualForce pages are the visual aspect of the website while the APEX classes are the controller classes used to implement functionality
 
-####APEX Classes
+### APEX Classes
 -	To Copy an APEX class you must go the the original github repo for Volunteers for Salesforce. ["HERE"](https://github.com/SalesforceFoundation/Volunteers-for-Salesforce)
 -	Create a new APEX class by clicking the 'new' button in the middle of the APEX classes screen.
 -	Paste the code into the screen.
@@ -416,7 +416,7 @@ We were using a Salesforce Starter Application code that was created by Salesfor
 -	The name of the class is actually declared near the top of the document unlike a VisualForce page which as a box to declare the name of the page.
 	eg. global virtual with sharing class myVOL_CTRL_VolunteersJobListingFS {} would make a class page named VOL_CTRL_VolunteersJobListingFS .
 
-####VisualForce Pages
+### VisualForce Pages
 -	To copy a VisualForce page you will click the edit link next to that page. Copy the contents and paste them into a new VisualForce page.
 -	You may occasionaly run into variable problems here but typically it will just be label permissions. 
 -	Just find your way back to the quickfind search bar and type in labels then select "Custom Labels".
