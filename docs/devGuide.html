@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="generator" content="pandoc">
+    <meta name="description" content="">
+
+    <title></title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="https://maxcdn.bootstrapcdn.com/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="https://mushiyo.github.io/pandoc-toc-sidebar/css/dashboard.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style type="text/css">code{white-space: pre;}</style>
+    <style type="text/css">.sidebar ul{padding-left: 10px;}</style>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          </button>
+          <a class="navbar-brand" href="#">FoodForThought App Docs</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div id="sidebar" class="col-sm-3 col-md-2 sidebar">
+          <!--<ul class="nav nav-sidebar">
+            <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
+          </ul>-->
+          <ul>
+          <li><a href="#foodforthought-app-continuation-guide">FoodForThought App Continuation Guide</a><ul>
+          <li><a href="#getting-started">Getting Started</a><ul>
+          <li><a href="#prerequisites">Prerequisites</a></li>
+          <li><a href="#installing">Installing</a></li>
+          </ul></li>
+          <li><a href="#front-end-information">Front End Information</a><ul>
+          <li><a href="#ionic-file-structure">Ionic file structure</a></li>
+          <li><a href="#ionic-plugins">Ionic Plugins</a></li>
+          <li><a href="#partially-completed-features">Partially Completed Features</a></li>
+          </ul></li>
+          <li><a href="#features-needing-back-end-support">Features Needing Back End Support</a><ul>
+          <li><a href="#creating-notifications">Creating Notifications</a></li>
+          <li><a href="#creating-locationsshifts">Creating Locations/Shifts</a></li>
+          <li><a href="#checking-in-volunteers-as-admin">Checking in Volunteers as Admin</a></li>
+          </ul></li>
+          <li><a href="#app-deployment-information">App Deployment Information</a><ul>
+          <li><a href="#ionic-framework">Ionic Framework</a></li>
+          <li><a href="#itunes-connect">iTunes Connect</a></li>
+          </ul></li>
+          <li><a href="#back-end-information">Back End Information</a><ul>
+          <li><a href="#api-and-salesforce-objects">API and Salesforce Objects</a></li>
+          <li><a href="#issues-with-api-calls-and-salesforce">Issues with API Calls and Salesforce</a></li>
+          <li><a href="#installing-volunteers-for-salesforce-package-for-salesforce">Installing Volunteers for Salesforce Package For Salesforce</a></li>
+          <li><a href="#configuring-volunteers-for-salesforce">Configuring Volunteers for Salesforce</a></li>
+          <li><a href="#mass-emailing-volunteers-with-volunteers-for-salesforce">Mass Emailing Volunteers with Volunteers for Salesforce</a></li>
+          <li><a href="#creating-email-templates">Creating Email Templates</a></li>
+          </ul></li>
+          <li><a href="#building-the-docs">Building the Docs</a></li>
+          </ul></li>
+          </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        
+<h1 id="foodforthought-app-continuation-guide">FoodForThought App Continuation Guide</h1>
+<p>This is a development guide for the FoodForThought volunteer organization app. It will walk you through basic setup of the development environment, basic knowledge about the frameworks and tools we used, and the solved/unsolved problems we've run into.</p>
+<h2 id="getting-started">Getting Started</h2>
+<h3 id="prerequisites">Prerequisites</h3>
+<p>You'll need to install node.js and ionic to get started with our app. Node.js can be downloaded for your operating system <a href="https://nodejs.org/en/" title="Node.js">here.</a></p>
+<p>Ionic can then be installed by running the following in your terminal:</p>
+<pre><code>npm install -g cordova ionic</code></pre>
+<p><strong>Note: This app was created using ionic v1. While you don't have to do anything during install to specify that you're using v1, you will need to make sure you reference the v1 docs, and not v2.</strong></p>
+<p>In order to build the app for Android and iOS, you will need to follow the <a href="https://cordova.apache.org/docs/en/6.x/guide/platforms/android/" title="Android Platform Guide">Android</a> and <a href="https://cordova.apache.org/docs/en/6.x/guide/platforms/ios/" title="iOS Platform Guide">iOS</a> platform guides respectively.</p>
+<h3 id="installing">Installing</h3>
+<p>Clone the FoodForThought app git repository.</p>
+<pre><code>git clone https://github.com/DJW0519/SrProjectFoodForThought</code></pre>
+<p>Run the app in your web browser to verify that it works. Make sure you are in the &quot;FoodForThought&quot; folder.</p>
+<pre><code>cd SrProjectFoodForThought/FoodForThought
+ionic serve</code></pre>
+<p>You should see the following screen on startup.</p>
+<p>To build and emulate for iOS, run</p>
+<pre><code>ionic build ios
+ionic emulate ios</code></pre>
+<p>To build and emulate for Android, run</p>
+<pre><code>ionic build android
+ionic emulate android</code></pre>
+<p>Make sure you've followed the guides for each platform before attempting to build and emulate!</p>
+<h2 id="front-end-information">Front End Information</h2>
+<h3 id="ionic-file-structure">Ionic file structure</h3>
+<p>The different screens of the app are each their own html file located in the templates folder.</p>
+<pre><code>SrProjectFoodForThought/FoodForThought/www/templates</code></pre>
+<p>Each screen also has a controller associated with it, which controls how it behaves. All the controllers are defined in controllers.js</p>
+<pre><code>SrProjectFoodForThought/FoodForThought/www/js/controllers.js</code></pre>
+<p>These two are linked in the stateprovider, which is located in app.js</p>
+<pre><code>SrProjectFoodForThought/FoodForThought/www/js/app.js</code></pre>
+<p>When making a new screen, you'll want to create an html template for it, add a controller for it in controllers.js, and then define both of them in app.js</p>
+<p>Since back-end functionality for the Admin tabs was not completed, the functions and local storage takes place in services.js.</p>
+<pre><code>SrProjectFoodForThought/FoodForThought/www/js/services.js</code></pre>
+<h3 id="ionic-plugins">Ionic Plugins</h3>
+<p>We installed a few plugins on top of ionic. There is no need to reinstall them, but it may be helpful to reference their docs.</p>
+<h4 id="ionic-filter-bar">Ionic Filter Bar</h4>
+<p>This is used in the admin checkin screen to search for volunteers from a list. You can find the docs <a href="https://github.com/djett41/ionic-filter-bar" title="Ionic Filter Bar Github">here.</a></p>
+<h4 id="ngstorage">ngStorage</h4>
+<p>This plugin is used to handle local storage. Specifically, we used it to store user credentials and which user is currently logged in. You can find the docs <a href="https://github.com/gsklee/ngStorage" title="ngStorage Github">here.</a></p>
+<p>Users can be found in <span class="math inline"><em>s</em><em>c</em><em>o</em><em>p</em><em>e</em>.</span>storage.users. The email of the current user is found at <span class="math inline"><em>s</em><em>c</em><em>o</em><em>p</em><em>e</em>.</span>storage.currentUser. You can access a particular user by using their email as the key. So, the currently logged in user's info can be accessed through the following:</p>
+<pre><code>$scope.$storage.users[$scope.$storage.currentUser]</code></pre>
+<h3 id="partially-completed-features">Partially Completed Features</h3>
+<h4 id="geolocation">Geolocation</h4>
+<p>We've started working on checking people when they arrive at a volunteer location. We've implemented a basic example that returns your current lattitude and longitude using the Cordova Geolocation Plugin. You can play with it in the 'Geolocation' git branch.</p>
+<pre><code>git checkout Geolocation</code></pre>
+<p>You then need to manually navigate to the geolocation test page in your browser.</p>
+<pre><code>localhost:8100/#/geo</code></pre>
+<p>You can then press &quot;F12&quot; to open the developer console (on chrome), and you should see your current latitude.</p>
+<p>The controller for the geolocation test page is named 'GeoCtrl'</p>
+<p>This feature needs to wait until the time of a volunteer's shift, then start checking if they are within a certain radius of a volunteer location (which would be set by an admin under 'manage locations'.) If the volunteer entered that radius within a short time after the shift started, they would be checked in for that shift.</p>
+<h4 id="settings-screen">Settings Screen</h4>
+<h5 id="logout">Logout</h5>
+<p>The settings screen currently has a &quot;Logout&quot; button. This needs to set <span class="math inline"><em>s</em><em>c</em><em>o</em><em>p</em><em>e</em>.</span>storage.currentUser to null and redirect to he welcome screen.</p>
+<h5 id="automatic-check-in">Automatic Check In</h5>
+<p>Once geolocation is implemented, this toggle switch needs to be combined with &quot;location services&quot; and should prompt the user to enable gps for the app, and enable automatic check in.</p>
+<h2 id="features-needing-back-end-support">Features Needing Back End Support</h2>
+<p>There are some features that are entirely implemented on the front end, but need implementation on the back end in order to function. These are mostly admin features.</p>
+<h3 id="creating-notifications">Creating Notifications</h3>
+<p>Notifications can be created in the admin section of the app, but they are only stored locally; they are not distributed to volunteers. For this to function, there needs to be a place in Salesforce to store the notifications, and a way to retrieve the notifications from Salesforce on the app.</p>
+<h3 id="creating-locationsshifts">Creating Locations/Shifts</h3>
+<p>New locations and volunteer times can be created in the admin section of the app, but doing so does not create new shifts in Salesforce. Locations are okay to be stored locally, (though it isn't necessarily ideal) but volunteer times need to be stored in Salesforce, and retrieved to populate the shifts on the home screen.</p>
+<h3 id="checking-in-volunteers-as-admin">Checking in Volunteers as Admin</h3>
+<p>Given a list of volunteers, an admin can move them from a &quot;Unchecked&quot; list to a &quot;Checked in&quot; list locally in the app. This feature needs to be able to pull a list of volunteers for a given shift from Salesforce, and needs to be able to check in each volunteer through Salesforce.</p>
+<h2 id="app-deployment-information">App Deployment Information</h2>
+<h3 id="ionic-framework">Ionic Framework</h3>
+<p>The Ionic App ID is 3bd901cf. This ID is used in the ionic.config.json file to connect the code to the app on the Ionic site.</p>
+<h4 id="ionic-website-tools">Ionic Website Tools</h4>
+<p>When logged into the Ionic website, you can access the code that you have built using the command line.</p>
+<p>When an app is built, it shows up in the Package tab of the ionic site. This is where you can download the .ipa file which shows up in the Library portion of Apps on iTunes.</p>
+<div class="figure">
+<img src="images/IonicPackage.png" />
+
+</div>
+<p>This can be loaded onto a phone connected to the computer.</p>
+<div class="figure">
+<img src="images/iTunesApp.png" />
+
+</div>
+<p>The certificates for the App are in the Settings tab under Certificates. They were obtained from iTunes Connect and Android.</p>
+<div class="figure">
+<img src="images/IonicCertificates.png" />
+
+</div>
+<h4 id="ionic-command-line">Ionic Command Line</h4>
+<h5 id="building">Building</h5>
+<p>iOS:</p>
+<pre><code>$ ionic package build ios --profile foodforthoughtsecurity</code></pre>
+<p>Android:</p>
+<pre><code>$ ionic package build android --profile androidkeystore</code></pre>
+<h4 id="release">Release</h4>
+<p>iOS:</p>
+<pre><code>$ ionic package build ios --profile foodforthoughtsecurity --release</code></pre>
+<p>Android:</p>
+<pre><code>$ ionic package build android --profile androidkeystore --release</code></pre>
+<h4 id="build-information">Build Information</h4>
+<p>Check the status of the different builds by listing them.</p>
+<pre><code>$ ionic package list</code></pre>
+<h4 id="build-output">Build Output</h4>
+<p>If a build fails, you can find out why by viewing the output. BUILD_ID The build's ID found with ionic package list.</p>
+<pre><code>$ ionic package info BUILD_ID</code></pre>
+<h4 id="download">Download</h4>
+<p>You can download successful builds. This will put the .ipa or .apk file in your app's directory. BUILD_ID The build's ID found with ionic package list</p>
+<pre><code>$ ionic package download BUILD_ID</code></pre>
+<h3 id="itunes-connect">iTunes Connect</h3>
+<p>Most of the information needed for application to the app store in iTunes Connect is self-explanatory. These are parts I had to research and go over multiple times.</p>
+<h4 id="adding-screenshots">Adding Screenshots</h4>
+<h5 id="configuring-xcode">Configuring Xcode</h5>
+<p>After opening Xcode, go to Xcode-&gt;Preferences. Here you will click on the Accounts tab. Then click the + symbol at the bottom of the pop up and select Add Apple ID... Email: jelarkins@foodforthoughtdenver.org Password: CU2017srproject</p>
+<div class="figure">
+<img src="images/AddAppleID.png" />
+
+</div>
+<h5 id="load-app-into-xcode">Load App into Xcode</h5>
+<p>Go to File-&gt;Open and select the Xcode project which can be found at SrProjectFoodForThought/Food4Thought/platforms/ios/Food4Thought.xcodeproj</p>
+<h5 id="take-screenshots">Take Screenshots</h5>
+<p>Screenshots are needed to display in the App Store so people can see what app they are getting. Select which device to use in the upper left corner of the Xcode screen. You will use the iPhone 6 Plus for the 5.5 inch display pictures and the iPad Pro 12.9 inch for the 12.9 inch pictures.</p>
+<div class="figure">
+<img src="images/DeviceSelect.png" />
+
+</div>
+<p>After selecting which device you want to use, select Product-&gt;Run. This will run the app on an emulated device. On this device you will navigate to the views you want to submit as screenshots. Select File-&gt;Save Screen Shot, which will save the screenshots to the Desktop. These can then be uploaded into iTunes Connect.</p>
+<h4 id="adding-a-build">Adding a Build</h4>
+<p>In order to submit an app to the App Store, you need to give iTunes a build.</p>
+<h5 id="building-the-app">Building the App</h5>
+<p>Make sure that in the upper left corner, the device chosen is Generic iOS Device.</p>
+<div class="figure">
+<img src="images/GenericiOSDevice.png" />
+
+</div>
+<p>Go to Product-&gt;Build to build the project.</p>
+<h5 id="archive">Archive</h5>
+<p>Once the project is built with no errors, go to Product-&gt;Archive. This will package the app together so you can submit it to iTunes Connect. This window pops up when the archive is finished, but can also be accessed through Window-&gt;Organizer. Choose Export to save the packaged build to your computer.</p>
+<div class="figure">
+<img src="images/ArchiveWindow.png" />
+
+</div>
+<h5 id="put-build-in-itunes-connect">Put Build in iTunes Connect</h5>
+<p>In the Build section of preparing the app for submission, click the + symbol and select the file you exported from Xcode.</p>
+<h2 id="back-end-information">Back End Information</h2>
+<p>The Food For Thought app back end is Salesforce, specifically Volunteers for Salesforce. Volunteers for Salesforce is a package that is install on your Salesforce instance. Once installed Volunteers for Salesforce can manage the volunteers, jobs, shifts, and hours. Volunteer for Salesforce can also track and create reports on all the data that is generated from volunteer’s events and shifts. So the majority of the back end is utilizing the Volunteers for Salesforce package and having the Food For Thought app interface with it.</p>
+<p>This is where we ran into our biggest problem that we unfortunately were not able to implement a viable working solution. We were not able to get our Food for Thought app to interface with the Volunteers for Salesforce package at all. We ran into a lot of problems, but we also learned a few things that hopefully can provide you with the knowledge to solve these problems going forward.</p>
+<p>This portion of the guide will cover what we learned and what problems we encountered on the back end.</p>
+<h3 id="api-and-salesforce-objects">API and Salesforce Objects</h3>
+<p>We choose to use REST api to interface with Salesforce since it is friendly for mobile and web application. Also because we are just sending messages from client to server and sending back a response. The REST api call is interacting with Salesforce Objects to add and modify data to your Salesforce instance. Some of the standard Saleforce objects are:</p>
+<pre><code>Account, Campaign, Contact, etc.</code></pre>
+<p>The full list of standard Salesforce Objects can be found here:</p>
+<pre><code>https://developer.salesforce.com/docs/atlas.en-us.object_reference.meta/object_reference/sforce_api_objects_list.htm</code></pre>
+<p>The Volunteer for Salesforce package uses custom objects. Volunteers for Salesforce custom objects are:</p>
+<ul>
+<li>Job Recurrence Schedule</li>
+<li>Volunteer Hours</li>
+<li>Volunteer Job</li>
+<li>Volunteer Recurrence Schedule</li>
+<li>Volunteer Shift</li>
+</ul>
+<p>To find this list and more information on the custom objects of Volunteer for Salesforce:</p>
+<ul>
+<li>Login into Salesforce and click setup on the upper right hand corner of the screen</li>
+<li>Navigate to Create on the left hand side of the screen and click on the play button next to create</li>
+<li>On the drop down menu of select Objects</li>
+<li>Once Objects is selected it will show you all the custom objects of Volunteer for Salesforce</li>
+<li>Click on each label to find more information about each custom objects</li>
+</ul>
+<h3 id="issues-with-api-calls-and-salesforce">Issues with API Calls and Salesforce</h3>
+<p>We were using a Salesforce Starter Application code that was created by Salesforce and Ionic to test our back end and we discovered a few issues that we were never able to resolve. The first one we discovered is that when you are logged into a Salesforce account, you can only access that Salesforce instance of information. We originally thought that by creating a consumer key on a Salesforce instance and implementing that key in our code base it will allow us to grant any user the ability to access our Salesforce account data or any other Salesforce account data if the right consumer key was used, that was not the case. Salesforce is set up as to facilitate API calls through their controllers that are handled on the Salesforce site and tied to the master account for the organization. We are facilitating Volunteers for Salesforce as an intermediary between the application and the Salesforce database. This means that the public who has our application can sign up for shifts, but cannot directlya access the database, bypassing any security concerns.</p>
+<h3 id="installing-volunteers-for-salesforce-package-for-salesforce">Installing Volunteers for Salesforce Package For Salesforce</h3>
+<ul>
+<li>Salesforce Classic and Lighting Experience can be switched by clicking on the username and selecting the appropriate option. All instructions are written for Salesforce Classic.</li>
+<li>Once logged into Salesforce.com, click on the blue “Site.com” button.</li>
+<li>Select &quot;AppExchange&quot; from the popup menu of “Site.com”.</li>
+<li>On the Apps search bar enter “Volunteer for Salesforce”.</li>
+<li>Find and select the Volunteers for Salesforce app.</li>
+<li>Click the green &quot;Get It Now&quot; button.</li>
+<li>Select &quot;Log in to the AppExchange Use your Salesforce credentials&quot;.</li>
+<li>Volunteers for Salesforce can be either be install in production or Sandbox environment. Select &quot;Install in production&quot; option.</li>
+<li>Click on the 'I have read and agree to the terms and conditions&quot; and click the blue &quot;Confirm and Install!&quot; button.</li>
+<li>Select &quot;Install for All Users&quot; and select on the blue &quot;install&quot; button.</li>
+</ul>
+<h3 id="configuring-volunteers-for-salesforce">Configuring Volunteers for Salesforce</h3>
+<ul>
+<li>Once Volunteers for Salesforce is installed, return to your Salesforce homepage and click on setup tab which is next to your username.</li>
+<li>On the left hand side of the screen under the &quot;Build&quot; option, click on the &quot;Create&quot; drop down button.</li>
+<li>In the drop down menu of Create select and click Apps.</li>
+<li>Click on edit of the Volunteer App Label.</li>
+<li>Modify the Selected Tabs list to include:</li>
+</ul>
+<p>       Home <br>        Volunteers Help Volunteers Wizard <br>        Volunteer Jobs <br>        Shift Calendar <br>        Find Volunteers <br>        Leads <br>        Contacts <br>        Campaigns <br>        Reports <br>        Dashboards</p>
+<ul>
+<li>Click save when completed.</li>
+<li>Click on the plus button next to Home and Chatter on the top bar of Salesforce.</li>
+<li>Click on the Orange “Customize My tabs” button.</li>
+<li>Modify the Selected Tab list to include:</li>
+</ul>
+<p>       Home <br>        Volunteers Help Volunteers Wizard <br>        Volunteer Jobs <br>        Shift Calendar <br>        Find Volunteers <br>        Leads <br>        Contacts <br>        Campaigns <br>        Reports <br>        Dashboards</p>
+<ul>
+<li>These tabs can be added selecting the appropriate name and clicking the add button.</li>
+<li>Click save when complete.</li>
+<li>These tabs should now be on the top bar of Salesforce.</li>
+</ul>
+<h3 id="mass-emailing-volunteers-with-volunteers-for-salesforce">Mass Emailing Volunteers with Volunteers for Salesforce</h3>
+<p><strong>1. Under the Volunteer Jobs tab</strong> - Click the Volunteer Jobs tab. - Select all jobs or specific jobs in the View: field and click on the Go! Button. - Select the hyperlink under Volunteer Job Name or hyperlink under the Select the Campaign (Choosing the hyperlink under the Campaign will select all users that are associated with the campaign). - Depending on the selection of the previous action the next screen will be the job detail page or the Campaign detail page. - Click on the Mass Email Volunteers tab. - Complete the requested fields:</p>
+<p>     <strong>From</strong> – selecting who the email is from. <br>      <strong>Email volunteers with Status</strong> - status filter field. <br>      <strong>Include Contacts only once</strong> – selecting this will send one email to each unique contact, leaving this field unchecked will <br>      email each contact for very hours on a job or shift. <br>      <strong>Log an Activity for each email</strong> – selecting this will log the activity on the contact’s record. <br>      <strong>Template Based on Object</strong> – select the object field that will be populated on selected email template (Object and Email <br>      template should match each other). <br>      <strong>Email Template</strong> – select created email template.</p>
+<ul>
+<li>Once selection has been made click on the blue send button on the upper right corner.</li>
+</ul>
+<p><strong>2. Under the Shift Calendar tab</strong> - Click the Shift Calendar tab. - Select the Job shift on the Calendar. - Click on the Mass Email Volunteers tab. - Complete the requested fields:</p>
+<p>     <strong>From</strong> – selecting who the email is from. <br>      <strong>Email volunteers with Status</strong> - status filter field. <br>      <strong>Include Contacts only once</strong> – selecting this will send one email to each unique contact, leaving this field unchecked will <br>      email each contact for very hours on a job or shift. <br>      <strong>Log an Activity for each email</strong> – selecting this will log the activity on the contact’s record. <br>      <strong>Template Based on Object</strong> – select the object field that will be populated on selected email template (Object and Email <br>      template should match each other).      <strong>Email Template</strong> – select created email template.</p>
+<ul>
+<li>Once selection has been made click on the blue send button on the upper right corner.</li>
+</ul>
+<h3 id="creating-email-templates">Creating Email Templates</h3>
+<ul>
+<li>Select on the username in the upper right corner</li>
+<li>Select My Setting on the pop-up window</li>
+<li>Select the Email tab on the left side</li>
+<li>Under the drop down option of the email tab select email templates</li>
+<li>Select “New Template” button to create a new template or select the premade Salesforce template. The premade Salesforce template can be edited by clicking on the edit button.</li>
+</ul>
+<h2 id="building-the-docs">Building the Docs</h2>
+<p>The developer guide (this document) and the user guide are both written in markdown, and then rendered to a styled html document using pandoc.</p>
+<p>Follow the instructions <a href="http://pandoc.org/installing.html" title="Pandoc Installation Guide">here</a> for installing pandoc for your operating system.</p>
+<p>Once you have pandoc installed, navigate to the documentation folder.</p>
+<pre><code>SrProjectFoodForThought/docs</code></pre>
+<p>Then, convert the markdown files to html.</p>
+<pre><code>pandoc devGuide.md --template toc-sidebar.html --toc -B nav -o devGuide.html
+pandoc UserGuide.md --template toc-sidebar.html --toc -B nav -o UserGuide.html</code></pre>
+<p>Make sure the &quot;js&quot;, &quot;css&quot;, and &quot;images&quot; folders are all in the same directory as the html documents.</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="https://maxcdn.bootstrapcdn.com/js/ie10-viewport-bug-workaround.js"></script>
+    <script>
+        //document.getElementById('sidebar').getElementsByTagName('ul')[0].className += "nav nav-sidebar";
+        
+        /* ajust the height when click the toc
+           the code is from https://github.com/twbs/bootstrap/issues/1768
+        */
+        var shiftWindow = function() { scrollBy(0, -50) };
+        window.addEventListener("hashchange", shiftWindow);
+        function load() { if (window.location.hash) shiftWindow(); }
+        
+        /*add Bootstrap styles to tables*/
+        var tables = document.getElementsByTagName("table");
+        for(var i = 0; i < tables.length; ++i){
+            tables[i].className += "table table-bordered table-hover";
+        }
+    </script>
+  </body>
+</html>
