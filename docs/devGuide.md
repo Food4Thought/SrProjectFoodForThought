@@ -397,6 +397,53 @@ We were using a Salesforce Starter Application code that was created by Salesfor
 -	Select “New Template” button to create a new template or select the premade Salesforce template. The premade Salesforce template can be edited by clicking on the edit button.
 
 
+### Classes and VisualForce Pages
+
+-	To access click on "Set-Up" in the upper right corner of the screen.
+-	Use the quick find search bar on the left side of the screen. 
+-	Type in pages to find visualforce pages and classes to find apex classes.
+-	In order to make any changes to either of these sections you must make your own copy of that file.
+-	VisualForce pages are the visual aspect of the website while the APEX classes are the controller classes used to implement functionality
+
+####APEX Classes
+-	To Copy an APEX class you must go the the original github repo for Volunteers for Salesforce. ["HERE"](https://github.com/SalesforceFoundation/Volunteers-for-Salesforce)
+-	Create a new APEX class by clicking the 'new' button in the middle of the APEX classes screen.
+-	Paste the code into the screen.
+-	There will likely be many errors that will prevent you from actually saving the file as your own class.
+-	These issues will be primarily incorrectly named variables. Most commonly the issue will reside in the fact that almost every variable needs some form of "GW_Volunteers__" or "GW_Volunteers." appended to the beginning. 
+-	Additionally you will encounter "invisible methods" called by your class that are implemented in another class that you will not have access to. You will want to track down the methods from their respective class in the github repo and include them in your new class as well. 
+-	Several Pages have already been provided in the Salesforce Pages & Classes of our project so this may not be much of an issue. 
+-	The name of the class is actually declared near the top of the document unlike a VisualForce page which as a box to declare the name of the page.
+	eg. global virtual with sharing class myVOL_CTRL_VolunteersJobListingFS {} would make a class page named VOL_CTRL_VolunteersJobListingFS .
+
+####VisualForce Pages
+-	To copy a VisualForce page you will click the edit link next to that page. Copy the contents and paste them into a new VisualForce page.
+-	You may occasionaly run into variable problems here but typically it will just be label permissions. 
+-	Just find your way back to the quickfind search bar and type in labels then select "Custom Labels".
+-	Find the corresponding label name and paste the contents into the variable section of your VisualForce page. 
+-	Alternatively you could create your own custom label with the same data but a new name and just reference that in your page instead.
+-	When a page is successfully created you must also add it to your active salesforce websites before it can be used. This can be done from the sites page.
+
+
+### Activate Sites 
+-	Go to Setup the setup page then under the Develop tab on the left hand side of the screen select "Sites".
+-	Specify the name you want to use for your domain.  
+-	#####Note that once set, you cannot modify this name, so make sure you use an appropriate name for your company.#####
+-	The pages that Volunteers for Salesforce provides you will be hosted within pages owned by your website, so the actual Sites domain name will not be visible to users.  But you may have future needs that would expose Sites pages directly to the user, so you should still choose an appropriate name.
+-	Click on “Check Availability” to make sure the name you gave is not already taken.
+-	Read and check the “Sites Terms of Use"
+-	Click “Register My Force.com Domain
+
+
+####Troubleshooting
+-	I never found a great way to go about this unfortunately. Typically, if you try to access a page with a non-functioning class or page you will get a confusing security error that you suddenly do not have permission to access this page. This is so that the innerworkings of your site are not accidentally exposed which is nice but frustrating without a doubt. 
+-	My solution was to create a class and page called ErrorFinder and use them to call the broken page.
+-	To do this go into the error finder apex class and look for the section that says Page.NAME_OF_PAGE.getContent().toString() 
+-	Put the name of the page you want to troubleshoot into the NAME_OF_PAGE section and preview the ErrorFinder VisualForce page.
+-	This should at least give you an error message to go on instead of pure guess work. (this isn't 100% effective but can be a handy tool) 
+
+
+
 ## Building the Docs
 
 The developer guide (this document) and the user guide are both written in markdown, and then rendered to a styled html document using pandoc.
